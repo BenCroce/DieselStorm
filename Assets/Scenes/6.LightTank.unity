@@ -379,7 +379,7 @@ MonoBehaviour:
   m_LightTankScriptable: {fileID: 11400000, guid: c5285d01e7aa6b34d9ebcecb1ba3b068,
     type: 2}
   m_Rigidbody: {fileID: 0}
-  m_MinToGround: 3
+  m_MinToGround: 1
   d2f: 0
 --- !u!54 &1076507069
 Rigidbody:
@@ -410,7 +410,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 43e728208d1c39844a2d6f0715a6046c, type: 2}
+  - {fileID: 2100000, guid: 5b199df160498b743ae13fcdf3a6f5de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
