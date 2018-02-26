@@ -678,13 +678,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxUpAngle: 45
-  m_MaxDownAngle: 45
+  m_MaxDownAngle: -45
   m_MaxRightAngle: 0
   m_MaxLeftAngle: 0
   m_MouseHorizontalSensitivity: 1
   m_MouseVerticalSensitivity: 0
-  m_MouseRef: {x: 0, y: 0, z: 0}
-  mouse: {x: 0, y: 0, z: 0}
 --- !u!23 &1422369009
 MeshRenderer:
   m_ObjectHideFlags: 0
