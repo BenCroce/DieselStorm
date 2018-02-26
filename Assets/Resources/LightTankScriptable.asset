@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: LightTankScriptable
   m_EditorClassIdentifier: 
   m_HooverForce: 8.83
-  m_StrafeForce: 0
-  m_ForwardMovementSpeed: 0
+  m_StrafeForce: 4.44
+  m_ForwardMovementSpeed: 2.42
   m_TurnSpeed: 0

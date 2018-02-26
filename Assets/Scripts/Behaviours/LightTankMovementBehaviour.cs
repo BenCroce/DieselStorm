@@ -16,8 +16,8 @@ public class LightTankMovementBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
-            Ray ray = new Ray(transform.position, -transform.up);
-            RaycastHit hit;
+        Ray ray = new Ray(transform.position, -transform.up);
+        RaycastHit hit;
         if (Physics.Raycast(ray, out hit, m_HooverHeight))
         {
             float d2f = (m_HooverHeight - hit.distance);
@@ -30,30 +30,29 @@ public class LightTankMovementBehaviour : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation,
                 Time.deltaTime);
             if(Input.GetKey(KeyCode.W))
-                m_Rigidbody.AddForce(
-                    new Vector3(0,0,m_LightTankScriptable.m_ForwardMovementSpeed));
+                m_Rigidbody.AddForce(transform.forward * 
+                    m_LightTankScriptable.m_ForwardMovementSpeed);
             if (Input.GetKey(KeyCode.S))
-                m_Rigidbody.AddForce(
-                    new Vector3(0, 0, -m_LightTankScriptable.m_ForwardMovementSpeed));
+                m_Rigidbody.AddForce(transform.forward * 
+                    -m_LightTankScriptable.m_ForwardMovementSpeed);
             if(Input.GetKeyDown(KeyCode.A))
                 StrafeLeft();
             if (Input.GetKeyDown(KeyCode.D))
                 StrafeRight();
         }
-
     }
 
     [ContextMenu("Strafe Right")]
     void StrafeRight()
     {
-        m_Rigidbody.AddForce(new Vector3(m_LightTankScriptable.m_StrafeForce,0,0), 
+        m_Rigidbody.AddForce(transform.right * m_LightTankScriptable.m_StrafeForce, 
             ForceMode.Impulse);
     }
 
     [ContextMenu("Strafe Left")]
     void StrafeLeft()
     {
-        m_Rigidbody.AddForce(new Vector3(-m_LightTankScriptable.m_StrafeForce, 0, 0),
+        m_Rigidbody.AddForce(transform.right *-m_LightTankScriptable.m_StrafeForce,
             ForceMode.Impulse);
     }
 }
