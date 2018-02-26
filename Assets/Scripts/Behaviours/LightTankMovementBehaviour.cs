@@ -29,13 +29,31 @@ public class LightTankMovementBehaviour : MonoBehaviour
                 transform.rotation.y, hit.transform.rotation.z, transform.rotation.w);
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation,
                 Time.deltaTime);
-            m_Rigidbody.AddForce(transform.forward * 0.1f);
+            if(Input.GetKey(KeyCode.W))
+                m_Rigidbody.AddForce(
+                    new Vector3(0,0,m_LightTankScriptable.m_ForwardMovementSpeed));
+            if (Input.GetKey(KeyCode.S))
+                m_Rigidbody.AddForce(
+                    new Vector3(0, 0, -m_LightTankScriptable.m_ForwardMovementSpeed));
+            if(Input.GetKeyDown(KeyCode.A))
+                StrafeLeft();
+            if (Input.GetKeyDown(KeyCode.D))
+                StrafeRight();
         }
 
     }
 
-    void OnDrawGizmos()
+    [ContextMenu("Strafe Right")]
+    void StrafeRight()
     {
+        m_Rigidbody.AddForce(new Vector3(m_LightTankScriptable.m_StrafeForce,0,0), 
+            ForceMode.Impulse);
     }
 
+    [ContextMenu("Strafe Left")]
+    void StrafeLeft()
+    {
+        m_Rigidbody.AddForce(new Vector3(-m_LightTankScriptable.m_StrafeForce, 0, 0),
+            ForceMode.Impulse);
+    }
 }
