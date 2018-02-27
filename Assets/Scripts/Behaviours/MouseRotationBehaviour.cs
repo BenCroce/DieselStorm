@@ -18,8 +18,6 @@ public class MouseRotationBehaviour : MonoBehaviour
     public float m_MouseHorizontalSensitivity;
     public float m_MouseVerticalSensitivity;
 
-    public Quaternion newRotation;
-
     void Start()
     {        
     }
@@ -29,13 +27,12 @@ public class MouseRotationBehaviour : MonoBehaviour
         Vector3 mousePos = new Vector3(Input.GetAxisRaw("Mouse Y") * m_MouseVerticalSensitivity,
             Input.GetAxisRaw("Mouse X") * m_MouseHorizontalSensitivity, 0);       
 
-        newRotation = transform.rotation * Quaternion.Euler(mousePos);
+        Quaternion newRotation = transform.rotation * Quaternion.Euler(mousePos);
         if(m_ClampVertical)
             newRotation.x = Mathf.Clamp(newRotation.x, m_MaxDownRadian, m_MaxUpRadian);
         if (m_ClampHorizontal)
             newRotation.y = Mathf.Clamp(newRotation.y, m_MaxLeftRadian, m_MaxRightRadian);        
-        newRotation.z = transform.rotation.z;
-        //newRotation.w = transform.rotation.w;        
+        newRotation.z = transform.rotation.z;      
 
         transform.rotation = newRotation;
         Debug.Log(transform.rotation);
