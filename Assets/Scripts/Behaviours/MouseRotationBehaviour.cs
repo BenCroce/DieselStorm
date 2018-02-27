@@ -33,6 +33,7 @@ public class MouseRotationBehaviour : MonoBehaviour
         if (m_ClampHorizontal)
             newRotation.y = Mathf.Clamp(newRotation.y, m_MaxLeftRadian, m_MaxRightRadian);
 
+        newRotation.z = transform.rotation.z;
 
         transform.rotation = newRotation;
     }
