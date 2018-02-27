@@ -677,12 +677,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11c3c4394d663f468e59ada1bfb74d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxUpAngle: 45
-  m_MaxDownAngle: -45
-  m_MaxRightAngle: 0
-  m_MaxLeftAngle: 0
-  m_MouseHorizontalSensitivity: 1
-  m_MouseVerticalSensitivity: 0
+  m_ClampVertical: 1
+  m_MaxUpRadian: 0.25
+  m_MaxDownRadian: -0.25
+  m_ClampHorizontal: 1
+  m_MaxRightRadian: 0.5
+  m_MaxLeftRadian: -0.5
+  m_MouseHorizontalSensitivity: 10
+  m_MouseVerticalSensitivity: 10
+  newRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1422369009
 MeshRenderer:
   m_ObjectHideFlags: 0

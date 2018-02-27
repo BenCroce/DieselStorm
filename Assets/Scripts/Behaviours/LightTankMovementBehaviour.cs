@@ -29,7 +29,9 @@ public class LightTankMovementBehaviour : MonoBehaviour
                 transform.rotation.y, hit.transform.rotation.z, transform.rotation.w);
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation,
                 Time.deltaTime);
-            if(Input.GetKey(KeyCode.W))
+
+            #region Test Code                     
+            if (Input.GetKey(KeyCode.W))
                 m_Rigidbody.AddForce(transform.forward * 
                     m_LightTankScriptable.m_ForwardMovementSpeed);
             if (Input.GetKey(KeyCode.S))
@@ -39,6 +41,11 @@ public class LightTankMovementBehaviour : MonoBehaviour
                 StrafeLeft();
             if (Input.GetKeyDown(KeyCode.D))
                 StrafeRight();
+            if(Input.GetKey(KeyCode.E))
+                RotateClockwise();
+            if(Input.GetKey(KeyCode.Q))
+                RotateCounterClockwise();
+            #endregion
         }
     }
 
@@ -52,7 +59,17 @@ public class LightTankMovementBehaviour : MonoBehaviour
     [ContextMenu("Strafe Left")]
     void StrafeLeft()
     {
-        m_Rigidbody.AddForce(transform.right *-m_LightTankScriptable.m_StrafeForce,
+        m_Rigidbody.AddForce(transform.right * -m_LightTankScriptable.m_StrafeForce,
             ForceMode.Impulse);
+    }
+
+    void RotateClockwise()
+    {
+        transform.Rotate(transform.up, m_LightTankScriptable.m_TurnSpeed * Time.deltaTime);
+    }
+
+    void RotateCounterClockwise()
+    {
+        transform.Rotate(transform.up, -m_LightTankScriptable.m_TurnSpeed * Time.deltaTime);
     }
 }
