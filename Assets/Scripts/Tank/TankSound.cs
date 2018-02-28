@@ -8,13 +8,13 @@ public class TankSound : MonoBehaviour {
     public AudioSource jet;
 
     Rigidbody self;
-    TankMovement move;
+    LightTankMovement move;
 
 	// Use this for initialization
 	void Start ()
     {
         self = GetComponentInParent<Rigidbody>();
-        move = GetComponentInParent<TankMovement>();
+        move = GetComponentInParent<LightTankMovement>();
 	}
 	
 	// Update is called once per frame

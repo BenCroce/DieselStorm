@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class TankMovement : NetworkBehaviour {
+public class LightTankMovement : NetworkBehaviour {
 
     public float moveForce = 20f;
     public float hoverForce = 50f;
@@ -12,17 +12,14 @@ public class TankMovement : NetworkBehaviour {
     public ParticleSystem trail;
 
     Rigidbody self;
+
     private float MouseAimX;
     Ray ray, rayT, rayL, rayR, rayB;
 
     //Networking player movement
-    [SyncVar]
     public float hinput;
-    [SyncVar]
     public float vinput;
-    [SyncVar]
     public float jinput;
-    [SyncVar]
     private Vector3 mcam;
 
     void Start()
@@ -66,9 +63,11 @@ public class TankMovement : NetworkBehaviour {
 
             }
             else
+                //Turn the trail off if we aren't on the ground
                 trail.enableEmission = false;
         }
         else
+            //go back upright if we're higher than 5 units
             Rebalance();
     }
 
