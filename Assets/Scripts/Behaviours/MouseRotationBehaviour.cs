@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MouseRotationBehaviour : MonoBehaviour
 {
-    public MouseRotationScriptable m_MouseRotationScriptable;
+    public MouseRotationScriptable m_MouseRotationScriptable;   
 
     void FixedUpdate()
     {
@@ -29,6 +29,10 @@ public class MouseRotationBehaviour : MonoBehaviour
 
         newRotation.z = transform.localRotation.z;
 
-        transform.localRotation = newRotation;
+        if (transform.localRotation != newRotation)
+        {
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, newRotation, 
+                Time.deltaTime * m_MouseRotationScriptable.m_RotationSpeed);
+        }
     }
 }
