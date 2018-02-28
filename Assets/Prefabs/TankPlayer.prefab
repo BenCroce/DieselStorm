@@ -203,7 +203,7 @@ GameObject:
   m_Layer: 0
   m_Name: TankPlayer
   m_TagString: Player
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1654036009018553494, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -637,13 +637,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21412e4e413ae1346a45334b88b71912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 20
-  hoverForce: 50
-  hoverHeight: 1
+  isNetworked: 1
+  forces: {fileID: 11400000, guid: 6aa139186f839114e89167d5fb90200b, type: 2}
   trail: {fileID: 198363286973764348}
   hinput: 0
   vinput: 0
   jinput: 0
+  updatesPerSecond: 100
 --- !u!114 &114156889937632220
 MonoBehaviour:
   m_ObjectHideFlags: 1

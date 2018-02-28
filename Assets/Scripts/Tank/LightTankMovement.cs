@@ -5,16 +5,17 @@ using UnityEngine.Networking;
 
 public class LightTankMovement : NetworkBehaviour {
 
-    public float moveForce = 20f;
-    public float hoverForce = 50f;
-    public float hoverHeight = 1f;
+    public bool isNetworked = true;
+    public LightTankMoveScriptable forces;
 
     public ParticleSystem trail;
 
     Rigidbody self;
 
     private float MouseAimX;
-    Ray ray, rayT, rayL, rayR, rayB;
+
+    //Hover and balance rays
+    Ray ray, rayT, rayL, rayR;
 
     //Networking player movement
     public float hinput;
@@ -22,10 +23,18 @@ public class LightTankMovement : NetworkBehaviour {
     public float jinput;
     private Vector3 mcam;
 
+    public int updatesPerSecond = 10;
+
     void Start()
     {
+        //Check for a Network Manager. If there aren't any active, 
+        //switch to non-networked movement debugging
+        if (!FindObjectOfType(typeof(NetworkManager)))
+            isNetworked = false;
+
         self = GetComponent<Rigidbody>();
-        StartCoroutine(InputSync());
+        if(isNetworked)
+            StartCoroutine(InputSync());
     }
 
     void Update()
@@ -36,29 +45,32 @@ public class LightTankMovement : NetworkBehaviour {
     private void FixedUpdate()
     {
         //Player movement
-        if (isLocalPlayer)
-        {
-            hinput = Input.GetAxis("Horizontal");
-            vinput = Input.GetAxis("Vertical");
-            jinput = Input.GetAxis("Jump");
-            mcam = GameObject.FindGameObjectWithTag("MainCamera").transform.forward;
-        }
+        #region Testing
+            if (isLocalPlayer || !isNetworked)
+            {
+                hinput = Input.GetAxis("Horizontal");
+                vinput = Input.GetAxis("Vertical");
+                jinput = Input.GetAxis("Jump");
+                mcam = GameObject.FindGameObjectWithTag("MainCamera").transform.forward;
+            }
+        #endregion //Delete later
+
 
         //Are we over the ground?
         ray = new Ray(transform.position, -transform.up);
         RaycastHit ground;
 
         //Will balance to ground slope up to 5 units above ground
-        if (Physics.Raycast(ray, out ground, hoverHeight + 7))
+        if (Physics.Raycast(ray, out ground, forces.hoverHeight + 5))
         {
             HoverBalance();
             //Can move and steer up to 2 units above hover height
-            if (jinput <= 0.99f && ground.distance <= hoverHeight + 2)
+            if (jinput <= 0.99f && ground.distance <= forces.hoverHeight + 2)
             {
                 Move();
                 Steer();
                 trail.enableEmission = true;
-                if (ground.distance <= hoverHeight)
+                if (ground.distance <= forces.hoverHeight)
                     Hover(ground);
 
             }
@@ -73,9 +85,9 @@ public class LightTankMovement : NetworkBehaviour {
 
     void Hover(RaycastHit hit)
     {
-        float dist = (hoverHeight - hit.distance) / hoverHeight;
+        float dist = (forces.hoverHeight - hit.distance) / forces.hoverHeight;
         Vector3 force = new Vector3(0, 1 - (self.velocity.y / 8) + ((Mathf.Abs(self.velocity.x)
-            + Mathf.Abs(self.velocity.z)) / 25), 0) * dist * hoverForce * (-jinput + 1);
+            + Mathf.Abs(self.velocity.z)) / 25), 0) * dist * forces.hoverForce * (-jinput + 1);
 
         self.AddRelativeForce(force, ForceMode.Acceleration);
     }
@@ -91,9 +103,9 @@ public class LightTankMovement : NetworkBehaviour {
         RaycastHit balR;
 
         //If all raycasts are hitting
-        if(Physics.Raycast(rayT, out balT, hoverHeight + 2) 
-        && Physics.Raycast(rayL, out balL, hoverHeight + 2) 
-        && Physics.Raycast(rayR, out balR, hoverHeight + 2))
+        if(Physics.Raycast(rayT, out balT, forces.hoverHeight + 2) 
+        && Physics.Raycast(rayL, out balL, forces.hoverHeight + 2) 
+        && Physics.Raycast(rayR, out balR, forces.hoverHeight + 2))
         {
             //Get the average normal between the three raycast hits
             Vector3 norm = Vector3.Normalize(balT.normal + balL.normal + balR.normal);
@@ -109,10 +121,12 @@ public class LightTankMovement : NetworkBehaviour {
 
     }
 
+    //Turn to match the camera's orientation
     void Steer()
     {
         var steerdir = Quaternion.FromToRotation(transform.forward, mcam);
-        self.AddRelativeTorque(new Vector3(0, (steerdir.y - (self.angularVelocity.y / 20)) * (-jinput + 1), 0) * 75, ForceMode.Impulse);
+        self.AddRelativeTorque(new Vector3(0, (steerdir.y - (self.angularVelocity.y / 20))
+            * (-jinput + 1), 0) * 75, ForceMode.Impulse);
     }
 
     void Move()
@@ -124,7 +138,7 @@ public class LightTankMovement : NetworkBehaviour {
         //If we have input, move
         if (dir != Vector3.zero)
         {
-            self.AddRelativeForce(dir * moveForce * self.mass * (-jinput + 1), ForceMode.Force);
+            self.AddRelativeForce(dir * forces.moveForce * self.mass * (-jinput + 1), ForceMode.Force);
             //self.AddRelativeForce(dir * moveForce * Mathf.Max(0, Vector3.Dot(-self.velocity.normalized, relDir)) * self.mass / 2);
             self.AddForce(-self.velocity * 7.5f);
         }
@@ -133,18 +147,21 @@ public class LightTankMovement : NetworkBehaviour {
             self.AddForce(-self.velocity / 3 * self.mass);
     }
 
+    //Stay upright
     void Rebalance()
     {
         var rot = Quaternion.FromToRotation(transform.up, Vector3.up);
         self.AddTorque(new Vector3(rot.x, rot.y, rot.z) * 200);
     }
 
+    //Send out input information to other players
     [Command]
     void CmdInput(float h, float v, float j, Vector3 m)
     {
         RpcInput(h,v,j,m);
     }
 
+    //Update input variables from other players
     [ClientRpc]
     void RpcInput(float h, float v, float j, Vector3 m)
     {
@@ -157,13 +174,16 @@ public class LightTankMovement : NetworkBehaviour {
         }
     }
 
+    //X times per second, send input information from the local player to the rest of the players
     IEnumerator InputSync()
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(1/updatesPerSecond);
             if (isLocalPlayer)
-                CmdInput(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), Input.GetAxis("Jump"), GameObject.FindGameObjectWithTag("MainCamera").transform.forward);
+                CmdInput(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 
+                    Input.GetAxis("Jump"), GameObject.FindGameObjectWithTag("MainCamera")
+                    .transform.forward);
         }
     }
 }
