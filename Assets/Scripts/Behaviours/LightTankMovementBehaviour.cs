@@ -37,9 +37,9 @@ public class LightTankMovementBehaviour : MonoBehaviour
             if (Input.GetKey(KeyCode.S))
                 m_Rigidbody.AddForce(transform.forward * 
                     -m_LightTankScriptable.m_ForwardMovementSpeed);
-            if(Input.GetKeyDown(KeyCode.A))
+            if(Input.GetKey(KeyCode.A))
                 StrafeLeft();
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKey(KeyCode.D))
                 StrafeRight();
             if(Input.GetKey(KeyCode.E))
                 RotateClockwise();
@@ -53,14 +53,14 @@ public class LightTankMovementBehaviour : MonoBehaviour
     void StrafeRight()
     {
         m_Rigidbody.AddForce(transform.right * m_LightTankScriptable.m_StrafeForce, 
-            ForceMode.Impulse);
+            ForceMode.Acceleration);
     }
 
     [ContextMenu("Strafe Left")]
     void StrafeLeft()
     {
         m_Rigidbody.AddForce(transform.right * -m_LightTankScriptable.m_StrafeForce,
-            ForceMode.Impulse);
+            ForceMode.Acceleration);
     }
 
     void RotateClockwise()

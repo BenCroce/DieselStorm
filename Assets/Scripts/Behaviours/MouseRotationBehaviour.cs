@@ -4,37 +4,31 @@ using UnityEngine;
 
 public class MouseRotationBehaviour : MonoBehaviour
 {
-    public bool m_ClampVertical;
-    [Range(-1,1)]
-    public float m_MaxUpRadian;
-    [Range(-1, 1)]
-    public float m_MaxDownRadian;
-
-    public bool m_ClampHorizontal;
-    [Range(-1, 1)]
-    public float m_MaxRightRadian;
-    [Range(-1, 1)]
-    public float m_MaxLeftRadian;
-    public float m_MouseHorizontalSensitivity;
-    public float m_MouseVerticalSensitivity;
-
-    void Start()
-    {        
-    }
+    public MouseRotationScriptable m_MouseRotationScriptable;
 
     void FixedUpdate()
     {
-        Vector3 mousePos = new Vector3(Input.GetAxisRaw("Mouse Y") * m_MouseVerticalSensitivity,
-            Input.GetAxisRaw("Mouse X") * m_MouseHorizontalSensitivity, 0);       
+        float horizontal = (m_MouseRotationScriptable.m_InvertVerticalAxis)
+            ? -Input.GetAxisRaw("Mouse Y") * m_MouseRotationScriptable.m_MouseVerticalSensitivity
+            : Input.GetAxisRaw("Mouse Y") * m_MouseRotationScriptable.m_MouseVerticalSensitivity;
 
-        Quaternion newRotation = transform.rotation * Quaternion.Euler(mousePos);
-        if(m_ClampVertical)
-            newRotation.x = Mathf.Clamp(newRotation.x, m_MaxDownRadian, m_MaxUpRadian);
-        if (m_ClampHorizontal)
-            newRotation.y = Mathf.Clamp(newRotation.y, m_MaxLeftRadian, m_MaxRightRadian);
+        float vertical = (m_MouseRotationScriptable.m_InvertHorizontalAxis)
+            ? - Input.GetAxisRaw("Mouse X") * m_MouseRotationScriptable.m_MouseHorizontalSensitivity
+            : Input.GetAxisRaw("Mouse X") * m_MouseRotationScriptable.m_MouseHorizontalSensitivity;
 
-        newRotation.z = transform.rotation.z;
 
-        transform.rotation = newRotation;
+        Vector3 mousePos = new Vector3(horizontal, vertical, 0);  
+
+        Quaternion newRotation = transform.localRotation * Quaternion.Euler(mousePos);
+        if(m_MouseRotationScriptable.m_ClampVertical)
+            newRotation.x = Mathf.Clamp(newRotation.x, m_MouseRotationScriptable.m_MaxDownRadian,
+                m_MouseRotationScriptable.m_MaxUpRadian);
+        if (m_MouseRotationScriptable.m_ClampHorizontal)
+            newRotation.y = Mathf.Clamp(newRotation.y, m_MouseRotationScriptable.m_MaxLeftRadian,
+                m_MouseRotationScriptable.m_MaxRightRadian);
+
+        newRotation.z = transform.localRotation.z;
+
+        transform.localRotation = newRotation;
     }
 }
