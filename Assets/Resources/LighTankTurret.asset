@@ -13,12 +13,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ClampVertical: 1
   m_InvertVerticalAxis: 1
-  m_MaxUpRadian: 0.25
-  m_MaxDownRadian: -0.25
+  m_MaxUpRadian: 0.1
+  m_MaxDownRadian: -0.1
   m_InvertHorizontalAxis: 0
-  m_ClampHorizontal: 1
+  m_ClampHorizontal: 0
   m_MaxRightRadian: 0
   m_MaxLeftRadian: 0
-  m_MouseHorizontalSensitivity: 50
-  m_MouseVerticalSensitivity: 50
-  m_RotationSpeed: 1
+  m_MouseHorizontalSensitivity: 10
+  m_MouseVerticalSensitivity: 5
+  m_RotationSpeed: 5
