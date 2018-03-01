@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class LightTankMovement : MonoBehaviour {
+public class LightTankMovement : NetworkBehaviour {
     
     public LightTankMoveScriptable forces;
-
+    public Transform steerGuide;
     public ParticleSystem trail;
 
     Rigidbody self;
@@ -16,17 +16,20 @@ public class LightTankMovement : MonoBehaviour {
     //Hover and balance rays
     Ray ray, rayT, rayL, rayR;
 
-    //These variables are here mainly for networking stuff
+    //Networked input
+    [SyncVar]
     public float hinput;
+    [SyncVar]
     public float vinput;
+    [SyncVar]
     public float jinput;
-    public Vector3 mcam;
-
-    public int updatesPerSecond = 10;
+    [SyncVar]
+    public Vector3 steerinput;
 
     void Start()
     {
         self = GetComponent<Rigidbody>();
+        steerGuide = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
 
     void Update()
@@ -43,11 +46,15 @@ public class LightTankMovement : MonoBehaviour {
             hinput = Input.GetAxis("Horizontal");
             vinput = Input.GetAxis("Vertical");
             jinput = Input.GetAxis("Jump");
-            mcam = GameObject.FindGameObjectWithTag("MainCamera").transform.forward;
+            steerinput = steerGuide.forward;
         }
         #endregion //Delete later
 
+        MovementLoop();
+    }
 
+    void MovementLoop()
+    {
         //Are we over the ground?
         ray = new Ray(transform.position, -transform.up);
         RaycastHit ground;
@@ -116,7 +123,7 @@ public class LightTankMovement : MonoBehaviour {
     //Turn to match the camera's orientation
     void Steer()
     {
-        var steerdir = Quaternion.FromToRotation(transform.forward, mcam);
+        var steerdir = Quaternion.FromToRotation(transform.forward, steerinput);
         self.AddRelativeTorque(new Vector3(0, (steerdir.y - (self.angularVelocity.y / 20))
             * (-jinput + 1), 0) * 75, ForceMode.Impulse);
     }
@@ -130,8 +137,12 @@ public class LightTankMovement : MonoBehaviour {
         //If we have input, move
         if (dir != Vector3.zero)
         {
+            //Main driving force
             self.AddRelativeForce(dir * forces.moveForce * self.mass * (-jinput + 1), ForceMode.Force);
-            //self.AddRelativeForce(dir * moveForce * Mathf.Max(0, Vector3.Dot(-self.velocity.normalized, relDir)) * self.mass / 2);
+            //This next force assists with sharp turns and strafing 
+            //but it may be *too* responsive for a hovercraft...
+            //self.AddRelativeForce(dir * forces.moveForce * Mathf.Max(0, Vector3.Dot(-self.velocity
+                //.normalized, relDir)) * self.mass / 3);
             self.AddForce(-self.velocity * 7.5f);
         }
         //If not, slow down

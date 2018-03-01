@@ -8,12 +8,13 @@ public class NetworkTank : NetworkBehaviour {
 
     LightTankMovement self;
 
-    public int updatesPerSecond = 50;
+    public int updatesPerSecond = 60;
 
 	// Use this for initialization
 	void Start ()
     {
         self = GetComponent<LightTankMovement>();
+        StartCoroutine(InputSync());
 	}
 	
 	// Update is called once per frame
@@ -24,7 +25,7 @@ public class NetworkTank : NetworkBehaviour {
             self.hinput = Input.GetAxis("Horizontal");
             self.vinput = Input.GetAxis("Vertical");
             self.jinput = Input.GetAxis("Jump");
-            self.mcam = GameObject.FindGameObjectWithTag("MainCamera").transform.forward;
+            self.steerinput = self.steerGuide.forward;
         }
 	}
 
@@ -44,7 +45,7 @@ public class NetworkTank : NetworkBehaviour {
             self.hinput = h;
             self.vinput = v;
             self.jinput = j;
-            self.mcam = m;
+            self.steerinput = m;
         }
     }
 
@@ -56,8 +57,8 @@ public class NetworkTank : NetworkBehaviour {
             yield return new WaitForSeconds(1 / updatesPerSecond);
             if (isLocalPlayer)
                 CmdInput(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),
-                    Input.GetAxis("Jump"), GameObject.FindGameObjectWithTag("MainCamera")
-                    .transform.forward);
+                    Input.GetAxis("Jump"), self.steerGuide.forward);
         }
     }
 }
+ 

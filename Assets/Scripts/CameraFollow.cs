@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour {
 
     
     public float offset;
-    public float smoothSpeed = 0.3f;
+    public float smoothSpeed = 0.2f;
     public float MouseSens = 1.2f;
 
     Transform target;
