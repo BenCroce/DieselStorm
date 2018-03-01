@@ -194,11 +194,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4504906343468682}
   - component: {fileID: 54493995891088552}
-  - component: {fileID: 114452249921882214}
   - component: {fileID: 65202996559528962}
   - component: {fileID: 136635753386189824}
   - component: {fileID: 136724494121090562}
-  - component: {fileID: 114156889937632220}
   - component: {fileID: 114011864648665328}
   m_Layer: 0
   m_Name: TankPlayer
@@ -637,66 +635,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21412e4e413ae1346a45334b88b71912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isNetworked: 1
   forces: {fileID: 11400000, guid: 6aa139186f839114e89167d5fb90200b, type: 2}
   trail: {fileID: 198363286973764348}
   hinput: 0
   vinput: 0
   jinput: 0
+  mcam: {x: 0, y: 0, z: 0}
   updatesPerSecond: 100
---- !u!114 &114156889937632220
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1989276738112400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
-  m_SendInterval: 0.09090909
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 1
-  m_SyncSpin: 1
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
---- !u!114 &114452249921882214
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1989276738112400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 94
-    i1: 79
-    i2: 60
-    i3: 144
-    i4: 188
-    i5: 204
-    i6: 248
-    i7: 52
-    i8: 104
-    i9: 57
-    i10: 198
-    i11: 92
-    i12: 175
-    i13: 93
-    i14: 24
-    i15: 46
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114548939732693816
 MonoBehaviour:
   m_ObjectHideFlags: 1

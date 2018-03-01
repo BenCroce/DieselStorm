@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class LightTankMovement : NetworkBehaviour {
-
-    public bool isNetworked = true;
+public class LightTankMovement : MonoBehaviour {
+    
     public LightTankMoveScriptable forces;
 
     public ParticleSystem trail;
@@ -17,24 +16,17 @@ public class LightTankMovement : NetworkBehaviour {
     //Hover and balance rays
     Ray ray, rayT, rayL, rayR;
 
-    //Networking player movement
+    //These variables are here mainly for networking stuff
     public float hinput;
     public float vinput;
     public float jinput;
-    private Vector3 mcam;
+    public Vector3 mcam;
 
     public int updatesPerSecond = 10;
 
     void Start()
     {
-        //Check for a Network Manager. If there aren't any active, 
-        //switch to non-networked movement debugging
-        if (!FindObjectOfType(typeof(NetworkManager)))
-            isNetworked = false;
-
         self = GetComponent<Rigidbody>();
-        if(isNetworked)
-            StartCoroutine(InputSync());
     }
 
     void Update()
@@ -46,13 +38,13 @@ public class LightTankMovement : NetworkBehaviour {
     {
         //Player movement
         #region Testing
-            if (isLocalPlayer || !isNetworked)
-            {
-                hinput = Input.GetAxis("Horizontal");
-                vinput = Input.GetAxis("Vertical");
-                jinput = Input.GetAxis("Jump");
-                mcam = GameObject.FindGameObjectWithTag("MainCamera").transform.forward;
-            }
+        if (!GetComponent<NetworkTank>())
+        {
+            hinput = Input.GetAxis("Horizontal");
+            vinput = Input.GetAxis("Vertical");
+            jinput = Input.GetAxis("Jump");
+            mcam = GameObject.FindGameObjectWithTag("MainCamera").transform.forward;
+        }
         #endregion //Delete later
 
 
@@ -152,38 +144,5 @@ public class LightTankMovement : NetworkBehaviour {
     {
         var rot = Quaternion.FromToRotation(transform.up, Vector3.up);
         self.AddTorque(new Vector3(rot.x, rot.y, rot.z) * 200);
-    }
-
-    //Send out input information to other players
-    [Command]
-    void CmdInput(float h, float v, float j, Vector3 m)
-    {
-        RpcInput(h,v,j,m);
-    }
-
-    //Update input variables from other players
-    [ClientRpc]
-    void RpcInput(float h, float v, float j, Vector3 m)
-    {
-        if(!isLocalPlayer)
-        {
-            hinput = h;
-            vinput = v;
-            jinput = j;
-            mcam = m;
-        }
-    }
-
-    //X times per second, send input information from the local player to the rest of the players
-    IEnumerator InputSync()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(1/updatesPerSecond);
-            if (isLocalPlayer)
-                CmdInput(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 
-                    Input.GetAxis("Jump"), GameObject.FindGameObjectWithTag("MainCamera")
-                    .transform.forward);
-        }
     }
 }
