@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Tank_Strafe_Movement_Speed
   m_EditorClassIdentifier: 
   m_BaseValue: 0
-  m_Name: 
+  m_Name: Tank_Strafe_Movement_Speed
   m_Value: 0
