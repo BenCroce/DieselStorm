@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 53bcf8918ea0a454b863b8545c35acb2
-timeCreated: 1520009193
+guid: 034a4fb4aed2cf04680349c26b54a226
+timeCreated: 1520010269
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
@@ -17,19 +17,19 @@ ModelImporter:
     100018: L_Turret_Pipes
     100020: L_Turret_Tube
     100022: Light_Tank
-    100024: //RootNode
-    100026: Main_Body
-    100028: Main_Body_Group
-    100030: Main_Body_Joint
-    100032: R_Engine
-    100034: R_Engine_Pipes
-    100036: R_Exhaust
-    100038: R_Front_Engine
-    100040: R_Turret_Pipes
-    100042: R_Turret_Tube
-    100044: Turret_Barrel
-    100046: Turret_Group
-    100048: Turret_Joint
+    100024: LightTank_Mainbody
+    100026: //RootNode
+    100028: LightTank_Turret
+    100030: Main_Body
+    100032: Main_Body_Group
+    100034: R_Engine
+    100036: R_Engine_Pipes
+    100038: R_Exhaust
+    100040: R_Front_Engine
+    100042: R_Turret_Pipes
+    100044: R_Turret_Tube
+    100046: Turret_Barrel
+    100048: Turret_Group
     100050: Turret_Lid
     100052: Turret_Main
     100054: Turret_Shield
@@ -45,19 +45,19 @@ ModelImporter:
     400018: L_Turret_Pipes
     400020: L_Turret_Tube
     400022: Light_Tank
-    400024: //RootNode
-    400026: Main_Body
-    400028: Main_Body_Group
-    400030: Main_Body_Joint
-    400032: R_Engine
-    400034: R_Engine_Pipes
-    400036: R_Exhaust
-    400038: R_Front_Engine
-    400040: R_Turret_Pipes
-    400042: R_Turret_Tube
-    400044: Turret_Barrel
-    400046: Turret_Group
-    400048: Turret_Joint
+    400024: LightTank_Mainbody
+    400026: //RootNode
+    400028: LightTank_Turret
+    400030: Main_Body
+    400032: Main_Body_Group
+    400034: R_Engine
+    400036: R_Engine_Pipes
+    400038: R_Exhaust
+    400040: R_Front_Engine
+    400042: R_Turret_Pipes
+    400044: R_Turret_Tube
+    400046: Turret_Barrel
+    400048: Turret_Group
     400050: Turret_Lid
     400052: Turret_Main
     400054: Turret_Shield
