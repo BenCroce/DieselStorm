@@ -22,10 +22,10 @@ public class NetworkTank : NetworkBehaviour {
     {
 		if (isLocalPlayer)
         {
-            self.hinput = Input.GetAxis("Horizontal");
-            self.vinput = Input.GetAxis("Vertical");
-            self.jinput = Input.GetAxis("Jump");
-            self.steerinput = self.steerGuide.forward;
+            self.m_hinput = Input.GetAxis("Horizontal");
+            self.m_vinput = Input.GetAxis("Vertical");
+            self.m_jinput = Input.GetAxis("Jump");
+            self.m_steerinput = self.m_steerGuide.forward;
         }
 	}
 
@@ -42,10 +42,10 @@ public class NetworkTank : NetworkBehaviour {
     {
         if (!isLocalPlayer)
         {
-            self.hinput = h;
-            self.vinput = v;
-            self.jinput = j;
-            self.steerinput = m;
+            self.m_hinput = h;
+            self.m_vinput = v;
+            self.m_jinput = j;
+            self.m_steerinput = m;
         }
     }
 
@@ -57,7 +57,7 @@ public class NetworkTank : NetworkBehaviour {
             yield return new WaitForSeconds(1 / updatesPerSecond);
             if (isLocalPlayer)
                 CmdInput(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),
-                    Input.GetAxis("Jump"), self.steerGuide.forward);
+                    Input.GetAxis("Jump"), self.m_steerGuide.forward);
         }
     }
 }
