@@ -11,10 +11,10 @@ public class LightTankMovement : NetworkBehaviour {
     Rigidbody m_self;
 
     //Hover and balance rays
-    Ray ray, rayT, rayL, rayR;
+    Ray m_ray, m_rayT, m_rayL, m_rayR;
 
     //Balance ray positions
-    Vector3 rayTPos, rayLPos, rayRPos;
+    public Vector3 m_rayTPos, m_rayLPos, m_rayRPos;
 
     //Networked input
     [SyncVar]
@@ -55,11 +55,11 @@ public class LightTankMovement : NetworkBehaviour {
     void MovementLoop()
     {
         //Are we over the ground?
-        ray = new Ray(transform.position, -transform.up);
+        m_ray = new Ray(transform.position, -transform.up);
         RaycastHit ground;
 
         //Will balance to ground slope up to 5 units above ground
-        if (Physics.Raycast(ray, out ground, m_forces.hoverHeight + 5))
+        if (Physics.Raycast(m_ray, out ground, m_forces.hoverHeight + 5))
         {
             HoverBalance();
             //Can move and steer up to 2 units above hover height
@@ -88,18 +88,18 @@ public class LightTankMovement : NetworkBehaviour {
 
     void HoverBalance()
     {
-        rayT = new Ray(transform.position + new Vector3(0, 0, 2), Vector3.down);
-        rayL = new Ray(transform.position - new Vector3(2, 0, 0), Vector3.down);
-        rayR = new Ray(transform.position + new Vector3(2, 0, 0), Vector3.down);
+        m_rayT = new Ray(transform.position + m_rayTPos, Vector3.down);
+        m_rayL = new Ray(transform.position + m_rayLPos, Vector3.down);
+        m_rayR = new Ray(transform.position + m_rayRPos, Vector3.down);
 
         RaycastHit balT;
         RaycastHit balL;
         RaycastHit balR;
 
         //If all raycasts are hitting
-        if(Physics.Raycast(rayT, out balT, m_forces.hoverHeight + 2) 
-        && Physics.Raycast(rayL, out balL, m_forces.hoverHeight + 2) 
-        && Physics.Raycast(rayR, out balR, m_forces.hoverHeight + 2))
+        if(Physics.Raycast(m_rayT, out balT, m_forces.hoverHeight + 2) 
+        && Physics.Raycast(m_rayL, out balL, m_forces.hoverHeight + 2) 
+        && Physics.Raycast(m_rayR, out balR, m_forces.hoverHeight + 2))
         {
             //Get the average normal between the three raycast hits
             Vector3 norm = Vector3.Normalize(balT.normal + balL.normal + balR.normal);
@@ -118,7 +118,7 @@ public class LightTankMovement : NetworkBehaviour {
     //Turn to match the camera's orientation
     void Steer()
     {
-        var steerdir = Quaternion.FromToRotation(transform.forward, m_steerinput);
+        Quaternion steerdir = Quaternion.FromToRotation(transform.forward, m_steerinput);
         m_self.AddRelativeTorque(new Vector3(0, (steerdir.y - (m_self.angularVelocity.y / 20))
             * (-m_jinput + 1), 0) * 75, ForceMode.Impulse);
     }
@@ -148,7 +148,7 @@ public class LightTankMovement : NetworkBehaviour {
     //Stay upright
     void Rebalance()
     {
-        var rot = Quaternion.FromToRotation(transform.up, Vector3.up);
+        Quaternion rot = Quaternion.FromToRotation(transform.up, Vector3.up);
         m_self.AddTorque(new Vector3(rot.x, rot.y, rot.z) * 200);
     }
 }
