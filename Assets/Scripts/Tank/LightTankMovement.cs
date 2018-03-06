@@ -59,15 +59,15 @@ public class LightTankMovement : NetworkBehaviour {
         RaycastHit ground;
 
         //Will balance to ground slope up to 5 units above ground
-        if (Physics.Raycast(m_ray, out ground, m_forces.hoverHeight + 5))
+        if (Physics.Raycast(m_ray, out ground, m_forces.m_hoverHeight + 5))
         {
             HoverBalance();
             //Can move and steer up to 2 units above hover height
-            if (m_jinput <= 0.99f && ground.distance <= m_forces.hoverHeight + 2)
+            if (m_jinput <= 0.99f && ground.distance <= m_forces.m_hoverHeight + 2)
             {
                 Move();
                 Steer();
-                if (ground.distance <= m_forces.hoverHeight)
+                if (ground.distance <= m_forces.m_hoverHeight)
                     Hover(ground);
 
             }
@@ -79,9 +79,9 @@ public class LightTankMovement : NetworkBehaviour {
 
     void Hover(RaycastHit hit)
     {
-        float dist = (m_forces.hoverHeight - hit.distance) / m_forces.hoverHeight;
+        float dist = (m_forces.m_hoverHeight - hit.distance) / m_forces.m_hoverHeight;
         Vector3 force = new Vector3(0, 1 - (m_self.velocity.y / 8) + ((Mathf.Abs(m_self.velocity.x)
-            + Mathf.Abs(m_self.velocity.z)) / 25), 0) * dist * m_forces.hoverForce * (-m_jinput + 1);
+            + Mathf.Abs(m_self.velocity.z)) / 25), 0) * dist * m_forces.m_hoverForce * (-m_jinput + 1);
 
         m_self.AddRelativeForce(force, ForceMode.Acceleration);
     }
@@ -97,9 +97,9 @@ public class LightTankMovement : NetworkBehaviour {
         RaycastHit balR;
 
         //If all raycasts are hitting
-        if(Physics.Raycast(m_rayT, out balT, m_forces.hoverHeight + 2) 
-        && Physics.Raycast(m_rayL, out balL, m_forces.hoverHeight + 2) 
-        && Physics.Raycast(m_rayR, out balR, m_forces.hoverHeight + 2))
+        if(Physics.Raycast(m_rayT, out balT, m_forces.m_hoverHeight + 2) 
+        && Physics.Raycast(m_rayL, out balL, m_forces.m_hoverHeight + 2) 
+        && Physics.Raycast(m_rayR, out balR, m_forces.m_hoverHeight + 2))
         {
             //Get the average normal between the three raycast hits
             Vector3 norm = Vector3.Normalize(balT.normal + balL.normal + balR.normal);
@@ -119,8 +119,8 @@ public class LightTankMovement : NetworkBehaviour {
     void Steer()
     {
         Quaternion steerdir = Quaternion.FromToRotation(transform.forward, m_steerinput);
-        m_self.AddRelativeTorque(new Vector3(0, (steerdir.y - (m_self.angularVelocity.y / 20))
-            * (-m_jinput + 1), 0) * 75, ForceMode.Impulse);
+        m_self.AddRelativeTorque(new Vector3(0, (steerdir.y - (m_self.angularVelocity.y / 25))
+            * (-m_jinput + 1), 0) * m_forces.m_steerSpeed, ForceMode.Impulse);
     }
 
     void Move()
@@ -133,7 +133,7 @@ public class LightTankMovement : NetworkBehaviour {
         if (dir != Vector3.zero)
         {
             //Main driving force
-            m_self.AddRelativeForce(dir * m_forces.moveForce * m_self.mass * (-m_jinput + 1), ForceMode.Force);
+            m_self.AddRelativeForce(dir * m_forces.m_moveForce * m_self.mass * (-m_jinput + 1), ForceMode.Force);
             //This next force assists with sharp turns and strafing 
             //but it may be *too* responsive for a hovercraft...
             //self.AddRelativeForce(dir * forces.moveForce * Mathf.Max(0, Vector3.Dot(-self.velocity

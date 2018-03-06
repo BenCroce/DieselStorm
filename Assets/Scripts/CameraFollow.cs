@@ -5,13 +5,13 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour {
 
     
-    public float offset;
-    public float smoothSpeed = 0.2f;
-    public float MouseSens = 1.2f;
+    public float m_offset;
+    public float m_lerpSpeed = 0.2f;
+    public float m_aimSensitivity = 1.2f;
 
     Transform target;
-    float MouseAimX;
-    float MouseAimY;
+    float m_aimX;
+    float m_aimY;
 
 	// Use this for initialization
 	void Start ()
@@ -24,21 +24,23 @@ public class CameraFollow : MonoBehaviour {
         if (GameObject.FindGameObjectWithTag("Player") && target == null)
             target = GameObject.FindGameObjectsWithTag("Player")[GameObject.FindGameObjectsWithTag("Player").Length-1].transform;
 
-        MouseAimX += Input.GetAxis("Mouse X");
-        MouseAimY += Input.GetAxis("Mouse Y");
-	}
+        #region Testing
+        m_aimX += Input.GetAxis("Mouse X");
+        m_aimY += Input.GetAxis("Mouse Y");
+        #endregion
+    }
 
     void FixedUpdate()
     {
         if (target == null)
             return;
 
-        float rot = MouseAimX * Mathf.PI / 180;
-        float rot2 = MouseAimY * Mathf.PI / 180;
+        float rot = m_aimX * Mathf.PI / 180;
+        float rot2 = m_aimY * Mathf.PI / 180;
 
         //Rotate the camera around the player
-        Vector3 pos = target.position + new Vector3(offset * -Mathf.Sin(rot * MouseSens), 3, -offset * Mathf.Cos(rot * MouseSens));
-        Vector3 smoothMove = Vector3.Lerp(transform.position, pos, smoothSpeed);
+        Vector3 pos = target.position + new Vector3(m_offset * -Mathf.Sin(rot * m_aimSensitivity), 3, -m_offset * Mathf.Cos(rot * m_aimSensitivity));
+        Vector3 smoothMove = Vector3.Lerp(transform.position, pos, m_lerpSpeed);
         //Quaternion smoothRotate = Quaternion.Lerp(transform.rotation, target.rotation, smoothSpeed);
 
         transform.position = smoothMove;

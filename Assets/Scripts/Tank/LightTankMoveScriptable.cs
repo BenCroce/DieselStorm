@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LightTankMovement", menuName = "Tank Force Scriptable")]
 public class LightTankMoveScriptable : ScriptableObject
 {
-    public float moveForce;
-    public float hoverForce;
-    public float hoverHeight;
+    public float m_moveForce;
+    public float m_hoverForce;
+    public float m_hoverHeight;
+    public float m_steerSpeed;
 }

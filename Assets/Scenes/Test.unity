@@ -113,6 +113,48 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &59255611
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4504906343468682, guid: 5e4f3c90bcccf8346839c65caf5d182e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504906343468682, guid: 5e4f3c90bcccf8346839c65caf5d182e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504906343468682, guid: 5e4f3c90bcccf8346839c65caf5d182e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504906343468682, guid: 5e4f3c90bcccf8346839c65caf5d182e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504906343468682, guid: 5e4f3c90bcccf8346839c65caf5d182e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504906343468682, guid: 5e4f3c90bcccf8346839c65caf5d182e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504906343468682, guid: 5e4f3c90bcccf8346839c65caf5d182e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504906343468682, guid: 5e4f3c90bcccf8346839c65caf5d182e, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 5e4f3c90bcccf8346839c65caf5d182e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &71601795
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,9 +447,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21bd0cd79707ac4888149ef1e646d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: 8
-  smoothSpeed: 0.3
-  MouseSens: 1.2
+  m_offset: 8
+  m_lerpSpeed: 0.2
+  m_aimSensitivity: 2.4
 --- !u!1 &1795436387
 GameObject:
   m_ObjectHideFlags: 0

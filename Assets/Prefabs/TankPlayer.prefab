@@ -1174,9 +1174,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_forces: {fileID: 11400000, guid: 6aa139186f839114e89167d5fb90200b, type: 2}
   m_steerGuide: {fileID: 0}
-  m_rayTPos: {x: 0, y: 0, z: 2}
-  m_rayLPos: {x: -2, y: 0, z: 0}
-  m_rayRPos: {x: 2, y: 0, z: 0}
+  m_rayTPos: {x: 0, y: 0, z: 1.8}
+  m_rayLPos: {x: -1.8, y: 0, z: 0}
+  m_rayRPos: {x: 1.8, y: 0, z: 0}
   m_hinput: 0
   m_vinput: 0
   m_jinput: 0

@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae095d42872c2034db22d86407f9d191, type: 3}
   m_Name: LightTankMovement
   m_EditorClassIdentifier: 
-  moveForce: 20
-  hoverForce: 50
-  hoverHeight: 1
+  m_moveForce: 20
+  m_hoverForce: 70
+  m_hoverHeight: 1
+  m_steerSpeed: 100
