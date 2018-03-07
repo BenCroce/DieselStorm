@@ -4,17 +4,22 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 [RequireComponent(typeof(LightTankMovement))]
+[RequireComponent(typeof(TankShoot))]
 public class NetworkTank : NetworkBehaviour {
 
-    LightTankMovement self;
+    LightTankMovement m_movement;
+    TankShoot m_shoot;
 
     public int updatesPerSecond = 60;
 
 	// Use this for initialization
 	void Start ()
     {
-        self = GetComponent<LightTankMovement>();
+        m_movement = GetComponent<LightTankMovement>();
+        m_shoot = GetComponent<TankShoot>();
         StartCoroutine(InputSync());
+        if (isLocalPlayer)
+            StartCoroutine(Shoot());
 	}
 	
 	// Update is called once per frame
@@ -22,10 +27,10 @@ public class NetworkTank : NetworkBehaviour {
     {
 		if (isLocalPlayer)
         {
-            self.m_hinput = Input.GetAxis("Horizontal");
-            self.m_vinput = Input.GetAxis("Vertical");
-            self.m_jinput = Input.GetAxis("Jump");
-            self.m_steerinput = self.m_steerGuide.forward;
+            m_movement.m_hinput = Input.GetAxis("Horizontal");
+            m_movement.m_vinput = Input.GetAxis("Vertical");
+            m_movement.m_jinput = Input.GetAxis("Jump");
+            m_movement.m_steerinput = m_movement.m_steerGuide.forward;
         }
 	}
 
@@ -42,11 +47,21 @@ public class NetworkTank : NetworkBehaviour {
     {
         if (!isLocalPlayer)
         {
-            self.m_hinput = h;
-            self.m_vinput = v;
-            self.m_jinput = j;
-            self.m_steerinput = m;
+            m_movement.m_hinput = h;
+            m_movement.m_vinput = v;
+            m_movement.m_jinput = j;
+            m_movement.m_steerinput = m;
         }
+    }
+
+    [Command]
+    void CmdShoot()
+    {
+        GameObject shot = Instantiate(m_shoot.m_shell, m_shoot.m_turretPos.position, m_shoot.m_turretPos.rotation);
+        //shot.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, m_shoot.m_shootForce), ForceMode.Impulse);
+        //shot.GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
+        shot.GetComponent<Rigidbody>().velocity = shot.transform.forward * 50 + GetComponent<Rigidbody>().velocity;
+        NetworkServer.Spawn(shot);
     }
 
     //X times per second, send input information from the local player to the rest of the players
@@ -57,8 +72,21 @@ public class NetworkTank : NetworkBehaviour {
             yield return new WaitForSeconds(1 / updatesPerSecond);
             if (isLocalPlayer)
                 CmdInput(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),
-                    Input.GetAxis("Jump"), self.m_steerGuide.forward);
+                    Input.GetAxis("Jump"), m_movement.m_steerGuide.forward);
         }
+    }
+
+    IEnumerator Shoot()
+    {
+        while (true)
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                CmdShoot();
+                yield return new WaitForSeconds(m_shoot.m_shootCooldown);
+            }
+            else
+                yield return new WaitForFixedUpdate();
+
     }
 }
  

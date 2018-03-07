@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class LightTankMovement : NetworkBehaviour {
+public class LightTankMovement : MonoBehaviour {
     
     public LightTankMoveScriptable m_forces;
     public Transform m_steerGuide;
@@ -17,13 +17,9 @@ public class LightTankMovement : NetworkBehaviour {
     public Vector3 m_rayTPos, m_rayLPos, m_rayRPos;
 
     //Networked input
-    [SyncVar]
     public float m_hinput;
-    [SyncVar]
     public float m_vinput;
-    [SyncVar]
     public float m_jinput;
-    [SyncVar]
     public Vector3 m_steerinput;
 
     void Start()
