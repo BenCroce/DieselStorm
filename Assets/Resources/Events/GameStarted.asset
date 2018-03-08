@@ -8,11 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 512af23c9398db348be2cb82a4c4d428, type: 3}
-  m_Name: Tank_Health
+  m_Script: {fileID: 11500000, guid: 296006577a5dd074f8d267e486c77f2e, type: 3}
+  m_Name: GameStarted
   m_EditorClassIdentifier: 
-  m_BaseValue: 100
-  m_Name: Tank_Health
-  m_Value: 100
-  m_HealthStatChanged: {fileID: 11400000, guid: c7a75343dabcb4b4bb679690e90903ce,
-    type: 2}
+  listeners: []

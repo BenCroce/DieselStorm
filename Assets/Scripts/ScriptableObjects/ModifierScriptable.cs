@@ -15,12 +15,12 @@ public class ModifierScriptable : ScriptableObject
     public ModType m_Type;
     public int m_Value;
 
-    public void NegativeMod()
+    public virtual void DestroyMod()
     {
         m_Stat.Remove(this);
     }
 
-    public void PositiveMod()
+    public virtual void ApplyMod()
     {
         m_Stat.Apply(this);
     }

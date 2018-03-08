@@ -4,23 +4,11 @@ using UnityEngine;
 
 public class ProjectileStats : MonoBehaviour
 {
-    [SerializeField]
-    private List<StatScriptable> m_stats;
+    public GameEventArgs m_ProjectileHit;
 
-    [SerializeField]
-    private List<ModifierScriptable> m_Mods;
 
     void OnTriggerEnter(Collider other)
     {
-        foreach (var mod in m_Mods)
-        {
-            if (other.GetComponent<TankStats>() != null)
-            {
-                if (other.GetComponent<TankStats>().HasStat(mod))
-                {
-                    mod.NegativeMod();
-                }
-            }
-        }
+        
     }
 }
