@@ -39,20 +39,15 @@ public class TankStats : MonoBehaviour, IDamageable
 
     public void OnTakeDamage(UnityEngine.Object[] args)
     {
+        if(args[3] != this.gameObject)
+            return;
         var sender = args[0] as GameObject;
-        var mod = args[1] as ModifierScriptable;
+        var healthMod = args[1] as ModifierScriptable;
+        var armorMod = args[2] as ModifierScriptable;
         if (sender == null)
             return;        
-        TakeDamage(mod);
-    }
-
-    public void OnDamageArmor(UnityEngine.Object[] args)
-    {
-        var sender = args[0] as GameObject;
-        var mod = args[2] as ModifierScriptable;
-        if (sender == null)
-            return;
-        DamageArmor(mod);
+        DamageArmor(armorMod);
+        TakeDamage(healthMod);
     }
 
     public void DestroyObject(UnityEngine.Object[] args)

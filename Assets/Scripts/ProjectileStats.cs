@@ -10,6 +10,7 @@ public class ProjectileStats : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        m_ProjectileHit.Raise(this.gameObject, m_HealthModifier, m_ArmorModifier);        
+        m_ProjectileHit.Raise(this.gameObject, m_HealthModifier, m_ArmorModifier, other.gameObject);
+        //Destroy(this.gameObject);
     }
 }

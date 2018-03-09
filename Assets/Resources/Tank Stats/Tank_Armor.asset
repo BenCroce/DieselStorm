@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51f08dc57fa6dd479d966a104d4008d, type: 3}
   m_Name: Tank_Armor
   m_EditorClassIdentifier: 
-  m_BaseValue: 0
-  m_StatName: 
-  m_Value: 0
-  m_ArmorStatChanged: {fileID: 0}
-  m_ArmorHitZero: {fileID: 0}
+  m_BaseValue: 10
+  m_StatName: Tank_Armor
+  m_Value: 10
+  m_ArmorStatChanged: {fileID: 11400000, guid: 706ed35099e902c47ad452f1d787df51, type: 2}
+  m_ArmorHitZero: {fileID: 11400000, guid: d6a59a332c90cdf40ac334457a5c870c, type: 2}

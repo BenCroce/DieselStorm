@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Tank_Health
   m_EditorClassIdentifier: 
   m_BaseValue: 100
-  m_Name: Tank_Health
+  m_StatName: Tank_Health
   m_Value: 100
   m_HealthStatChanged: {fileID: 11400000, guid: c7a75343dabcb4b4bb679690e90903ce,
     type: 2}
+  m_HealthHitZero: {fileID: 11400000, guid: bf78aa9bbea61e341a0a81925832c2bc, type: 2}

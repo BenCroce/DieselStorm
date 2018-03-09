@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a7cd6f34fbe474ba781977ff2b0a1b, type: 3}
   m_Name: HE_Armor_Pen
   m_EditorClassIdentifier: 
-  m_Stat: {fileID: 0}
+  m_Stat: {fileID: 11400000, guid: 824b6f61c6d95c34e9f04445b0fb3344, type: 2}
   m_Type: 0
-  m_Value: 0
+  m_Value: -1
