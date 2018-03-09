@@ -8,11 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51f08dc57fa6dd479d966a104d4008d, type: 3}
-  m_Name: Tank_Armor
+  m_Script: {fileID: 11500000, guid: 296006577a5dd074f8d267e486c77f2e, type: 3}
+  m_Name: TankArmorHitZero
   m_EditorClassIdentifier: 
-  m_BaseValue: 0
-  m_StatName: 
-  m_Value: 0
-  m_ArmorStatChanged: {fileID: 0}
-  m_ArmorHitZero: {fileID: 0}
+  listeners: []

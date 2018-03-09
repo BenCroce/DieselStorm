@@ -8,10 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 512af23c9398db348be2cb82a4c4d428, type: 3}
-  m_Name: BenTank_Health
+  m_Script: {fileID: 11500000, guid: d2a7cd6f34fbe474ba781977ff2b0a1b, type: 3}
+  m_Name: APCapped_Armor_Pen
   m_EditorClassIdentifier: 
-  m_BaseValue: 0
-  m_Name: 
+  m_Stat: {fileID: 0}
+  m_Type: 0
   m_Value: 0
-  m_HealthStatChanged: {fileID: 0}

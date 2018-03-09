@@ -9,34 +9,26 @@ public class StatScriptable : ScriptableObject
     private float m_BaseValue;
 
     [SerializeField]
-    private string m_Name;
+    private string m_StatName;
 
     public float m_Value;
 
-    public string Name
+    public string StatName
     {
-        get { return m_Name; }
-    }
-
-    public void CreateInstance(float baseValue, string statName, float value)
-    {
-        m_BaseValue = baseValue;
-        m_Name = statName;
-        m_Value = value;
-        name = m_Name;
+        get { return m_StatName; }
     }
 
     public void CreateInstance(StatScriptable statScriptable)
     {
         m_BaseValue = statScriptable.m_BaseValue;
-        m_Name = statScriptable.m_Name;
+        m_StatName = statScriptable.m_StatName;
         m_Value = statScriptable.m_Value;        
     }
 
     void OnEnable()
     {
         m_Value = m_BaseValue;
-        m_Name = name;
+        m_StatName = name;
     }
 
     public virtual void Apply(ModifierScriptable mod)

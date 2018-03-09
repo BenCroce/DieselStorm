@@ -15,6 +15,12 @@ public class ModifierScriptable : ScriptableObject
     public ModType m_Type;
     public int m_Value;
 
+    void OnEnable()
+    {
+        if(m_Stat == null)
+            Debug.LogError("No value for m_Stat set on ModiferScriptable:" + name);
+    }
+
     public virtual void DestroyMod()
     {
         m_Stat.Remove(this);
