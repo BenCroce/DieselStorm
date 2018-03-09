@@ -5,36 +5,33 @@ using UnityEngine;
 
 public class TankStats : MonoBehaviour, IDamageable
 {
-    [SerializeField]
-    private List<StatScriptable> m_Stats;
-
+    public HealthScriptable m_HealthStat;
     [SerializeField]
     public GameEventArgs m_TankStatsChanged;
 
     void Awake()
     {
-        List<StatScriptable> newStats = new List<StatScriptable>();
-        foreach (var statRef in m_Stats)
-        {
-            StatScriptable stat = ScriptableObject.CreateInstance<StatScriptable>();
-            stat.CreateInstance(statRef);
-            newStats.Add(stat);
-        }
-        m_Stats = newStats;
-    }
-
-    public StatScriptable HasStat(ModifierScriptable mod)
-    {
-        foreach (var stat in m_Stats)
-        {
-            if (stat.Name == mod.m_Stat.Name)
-                return stat;
-        }
-        return null;
+        HealthScriptable newHP = ScriptableObject.CreateInstance<HealthScriptable>();
+        newHP.CreateInstance(m_HealthStat);        
     }
 
     public void TakeDamage(ModifierScriptable modifier)
     {
         m_TankStatsChanged.Raise(this);
+        m_HealthStat.Apply(modifier);
+    }
+
+    public void OnTakeDamage(UnityEngine.Object[] args)
+    {
+        var sender = args[0] as GameObject;
+        var mod = args[1] as ModifierScriptable;
+        if (sender == null)
+            return;
+        TakeDamage(mod);
+    }
+
+    void DestroyObject()
+    {
+        Destroy(this.gameObject);
     }
 }
