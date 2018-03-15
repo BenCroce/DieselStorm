@@ -1237,7 +1237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_shell: {fileID: 1448822658572678, guid: 0ff9ca6d8824e434bbf61e08b10bbb12, type: 2}
   m_turretPos: {fileID: 4819448890303238}
-  m_shootForce: 150
+  m_shootForce: 200
   m_shootCooldown: 1
 --- !u!136 &136635753386189824
 CapsuleCollider:

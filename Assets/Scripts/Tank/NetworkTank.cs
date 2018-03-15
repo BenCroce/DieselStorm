@@ -9,6 +9,7 @@ public class NetworkTank : NetworkBehaviour {
 
     LightTankMovement m_movement;
     TankShoot m_shoot;
+    Rigidbody m_body;
 
     public int updatesPerSecond = 60;
 
@@ -17,6 +18,7 @@ public class NetworkTank : NetworkBehaviour {
     {
         m_movement = GetComponent<LightTankMovement>();
         m_shoot = GetComponent<TankShoot>();
+        m_body = GetComponent<Rigidbody>();
         StartCoroutine(InputSync());
         if (isLocalPlayer)
             StartCoroutine(Shoot());
@@ -36,14 +38,14 @@ public class NetworkTank : NetworkBehaviour {
 
     //Send out input information to other players
     [Command]
-    void CmdInput(float h, float v, float j, Vector3 m)
+    void CmdPlayer(float h, float v, float j, Vector3 m, Vector3 p, Vector3 b)
     {
-        RpcInput(h, v, j, m);
+        RpcPlayer(h, v, j, m, p, b);
     }
 
     //Update input variables from other players
     [ClientRpc]
-    void RpcInput(float h, float v, float j, Vector3 m)
+    void RpcPlayer(float h, float v, float j, Vector3 m, Vector3 p, Vector3 b)
     {
         if (!isLocalPlayer)
         {
@@ -51,16 +53,15 @@ public class NetworkTank : NetworkBehaviour {
             m_movement.m_vinput = v;
             m_movement.m_jinput = j;
             m_movement.m_steerinput = m;
+            m_body.position = p;
+            m_body.velocity = b;
         }
     }
 
     [Command]
     void CmdShoot()
     {
-        GameObject shot = Instantiate(m_shoot.m_shell, m_shoot.m_turretPos.position, m_shoot.m_turretPos.rotation);
-        //shot.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, m_shoot.m_shootForce), ForceMode.Impulse);
-        //shot.GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
-        shot.GetComponent<Rigidbody>().velocity = shot.transform.forward * 50 + GetComponent<Rigidbody>().velocity;
+        GameObject shot = m_shoot.Shoot();
         NetworkServer.Spawn(shot);
     }
 
@@ -71,8 +72,10 @@ public class NetworkTank : NetworkBehaviour {
         {
             yield return new WaitForSeconds(1 / updatesPerSecond);
             if (isLocalPlayer)
-                CmdInput(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),
-                    Input.GetAxis("Jump"), m_movement.m_steerGuide.forward);
+            {
+                CmdPlayer(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),
+                    Input.GetAxis("Jump"), m_movement.m_steerGuide.forward, m_body.position, m_body.velocity);
+            }
         }
     }
 

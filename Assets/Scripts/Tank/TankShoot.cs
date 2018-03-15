@@ -8,33 +8,25 @@ public class TankShoot : MonoBehaviour {
     public GameObject m_shell;
     public Transform m_turretPos;
 
-    public float m_shootForce = 20;
-    public float m_shootCooldown = 2;
+    //These will be replaced by Tank/Shell Stats
+    public float m_shootForce = 200;
+    public float m_shootCooldown = 1;
+    
 
 	// Use this for initialization
 	void Start ()
     {
-        //StartCoroutine(Shoot());
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-
     }
 
-    /*IEnumerator Shoot()
+    public GameObject Shoot()
     {
-        while (true)
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                GameObject shot = Instantiate(m_shell, m_turretPos.position, m_turretPos.rotation);
-                shot.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, m_shootForce), ForceMode.Impulse);
-                shot.GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
-                yield return new WaitForSeconds(m_shootCooldown);
-            }
-            else
-                yield return new WaitForFixedUpdate();
-        
-    }*/
+        GameObject shot = Instantiate(m_shell, m_turretPos.position, m_turretPos.rotation);
+        shot.GetComponent<Rigidbody>().velocity = shot.transform.forward * m_shootForce + GetComponent<Rigidbody>().velocity;
+        return shot;
+    }
 }

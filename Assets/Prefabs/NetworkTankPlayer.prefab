@@ -215,7 +215,6 @@ GameObject:
   - component: {fileID: 114731348561714578}
   - component: {fileID: 114407609756331110}
   - component: {fileID: 114233287403425054}
-  - component: {fileID: 114795030809478258}
   - component: {fileID: 114588030588180970}
   m_Layer: 0
   m_Name: NetworkTankPlayer
@@ -1239,7 +1238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_shell: {fileID: 1448822658572678, guid: 0ff9ca6d8824e434bbf61e08b10bbb12, type: 2}
   m_turretPos: {fileID: 4481546513273464}
-  m_shootForce: 150
+  m_shootForce: 100
   m_shootCooldown: 1
 --- !u!114 &114588030588180970
 MonoBehaviour:
@@ -1273,27 +1272,6 @@ MonoBehaviour:
   m_vinput: 0
   m_jinput: 0
   m_steerinput: {x: 0, y: 0, z: 0}
---- !u!114 &114795030809478258
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1397968198324718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
-  m_SendInterval: 0.06666667
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 1
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 10
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 0.4
 --- !u!114 &114863966838117116
 MonoBehaviour:
   m_ObjectHideFlags: 1
