@@ -21,7 +21,7 @@ public class ModifierScriptable : ScriptableObject
             Debug.LogError("No value for m_Stat set on ModiferScriptable:" + name);
     }
 
-    public virtual void DestroyMod()
+    public virtual void RemoveMod()
     {
         m_Stat.Remove(this);
     }
