@@ -7,43 +7,43 @@ public class TankStats : MonoBehaviour, IDamageable
 {
     public HealthScriptable m_HealthStat;
     public ArmorScriptable m_ArmorStat;
+
+    public StatScriptable rt_Health;
+    public StatScriptable rt_Armor;
+
     [SerializeField]
     public GameEventArgs m_TankStatsChanged;
-
+    [SerializeField]
     public GameEventArgs m_TankDestroyed;
 
     void Awake()
     {
-        HealthScriptable newHP = ScriptableObject.CreateInstance<HealthScriptable>();
-        newHP.CreateInstance(m_HealthStat);
-        m_HealthStat = newHP;
-        ArmorScriptable newArmor = ScriptableObject.CreateInstance<ArmorScriptable>();
-        newArmor.CreateInstance(m_ArmorStat);
-        m_ArmorStat = newArmor;
+        rt_Health = m_HealthStat.CreateInstance() as HealthScriptable;
+        rt_Armor = m_ArmorStat.CreateInstance() as ArmorScriptable;
     }
 
     public void TakeDamage(ModifierScriptable modifier)
-    {        
-        m_TankStatsChanged.Raise(this);
-        m_HealthStat.Apply(modifier);
+    {
+        rt_Health.Apply(modifier);
+        m_TankStatsChanged.Raise(this);       
     }
-
+    
     public void DamageArmor(ModifierScriptable modifier)
     {
-        m_TankStatsChanged.Raise(this);  
-        if(m_ArmorStat.ArmorRemaining())
-            m_ArmorStat.Apply(modifier);
+
+        if (rt_Armor.m_Value > 0)
+            rt_Armor.Apply(modifier);
         else
-            TakeDamage(modifier);      
+            TakeDamage(modifier);
+        m_TankStatsChanged.Raise(this);
     }
 
     public void OnTakeDamage(UnityEngine.Object[] args)
-    {
-        if(args[3] != this.gameObject)
-            return;
+    {        
         var sender = args[0] as GameObject;
         var healthMod = args[1] as ModifierScriptable;
         var armorMod = args[2] as ModifierScriptable;
+        var collidedwith = args[3] as GameObject;
         if (sender == null)
             return;        
         DamageArmor(armorMod);

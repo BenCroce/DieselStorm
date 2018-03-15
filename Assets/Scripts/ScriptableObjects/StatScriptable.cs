@@ -6,6 +6,12 @@ using UnityEngine;
 public class StatScriptable : ScriptableObject
 {
     [SerializeField]
+    protected GameEventArgs StatChanged;
+
+    [SerializeField]
+    protected GameEventArgs HitZero;
+
+    [SerializeField]
     private float m_BaseValue;
 
     [SerializeField]
@@ -18,17 +24,21 @@ public class StatScriptable : ScriptableObject
         get { return m_StatName; }
     }
 
-    public void CreateInstance(StatScriptable statScriptable)
+    public StatScriptable CreateInstance()
     {
-        m_BaseValue = statScriptable.m_BaseValue;
-        m_StatName = statScriptable.m_StatName;
-        m_Value = statScriptable.m_Value;        
+        var tmp = Instantiate(this);
+        tmp.m_BaseValue = m_BaseValue;
+        tmp.m_StatName = m_StatName;
+        tmp.m_Value = m_Value;
+        return tmp;
     }
 
     void OnEnable()
     {
         m_Value = m_BaseValue;
         m_StatName = name;
+        StatChanged = Resources.Load("Events/StatChanged") as GameEventArgs;
+        HitZero = Resources.Load("Events/HitZero") as GameEventArgs;
     }
 
     public virtual void Apply(ModifierScriptable mod)
@@ -36,7 +46,10 @@ public class StatScriptable : ScriptableObject
         if (mod.m_Type == ModifierScriptable.ModType.ADD)
             m_Value += mod.m_Value;
         if (mod.m_Type == ModifierScriptable.ModType.MULT)
-            m_Value += m_BaseValue * mod.m_Value / 10;                
+            m_Value += m_BaseValue * mod.m_Value / 10;
+        StatChanged.Raise(this);
+        if (m_Value <= 0)
+            HitZero.Raise(this);
     }
 
     public void Remove(ModifierScriptable mod)
@@ -44,6 +57,6 @@ public class StatScriptable : ScriptableObject
         if (mod.m_Type == ModifierScriptable.ModType.ADD)
             m_Value -= mod.m_Value;
         if (mod.m_Type == ModifierScriptable.ModType.MULT)
-            m_Value -= m_BaseValue * mod.m_Value / 10;        
+            m_Value -= m_BaseValue * mod.m_Value / 10;
     }
 }
