@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestBehaviour : MonoBehaviour {
-    public int TestNum;
-	// Use this for initialization
-	void Start () {
-        Debug.Log(TestNum);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetKeyDown(0))
-        {
-
-        }
-	}
+public class TestBehaviour : MonoBehaviour
+{
+    public TankStats ts;
+    public ModifierScriptable mod;
+    public void RaiseEvent()
+    {
+        ts.TakeDamage(mod);
+    }
+    public void onStatChanged(UnityEngine.Object[] args)
+    {
+        Debug.Log(args[0].name + " has changed");
+    }
 }

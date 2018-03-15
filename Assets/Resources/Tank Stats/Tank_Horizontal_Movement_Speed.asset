@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69cc25b4e52d92b44922c19f89c0e473, type: 3}
-  m_Name: Tank_Rotation_Speed
+  m_Name: Tank_Horizontal_Movement_Speed
   m_EditorClassIdentifier: 
   StatChanged: {fileID: 11400000, guid: 97dc606eef736a54b82f14b9f8a08b17, type: 2}
   HitZero: {fileID: 11400000, guid: c2d90c9cd336d624697b0c9612e914df, type: 2}
   m_BaseValue: 0
-  m_StatName: Tank_Rotation_Speed
+  m_StatName: Tank_Forward_Movement_Speed
   m_Value: 0

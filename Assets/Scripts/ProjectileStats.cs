@@ -9,7 +9,12 @@ public class ProjectileStats : MonoBehaviour
     public ModifierScriptable m_HealthModifier;
 
     void OnTriggerEnter(Collider other)
-    {
+    {        
+        //Args list
+        //1. this object that invokes the event
+        //2. this objects helth mod
+        //3. this object armor mod
+        //4. object collided with
         m_ProjectileHit.Raise(this.gameObject, m_HealthModifier, m_ArmorModifier, other.gameObject);
         //Destroy(this.gameObject);
     }
