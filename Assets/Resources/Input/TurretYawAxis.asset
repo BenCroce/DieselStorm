@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f8dd4c2e8d0d44ca362818eca93ee9, type: 3}
   m_Name: TurretYawAxis
   m_EditorClassIdentifier: 
-  m_AxisName: 
+  m_AxisName: Turret Yaw

@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db39a97993255244c97280ff87a23370, type: 3}
   m_Name: PrimaryFireButton
   m_EditorClassIdentifier: 
-  m_ButtonName: 
+  m_ButtonName: Primary Fire
