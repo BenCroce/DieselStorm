@@ -7,9 +7,15 @@ public class TankStats : MonoBehaviour, IDamageable
 {
     public HealthScriptable m_HealthStat;
     public ArmorScriptable m_ArmorStat;
+    public MovementSpeedScriptable m_ForwardMovementSpeed;
+    public MovementSpeedScriptable m_HorizontalMovementSpeed;
+    public MovementSpeedScriptable m_RotationSpeed;
 
     public StatScriptable rt_Health;
     public StatScriptable rt_Armor;
+    public StatScriptable rt_ForwardMovementSpeed;
+    public StatScriptable rt_HorizontalMovementSpeed;
+    public StatScriptable rt_RotationSpeed;
 
     [SerializeField]
     public GameEventArgs m_TankStatsChanged;
@@ -20,11 +26,15 @@ public class TankStats : MonoBehaviour, IDamageable
     {
         rt_Health = m_HealthStat.CreateInstance() as HealthScriptable;
         rt_Armor = m_ArmorStat.CreateInstance() as ArmorScriptable;
+        rt_ForwardMovementSpeed = m_ForwardMovementSpeed.CreateInstance() as MovementSpeedScriptable;
+        rt_HorizontalMovementSpeed = m_HorizontalMovementSpeed.CreateInstance() as MovementSpeedScriptable;
+        rt_RotationSpeed = m_RotationSpeed.CreateInstance() as MovementSpeedScriptable;
     }
 
     public void TakeDamage(ModifierScriptable modifier)
     {
         rt_Health.Apply(modifier);
+                
         m_TankStatsChanged.Raise(this);       
     }
     
@@ -43,8 +53,8 @@ public class TankStats : MonoBehaviour, IDamageable
         var sender = args[0] as GameObject;
         var healthMod = args[1] as ModifierScriptable;
         var armorMod = args[2] as ModifierScriptable;
-        var collidedwith = args[3] as GameObject;
-        if (sender == null)
+        var collidedWith = args[3] as GameObject;
+        if (sender == null || collidedWith != this.gameObject)
             return;        
         DamageArmor(armorMod);
         TakeDamage(healthMod);
