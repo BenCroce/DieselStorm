@@ -34,15 +34,17 @@ public class TankStats : MonoBehaviour, IDamageable
     public void TakeDamage(ModifierScriptable modifier)
     {
         rt_Armor.Apply(modifier);
-        ModifierScriptable newModifier = ScriptableObject.CreateInstance<ModifierScriptable>();
-        newModifier = modifier;
         if (rt_Armor.m_Value > 0)
         {
+            ModifierScriptable newModifier = ScriptableObject.CreateInstance<ModifierScriptable>();
             newModifier.m_Value = (int)(modifier.m_Value * m_ArmorStat.Mitigation);
             newModifier.m_Stat = rt_Health;
             newModifier.m_Type = ModifierScriptable.ModType.ADD;
+            rt_Health.Apply(newModifier);
         }        
-        rt_Health.Apply(newModifier);                
+        else
+            rt_Health.Apply(modifier);
+            
         m_TankStatsChanged.Raise(this);       
     }   
 
