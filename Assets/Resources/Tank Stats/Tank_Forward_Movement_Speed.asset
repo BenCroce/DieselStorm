@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69cc25b4e52d92b44922c19f89c0e473, type: 3}
+  m_Name: Tank_Forward_Movement_Speed
+  m_EditorClassIdentifier: 
+  StatChanged: {fileID: 11400000, guid: 97dc606eef736a54b82f14b9f8a08b17, type: 2}
+  HitZero: {fileID: 11400000, guid: c2d90c9cd336d624697b0c9612e914df, type: 2}
+  m_BaseValue: 0
+  m_StatName: 
+  m_Value: 0

@@ -41,10 +41,10 @@ namespace Cinemachine
 
         /// <summary>The value of the input axis.  A value of 0 means no input
         /// You can drive this directly from a
-        /// custom input system, or you can set the Axis Name and have the value
+        /// custom input system, or you can set the Axis StatName and have the value
         /// driven by the internal Input Manager</summary>
         [NoSaveDuringPlay]
-        [Tooltip("The value of the input axis.  A value of 0 means no input.  You can drive this directly from a custom input system, or you can set the Axis Name and have the value driven by the internal Input Manager")]
+        [Tooltip("The value of the input axis.  A value of 0 means no input.  You can drive this directly from a custom input system, or you can set the Axis StatName and have the value driven by the internal Input Manager")]
         public float m_InputAxisValue;
 
         /// <summary>If checked, then the raw value of the input axis will be inverted 

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a7cd6f34fbe474ba781977ff2b0a1b, type: 3}
+  m_Name: HEAP_Impact_Damage
+  m_EditorClassIdentifier: 
+  m_Stat: {fileID: 11400000, guid: ef79dd3698c4c1b4d8ace90a9f7c4add, type: 2}
+  m_Type: 0
+  m_Value: -3
