@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class LightTankMovement : MonoBehaviour {
+public class LightTankMovement : MovementBehaviour
+{
     
     public LightTankMoveScriptable m_forces;
     public Transform m_steerGuide;
@@ -14,40 +13,15 @@ public class LightTankMovement : MonoBehaviour {
 
     //Balance ray positions
     public Vector3 m_rayTPos, m_rayLPos, m_rayRPos;
-
-    //Networked input
-    public float m_hinput;
-    public float m_vinput;
-    public float m_jinput;
-    public Vector3 m_steerinput;
-
+   
     void Start()
     {
         m_self = GetComponent<Rigidbody>();
-        m_steerGuide = Camera.main.transform;
+        if (m_steerGuide == null)
+            Debug.LogWarning("you must have a steerguide, this is usually the camera... did you forget to assign it?");
     }
-
-    void Update()
-    {
-    }
-
-    private void FixedUpdate()
-    {
-        //Player movement
-        #region Testing
-        if (!GetComponent<NetworkTank>())
-        {
-            m_hinput = Input.GetAxis("Horizontal");
-            m_vinput = Input.GetAxis("Vertical");
-            m_jinput = Input.GetAxis("Jump");
-            m_steerinput = m_steerGuide.forward;
-        }
-        #endregion //Delete later
-
-        MovementLoop();
-    }
-
-    void MovementLoop()
+ 
+    void MovementLoop(float m_hinput, float m_vinput,float m_jinput, Vector3 m_steerinput)
     {
         //Are we over the ground?
         m_ray = new Ray(transform.position, -transform.up);
@@ -60,10 +34,10 @@ public class LightTankMovement : MonoBehaviour {
             //Can move and steer up to 2 units above hover height
             if (m_jinput <= 0.99f && ground.distance <= m_forces.m_hoverHeight + 2)
             {
-                Move();
-                Steer();
+                Move(m_hinput, m_vinput, m_jinput);
+                Steer(m_steerinput, m_jinput);
                 if (ground.distance <= m_forces.m_hoverHeight)
-                    Hover(ground);
+                    Hover(ground, m_jinput);
 
             }
         }
@@ -72,7 +46,7 @@ public class LightTankMovement : MonoBehaviour {
             Rebalance();
     }
 
-    void Hover(RaycastHit hit)
+    void Hover(RaycastHit hit, float m_jinput)
     {
         float dist = (m_forces.m_hoverHeight - hit.distance) / m_forces.m_hoverHeight;
         Vector3 force = new Vector3(0, 1 - (m_self.velocity.y / 8) + ((Mathf.Abs(m_self.velocity.x)
@@ -111,18 +85,18 @@ public class LightTankMovement : MonoBehaviour {
     }
 
     //Turn to match the camera's orientation
-    void Steer()
+    void Steer(Vector3 m_steerinput, float m_jinput)
     {
         Quaternion steerdir = Quaternion.FromToRotation(transform.forward, m_steerinput);
         m_self.AddRelativeTorque(new Vector3(0, (steerdir.y - (m_self.angularVelocity.y / 25))
             * (-m_jinput + 1), 0) * m_forces.m_steerSpeed, ForceMode.Impulse);
     }
 
-    void Move()
+    public override void Move(float m_hinput, float m_vinput, float m_jinput)
     {
         //We need to convert input direction to world space
-        Vector3 dir = new Vector3(m_hinput, 0, m_vinput).normalized;
-        Vector3 relDir = Quaternion.AngleAxis(transform.rotation.eulerAngles.y, transform.up) * dir;
+        var dir = new Vector3(m_hinput, 0, m_vinput).normalized;
+        var relDir = Quaternion.AngleAxis(transform.rotation.eulerAngles.y, transform.up) * dir;
 
         //If we have input, move
         if (dir != Vector3.zero)
