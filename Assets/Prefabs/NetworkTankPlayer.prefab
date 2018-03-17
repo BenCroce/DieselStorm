@@ -302,13 +302,16 @@ GameObject:
   - component: {fileID: 114588030588180970}
   - component: {fileID: 114123646288945230}
   - component: {fileID: 114267698338590988}
+  - component: {fileID: 114721761418817270}
+  - component: {fileID: 114334781177662310}
+  - component: {fileID: 114776245527593222}
   m_Layer: 0
   m_Name: NetworkTankPlayer
   m_TagString: Player
   m_Icon: {fileID: 1654036009018553494, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1417516224013604
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +702,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166133987025706}
-  m_LocalRotation: {x: 0.046272654, y: -0, z: -0, w: 0.9989289}
+  m_LocalRotation: {x: 0.046272926, y: -0, z: -0, w: 0.9989289}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -841,7 +844,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1172523209780034}
-  m_LocalRotation: {x: 0.06436315, y: -0, z: -0, w: 0.99792653}
+  m_LocalRotation: {x: 0.06436283, y: -0, z: -0, w: 0.9979266}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1500,6 +1503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_vcam: {fileID: 1120927251551112}
   m_movement: {fileID: 114731348561714578}
+  m_shooting: {fileID: 114407609756331110}
 --- !u!114 &114124765705320592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1618,6 +1622,35 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114334781177662310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397968198324718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3585c62ef44f14546b8830a61975bc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: bf78aa9bbea61e341a0a81925832c2bc, type: 2}
+  Sender: {fileID: 0}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114721761418817270}
+        m_MethodName: DestroyObject
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: GameEventArgsResponse, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114401468191429072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1665,7 +1698,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1397968198324718}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eeddf9591e1f8f74bb82a860881034d3, type: 3}
   m_Name: 
@@ -1686,6 +1719,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updatesPerSecond: 60
+--- !u!114 &114721761418817270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397968198324718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e780815b7c83c47bff20071f4c4f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HealthStat: {fileID: 11400000, guid: ef79dd3698c4c1b4d8ace90a9f7c4add, type: 2}
+  m_ArmorStat: {fileID: 11400000, guid: 824b6f61c6d95c34e9f04445b0fb3344, type: 2}
+  rt_Health: {fileID: 0}
+  rt_Armor: {fileID: 0}
+  m_TankStatsChanged: {fileID: 11400000, guid: 3acaf04db03644641bd684998e7c6a82, type: 2}
+  m_TankDestroyed: {fileID: 11400000, guid: c7a009d36e46d3d449ba06c02c66275f, type: 2}
 --- !u!114 &114723689726251842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1797,6 +1847,35 @@ MonoBehaviour:
     FarClipPlane: 5000
     Dutch: 0
   m_ComponentOwner: {fileID: 4503759726734232}
+--- !u!114 &114776245527593222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397968198324718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3585c62ef44f14546b8830a61975bc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8320fd256e5cedd40918378123b1b239, type: 2}
+  Sender: {fileID: 0}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114721761418817270}
+        m_MethodName: OnTakeDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: GameEventArgsResponse, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114789301453352378
 MonoBehaviour:
   m_ObjectHideFlags: 1

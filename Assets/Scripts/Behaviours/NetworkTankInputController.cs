@@ -7,6 +7,7 @@ public class NetworkTankInputController : NetworkBehaviour
     private float m_vinput;
     public GameObject m_vcam;
     public MovementBehaviour m_movement;
+    public TankShoot m_shooting;
 
     public float Hinput
     {
@@ -61,6 +62,8 @@ public class NetworkTankInputController : NetworkBehaviour
         m_hinput = Input.GetAxis("Horizontal");
         m_vinput = Input.GetAxis("Vertical");
         m_jinput = Input.GetAxis("Jump");
+        if (Input.GetButtonDown("Fire1"))
+            m_shooting.Shoot();
         m_movement.Move(m_hinput, Vinput, m_jinput);
     }
 }
