@@ -63,7 +63,10 @@ public class NetworkTankInputController : NetworkBehaviour
         m_vinput = Input.GetAxis("Vertical");
         m_jinput = Input.GetAxis("Jump");
         if (Input.GetButtonDown("Fire1"))
-            m_shooting.Shoot();
+        {
+            m_shooting.CmdShoot();
+        }
+            
         m_movement.Move(m_hinput, Vinput, m_jinput);
     }
 }

@@ -168,10 +168,11 @@ MonoBehaviour:
   m_PlayerPrefab: {fileID: 1397968198324718, guid: c66c9dc7507c71342bf406953f4acd01,
     type: 2}
   m_AutoCreatePlayer: 1
-  m_PlayerSpawnMethod: 0
+  m_PlayerSpawnMethod: 1
   m_OfflineScene: 0.lobby
   m_OnlineScene: 5.Map-Graybox
-  m_SpawnPrefabs: []
+  m_SpawnPrefabs:
+  - {fileID: 1448822658572678, guid: 0ff9ca6d8824e434bbf61e08b10bbb12, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:

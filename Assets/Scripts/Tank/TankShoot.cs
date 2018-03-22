@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class TankShoot : MonoBehaviour {
+public class TankShoot : NetworkBehaviour {
 
     public GameObject m_shell;
     public Transform m_turretPos;
@@ -21,12 +21,14 @@ public class TankShoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-    }
 
-    public GameObject Shoot()
+    }
+    
+    [Command]
+    public void CmdShoot()
     {
-        GameObject shot = Instantiate(m_shell, m_turretPos.position, m_turretPos.rotation);
+        GameObject shot = Instantiate(m_shell, m_turretPos.position, m_turretPos.rotation);       
         shot.GetComponent<Rigidbody>().velocity = shot.transform.forward * m_shootForce + GetComponent<Rigidbody>().velocity;
-        return shot;
+        NetworkServer.Spawn(shot);
     }
 }
