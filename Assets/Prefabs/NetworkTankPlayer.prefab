@@ -1469,6 +1469,10 @@ MonoBehaviour:
   m_vcam: {fileID: 1120927251551112}
   m_movement: {fileID: 114731348561714578}
   m_shooting: {fileID: 114407609756331110}
+  m_HorizontalAxis: {fileID: 11400000, guid: 887e3c9442d5a2148b9130986fb0dbd8, type: 2}
+  m_VerticalAxis: {fileID: 11400000, guid: 91fbc89a25db0414a852ec07e0173402, type: 2}
+  m_JumpAxis: {fileID: 11400000, guid: 59d1e9c8660fd4e4d9eb427a7c9a6502, type: 2}
+  m_FireButton: {fileID: 11400000, guid: 46bbd187bd73ac04c86013e2bb181b7c, type: 2}
 --- !u!114 &114135273890279034
 MonoBehaviour:
   m_ObjectHideFlags: 1
