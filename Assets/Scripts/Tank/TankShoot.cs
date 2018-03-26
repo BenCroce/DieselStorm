@@ -11,20 +11,8 @@ public class TankShoot : NetworkBehaviour {
     //These will be replaced by Tank/Shell Stats
     public float m_shootForce = 200;
     public float m_shootCooldown = 1;
-    
 
-	// Use this for initialization
-	void Start ()
-    {
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-
-    }
-
-    public void Fire(GameEventArgs[]args)
+    public void Fire(UnityEngine.Object[]args)
     {
         if(args[1] == this.gameObject)
             CmdShoot();
