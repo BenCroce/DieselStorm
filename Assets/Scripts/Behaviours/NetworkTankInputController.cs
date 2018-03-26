@@ -11,8 +11,11 @@ public class NetworkTankInputController : NetworkBehaviour
     public InputAxisScriptable m_HorizontalAxis;
     public InputAxisScriptable m_VerticalAxis;
     public InputAxisScriptable m_JumpAxis;
+    public InputAxisScriptable m_TurretPitchAxis;
+    public InputAxisScriptable m_TurretYawAxis;
     public InputButtonScriptable m_FireButton;
     public InputButtonScriptable m_ReloadButton;
+    public MouseRotationBehaviour m_TurretRotation;
 
     public float Hinput
     {
@@ -75,7 +78,8 @@ public class NetworkTankInputController : NetworkBehaviour
         {
             m_Mag.ReloadMag();
         }
-            
+
+        m_TurretRotation.Rotate(m_TurretYawAxis.AxisValue(), m_TurretPitchAxis.AxisValue());            
         m_movement.Move(m_hinput, Vinput, m_jinput);
     }
 }
