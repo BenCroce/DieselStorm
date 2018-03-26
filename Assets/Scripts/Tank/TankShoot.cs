@@ -23,7 +23,13 @@ public class TankShoot : NetworkBehaviour {
     {
 
     }
-    
+
+    public void Fire(GameEventArgs[]args)
+    {
+        if(args[1] == this.gameObject)
+            CmdShoot();
+    }
+
     [Command]
     public void CmdShoot()
     {

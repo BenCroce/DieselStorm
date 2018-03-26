@@ -5,21 +5,20 @@ using UnityEngine;
 public class MagazineBehaviour : MonoBehaviour
 {
     public MagaizeScriptable m_MagazineConfig;
-    public MagaizeScriptable m_rtMagazine;
-
+    public MagaizeScriptable m_rtMagazine;    
 
     void Awake()
     {
         m_rtMagazine = m_MagazineConfig.CreateInstance();
     }
 
-    void UseRound()
-    {
-        m_rtMagazine.ConsumeAmmo();
+    public void UseRound()
+    {        
+        m_rtMagazine.ConsumeAmmo(this.gameObject);
     }
 
-    void ReloadMag()
+    public void ReloadMag()
     {
-        m_rtMagazine.ReloadAmmo();
+        m_rtMagazine.ReloadAmmo(this.gameObject);
     }
 }

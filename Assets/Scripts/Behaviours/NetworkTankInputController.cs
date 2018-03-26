@@ -7,11 +7,12 @@ public class NetworkTankInputController : NetworkBehaviour
     private float m_vinput;
     public GameObject m_vcam;
     public MovementBehaviour m_movement;
-    public TankShoot m_shooting;
+    public MagazineBehaviour m_Mag;
     public InputAxisScriptable m_HorizontalAxis;
     public InputAxisScriptable m_VerticalAxis;
     public InputAxisScriptable m_JumpAxis;
     public InputButtonScriptable m_FireButton;
+    public InputButtonScriptable m_ReloadButton;
 
     public float Hinput
     {
@@ -68,7 +69,11 @@ public class NetworkTankInputController : NetworkBehaviour
         m_jinput = m_JumpAxis.AxisValue();
         if (m_FireButton.WasButtonPressed())
         {
-            m_shooting.CmdShoot();
+            m_Mag.UseRound();
+        }
+        if (m_ReloadButton.WasButtonPressed())
+        {
+            m_Mag.ReloadMag();
         }
             
         m_movement.Move(m_hinput, Vinput, m_jinput);

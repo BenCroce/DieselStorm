@@ -38,26 +38,26 @@ public class MagaizeScriptable : ScriptableObject
         return temp;
     }
 
-    public void ConsumeAmmo()
+    public void ConsumeAmmo(Object tank)
     {
 
         if (m_RemainingRounds > 0)
         {
             m_RemainingRounds--;
-            m_OnAmmoConsumed.Raise(this);
+            m_OnAmmoConsumed.Raise(this, tank);
             if (m_RemainingRounds == 0)
             {
-                m_OnMagazineEmpty.Raise(this);
+                m_OnMagazineEmpty.Raise(this, tank);
             }
         }
     }
 
-    public void ReloadAmmo()
+    public void ReloadAmmo(Object tank)
     {
         if (m_RemainingRounds < m_MaxRoundsCapacity)
         {
             m_RemainingRounds = m_MaxRoundsCapacity;
-            m_OnAmmoReloaded.Raise(this);
+            m_OnAmmoReloaded.Raise(this, tank);
         }
     }
 }
