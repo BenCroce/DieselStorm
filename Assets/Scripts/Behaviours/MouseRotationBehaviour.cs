@@ -38,16 +38,12 @@ public class MouseRotationBehaviour : MonoBehaviour
         if (m_MouseRotationScriptable.m_ClampVertical)
             newRotation.x = Mathf.Clamp(newRotation.x, m_MouseRotationScriptable.m_MaxDownRadian,
                 m_MouseRotationScriptable.m_MaxUpRadian);
-        else
-            newRotation.x = m_InitialRotation.x;
+
         if (m_MouseRotationScriptable.m_ClampHorizontal)
             newRotation.y = Mathf.Clamp(newRotation.y, m_MouseRotationScriptable.m_MaxLeftRadian,
                 m_MouseRotationScriptable.m_MaxRightRadian);
-        else
-            newRotation.y = m_InitialRotation.y;
 
-        newRotation.z = m_RotatedObject.transform.localRotation.z;
-        newRotation *= m_InitialRotation;        
+        newRotation.z = m_RotatedObject.transform.localRotation.z;      
 
         if (m_RotatedObject.transform.localRotation != newRotation)
         {
