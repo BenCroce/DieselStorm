@@ -11,6 +11,7 @@ public class MouseRotationBehaviour : MonoBehaviour
 
     void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;        
         if (m_RotatedObject == null)
             m_RotatedObject = this.transform;
         m_InitialRotation = m_RotatedObject.localRotation;
@@ -23,6 +24,12 @@ public class MouseRotationBehaviour : MonoBehaviour
 
     public void Rotate(float y_axis, float x_axis)
     {
+#if UNITY_EDITOR
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+            Cursor.lockState = CursorLockMode.None;
+        if (Input.GetKeyDown(KeyCode.Tab))
+            Cursor.lockState = CursorLockMode.Locked;
+#endif
         float horizontal = (m_MouseRotationScriptable.m_InvertVerticalAxis)
             ? -y_axis * m_MouseRotationScriptable.m_MouseVerticalSensitivity
             : y_axis * m_MouseRotationScriptable.m_MouseVerticalSensitivity;
