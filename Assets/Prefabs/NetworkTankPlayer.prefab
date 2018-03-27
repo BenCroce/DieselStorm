@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 114860417943562734}
   - component: {fileID: 114691649379328552}
   - component: {fileID: 114303982305934212}
+  - component: {fileID: 114684306547454712}
   m_Layer: 0
   m_Name: NetworkTankPlayer
   m_TagString: Player
@@ -339,8 +340,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4908972816068142}
-  - component: {fileID: 114733209640151522}
-  - component: {fileID: 114353940764285250}
   m_Layer: 0
   m_Name: LightTank_Turret
   m_TagString: Untagged
@@ -681,7 +680,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1841038225099456}
-  m_LocalRotation: {x: 0.06436318, y: -0, z: -0, w: 0.99792653}
+  m_LocalRotation: {x: 0.06436346, y: -0, z: -0, w: 0.99792653}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -793,7 +792,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1180629075817920}
-  m_LocalRotation: {x: 0.046272613, y: -0, z: -0, w: 0.9989289}
+  m_LocalRotation: {x: 0.04627284, y: -0, z: -0, w: 0.9989289}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1591,27 +1590,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: GameEventArgsResponse, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &114353940764285250
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1554277815714390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 0
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &114405866154731962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1875,6 +1853,25 @@ MonoBehaviour:
     FarClipPlane: 5000
     Dutch: 0
   m_ComponentOwner: {fileID: 4075716943156144}
+--- !u!114 &114684306547454712
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397968198324718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 4908972816068142}
+  m_ChildIndex: 0
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
 --- !u!114 &114691649379328552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1986,38 +1983,6 @@ MonoBehaviour:
   m_rayTPos: {x: 0, y: 0, z: 2}
   m_rayLPos: {x: -2, y: 0, z: 0}
   m_rayRPos: {x: 2, y: 0, z: 0}
---- !u!114 &114733209640151522
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1554277815714390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 198
-    i1: 108
-    i2: 157
-    i3: 199
-    i4: 80
-    i5: 124
-    i6: 113
-    i7: 52
-    i8: 43
-    i9: 244
-    i10: 6
-    i11: 149
-    i12: 63
-    i13: 74
-    i14: 205
-    i15: 1
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &114776245527593222
 MonoBehaviour:
   m_ObjectHideFlags: 1
