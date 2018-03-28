@@ -5,22 +5,20 @@ using UnityEngine;
 public class MouseRotationBehaviour : MonoBehaviour
 {
     public MouseRotationScriptable m_MouseRotationScriptable;
-    public Transform m_RotatedObject;
-    public Quaternion m_InitialRotation;
+    public Transform m_RotatedObject;    
     public Quaternion newRotation;
 
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;        
         if (m_RotatedObject == null)
-            m_RotatedObject = this.transform;
-        m_InitialRotation = m_RotatedObject.localRotation;
+            m_RotatedObject = this.transform;        
     }
 
-    void Update()
-    {
-        Rotate(Input.GetAxis("Turret Pitch"), Input.GetAxis("Turret Yaw"));
-    }
+    //void Update()
+    //{
+    //    Rotate(Input.GetAxis("Turret Pitch"), Input.GetAxis("Turret Yaw"));
+    //}
 
     public void Rotate(float y_axis, float x_axis)
     {
