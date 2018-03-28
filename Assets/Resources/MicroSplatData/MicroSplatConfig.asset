@@ -73,7 +73,7 @@ MonoBehaviour:
     smoothness: {fileID: 0}
     smoothnessChannel: 1
     isRoughness: 0
-    ao: {fileID: 0}
+    ao: {fileID: 2800000, guid: edf4d683730ba3743882ddb9a00ec525, type: 3}
     aoChannel: 1
     alpha: {fileID: 0}
     alphaChannel: 1
@@ -94,6 +94,26 @@ MonoBehaviour:
     smoothnessChannel: 1
     isRoughness: 1
     ao: {fileID: 2800000, guid: 9303637eb19cf2a4f9b2fcb105128644, type: 3}
+    aoChannel: 1
+    alpha: {fileID: 0}
+    alphaChannel: 1
+    normalizeAlpha: 0
+    emis: {fileID: 0}
+    metal: {fileID: 0}
+    metalChannel: 1
+    noiseNormal: {fileID: 0}
+    detailNoise: {fileID: 0}
+    detailChannel: 1
+    distanceNoise: {fileID: 0}
+    distanceChannel: 1
+  - diffuse: {fileID: 2800000, guid: bb5e346806f64bb46bcbd4e1949417e0, type: 3}
+    height: {fileID: 2800000, guid: ae02fdbefbe7bfc4cab6f4d99bf69352, type: 3}
+    heightChannel: 1
+    normal: {fileID: 2800000, guid: 3bd19289ccd870049b3beb4fb8f3c1f4, type: 3}
+    smoothness: {fileID: 2800000, guid: f0f11d31b3826e04db70c00ad6665078, type: 3}
+    smoothnessChannel: 1
+    isRoughness: 1
+    ao: {fileID: 2800000, guid: edf4d683730ba3743882ddb9a00ec525, type: 3}
     aoChannel: 1
     alpha: {fileID: 0}
     alphaChannel: 1
@@ -167,7 +187,47 @@ MonoBehaviour:
     detailChannel: 1
     distanceNoise: {fileID: 0}
     distanceChannel: 1
+  - diffuse: {fileID: 0}
+    height: {fileID: 0}
+    heightChannel: 1
+    normal: {fileID: 0}
+    smoothness: {fileID: 0}
+    smoothnessChannel: 1
+    isRoughness: 0
+    ao: {fileID: 0}
+    aoChannel: 1
+    alpha: {fileID: 0}
+    alphaChannel: 1
+    normalizeAlpha: 0
+    emis: {fileID: 0}
+    metal: {fileID: 0}
+    metalChannel: 1
+    noiseNormal: {fileID: 0}
+    detailNoise: {fileID: 0}
+    detailChannel: 1
+    distanceNoise: {fileID: 0}
+    distanceChannel: 1
   sourceTextures3:
+  - diffuse: {fileID: 0}
+    height: {fileID: 0}
+    heightChannel: 1
+    normal: {fileID: 0}
+    smoothness: {fileID: 0}
+    smoothnessChannel: 1
+    isRoughness: 0
+    ao: {fileID: 0}
+    aoChannel: 1
+    alpha: {fileID: 0}
+    alphaChannel: 1
+    normalizeAlpha: 0
+    emis: {fileID: 0}
+    metal: {fileID: 0}
+    metalChannel: 1
+    noiseNormal: {fileID: 0}
+    detailNoise: {fileID: 0}
+    detailChannel: 1
+    distanceNoise: {fileID: 0}
+    distanceChannel: 1
   - diffuse: {fileID: 0}
     height: {fileID: 0}
     heightChannel: 1
