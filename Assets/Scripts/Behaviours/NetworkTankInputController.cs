@@ -80,7 +80,8 @@ public class NetworkTankInputController : NetworkBehaviour
             m_Mag.ReloadMag();
         }
 
-        m_TurretRotations.ForEach(item => item.Rotate(m_TurretPitchAxis.AxisValue(), m_TurretPitchAxis.AxisValue()));            
+        m_TurretRotations.ForEach(item => item.Rotate(m_TurretPitchAxis.AxisValue(), 
+            m_TurretPitchAxis.AxisValue()));            
         m_movement.Move(m_hinput, Vinput, m_jinput);
     }
 }
