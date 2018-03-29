@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class TankStats : MonoBehaviour, IDamageable
 {
@@ -60,9 +61,9 @@ public class TankStats : MonoBehaviour, IDamageable
 
     public void DestroyObject(UnityEngine.Object[] args)
     {
-        if (args[0] == m_HealthStat)
+        if (args[0] == rt_Health)
         {
-            m_TankDestroyed.Raise(this);
+            m_TankDestroyed.Raise(this);            
             Destroy(this.gameObject);
         }
     }

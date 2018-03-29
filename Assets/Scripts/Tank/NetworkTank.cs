@@ -46,12 +46,12 @@ public class NetworkTank : NetworkBehaviour {
         }
     }
 
-    [Command]
-    void CmdShoot()
-    {
-        GameObject shot = m_shoot.Shoot();
-        NetworkServer.Spawn(shot);
-    }
+    //[Command]
+    //void CmdShoot()
+    //{
+    //    //GameObject shot = m_shoot.CmdShoot(); 
+    //    //NetworkServer.Spawn(shot);
+    //}
 
     //X times per second, send input information from the local player to the rest of the players
     IEnumerator InputSync()
@@ -72,7 +72,7 @@ public class NetworkTank : NetworkBehaviour {
         while (true)
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                CmdShoot();
+                //CmdShoot();
                 yield return new WaitForSeconds(m_shoot.m_shootCooldown);
             }
             else

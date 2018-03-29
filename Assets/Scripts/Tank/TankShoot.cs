@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class TankShoot : MonoBehaviour {
+public class TankShoot : NetworkBehaviour {
 
     public GameObject m_shell;
     public Transform m_turretPos;
@@ -11,22 +11,18 @@ public class TankShoot : MonoBehaviour {
     //These will be replaced by Tank/Shell Stats
     public float m_shootForce = 200;
     public float m_shootCooldown = 1;
-    
 
-	// Use this for initialization
-	void Start ()
+    public void Fire(UnityEngine.Object[]args)
     {
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
+        if(args[1] == this.gameObject)
+            CmdShoot();
     }
 
-    public GameObject Shoot()
+    [Command]
+    public void CmdShoot()
     {
-        GameObject shot = Instantiate(m_shell, m_turretPos.position, m_turretPos.rotation);
+        GameObject shot = Instantiate(m_shell, m_turretPos.position, m_turretPos.rotation);       
         shot.GetComponent<Rigidbody>().velocity = shot.transform.forward * m_shootForce + GetComponent<Rigidbody>().velocity;
-        return shot;
+        NetworkServer.Spawn(shot);
     }
 }

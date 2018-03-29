@@ -11,9 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512af23c9398db348be2cb82a4c4d428, type: 3}
   m_Name: Tank_Health
   m_EditorClassIdentifier: 
+  StatChanged: {fileID: 11400000, guid: 97dc606eef736a54b82f14b9f8a08b17, type: 2}
+  HitZero: {fileID: 11400000, guid: bf78aa9bbea61e341a0a81925832c2bc, type: 2}
   m_BaseValue: 100
   m_StatName: Tank_Health
   m_Value: 100
-  m_HealthStatChanged: {fileID: 11400000, guid: c7a75343dabcb4b4bb679690e90903ce,
-    type: 2}
-  m_HealthHitZero: {fileID: 11400000, guid: bf78aa9bbea61e341a0a81925832c2bc, type: 2}
