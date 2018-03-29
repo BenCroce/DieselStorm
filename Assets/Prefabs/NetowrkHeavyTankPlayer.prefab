@@ -454,19 +454,19 @@ GameObject:
   - component: {fileID: 136692315516027208}
   - component: {fileID: 136379378249268166}
   - component: {fileID: 114776555332004582}
+  - component: {fileID: 114147661516829482}
   - component: {fileID: 114207192333662526}
+  - component: {fileID: 114169411088744900}
   - component: {fileID: 114174089018670736}
   - component: {fileID: 114431257029717128}
-  - component: {fileID: 114147661516829482}
-  - component: {fileID: 114979119802948570}
-  - component: {fileID: 114169411088744900}
+  - component: {fileID: 114425516467148810}
+  - component: {fileID: 114069669104529710}
+  - component: {fileID: 114110866812031810}
   - component: {fileID: 114463969953286564}
   - component: {fileID: 114209103833854204}
   - component: {fileID: 114680302105641880}
-  - component: {fileID: 114425516467148810}
+  - component: {fileID: 114979119802948570}
   - component: {fileID: 114675569291582638}
-  - component: {fileID: 114069669104529710}
-  - component: {fileID: 114110866812031810}
   - component: {fileID: 114672564513196646}
   m_Layer: 0
   m_Name: NetowrkHeavyTankPlayer
@@ -2040,7 +2040,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1592748019103250}
-  m_LocalRotation: {x: 0.0643633, y: -0, z: -0, w: 0.99792653}
+  m_LocalRotation: {x: 0.06436328, y: -0, z: -0, w: 0.99792653}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2693,7 +2693,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1506549210315240}
-  m_LocalRotation: {x: 0.04627269, y: -0, z: -0, w: 0.9989289}
+  m_LocalRotation: {x: 0.046272773, y: -0, z: -0, w: 0.9989289}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
