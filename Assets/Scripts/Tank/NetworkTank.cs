@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 [RequireComponent(typeof(TankShoot))]
 public class NetworkTank : NetworkBehaviour {
 
-    LightTankMovement m_movement;
+    TankInputController input;
     TankShoot m_shoot;
     Rigidbody m_body;
 
@@ -15,8 +15,7 @@ public class NetworkTank : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start ()
-    {
-        m_movement = GetComponent<LightTankMovement>();
+    {        
         m_shoot = GetComponent<TankShoot>();
         m_body = GetComponent<Rigidbody>();
         StartCoroutine(InputSync());
@@ -24,18 +23,7 @@ public class NetworkTank : NetworkBehaviour {
             StartCoroutine(Shoot());
 	}
 	
-	// Update is called once per frame
-	void FixedUpdate ()
-    {
-		if (isLocalPlayer)
-        {
-            m_movement.m_hinput = Input.GetAxis("Horizontal");
-            m_movement.m_vinput = Input.GetAxis("Vertical");
-            m_movement.m_jinput = Input.GetAxis("Jump");
-            m_movement.m_steerinput = m_movement.m_steerGuide.forward;
-        }
-	}
-
+ 
     //Send out input information to other players
     [Command]
     void CmdPlayer(float h, float v, float j, Vector3 m, Vector3 p, Vector3 b)
@@ -49,21 +37,21 @@ public class NetworkTank : NetworkBehaviour {
     {
         if (!isLocalPlayer)
         {
-            m_movement.m_hinput = h;
-            m_movement.m_vinput = v;
-            m_movement.m_jinput = j;
-            m_movement.m_steerinput = m;
+            input.Hinput = h;
+            input.Vinput = v;
+            input.Jinput = j;
+//            m_movement.Steerinput = m;
             m_body.position = p;
             m_body.velocity = b;
         }
     }
 
-    [Command]
-    void CmdShoot()
-    {
-        GameObject shot = m_shoot.Shoot();
-        NetworkServer.Spawn(shot);
-    }
+    //[Command]
+    //void CmdShoot()
+    //{
+    //    //GameObject shot = m_shoot.CmdShoot(); 
+    //    //NetworkServer.Spawn(shot);
+    //}
 
     //X times per second, send input information from the local player to the rest of the players
     IEnumerator InputSync()
@@ -73,8 +61,8 @@ public class NetworkTank : NetworkBehaviour {
             yield return new WaitForSeconds(1 / updatesPerSecond);
             if (isLocalPlayer)
             {
-                CmdPlayer(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),
-                    Input.GetAxis("Jump"), m_movement.m_steerGuide.forward, m_body.position, m_body.velocity);
+                //CmdPlayer(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),
+                  //  Input.GetAxis("Jump"), input.m_steerGuide.forward, m_body.position, m_body.velocity);
             }
         }
     }
@@ -84,7 +72,7 @@ public class NetworkTank : NetworkBehaviour {
         while (true)
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                CmdShoot();
+                //CmdShoot();
                 yield return new WaitForSeconds(m_shoot.m_shootCooldown);
             }
             else

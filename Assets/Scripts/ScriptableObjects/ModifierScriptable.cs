@@ -17,8 +17,8 @@ public class ModifierScriptable : ScriptableObject
 
     void OnEnable()
     {
-        if(m_Stat == null)
-            Debug.LogError("No value for m_Stat set on ModiferScriptable:" + name);
+        //if(m_Stat == null)
+        //    Debug.LogError("No value for m_Stat set on ModiferScriptable:" + name);
     }
 
     public virtual void RemoveMod()

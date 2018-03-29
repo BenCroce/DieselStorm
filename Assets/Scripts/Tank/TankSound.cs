@@ -8,21 +8,20 @@ public class TankSound : MonoBehaviour {
     public AudioSource jet;
 
     Rigidbody self;
-    LightTankMovement move;
+    TankInputController move;
 
 	// Use this for initialization
 	void Start ()
     {
-        self = GetComponentInParent<Rigidbody>();
-        move = GetComponentInParent<LightTankMovement>();
+        self = GetComponentInParent<Rigidbody>();        
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        engine.pitch = 0.7f + self.velocity.magnitude / 50 + (-move.m_jinput + 1) * 0.2f;
-        engine.volume = 0.8f - move.m_jinput * 0.6f;
-        jet.pitch = (0.8f + self.velocity.magnitude / 25) * (-move.m_jinput + 1);
+        engine.pitch = 0.7f + self.velocity.magnitude / 50 + (-move.Jinput + 1) * 0.2f;
+        engine.volume = 0.8f - move.Jinput * 0.6f;
+        jet.pitch = (0.8f + self.velocity.magnitude / 25) * (-move.Jinput + 1);
 
     }
 }
