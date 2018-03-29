@@ -15,6 +15,6 @@ public class ProjectileStats : MonoBehaviour
         //3. this object armor mod
         //4. object collided with
         m_ProjectileHit.Raise(this.gameObject, m_HealthModifier, other.gameObject);
-        //Destroy(this.gameObject);
+        Destroy(this.gameObject);
     }
 }
