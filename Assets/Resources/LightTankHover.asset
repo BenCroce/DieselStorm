@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f9dea3b91fc454a98f72aefb142be5, type: 3}
+  m_Name: LightTankHover
+  m_EditorClassIdentifier: 
+  m_HooverForce: 70
+  m_StrafeForce: 15
+  m_ForwardMovementSpeed: 20
+  m_TurnSpeed: 100
+  m_HooverHeight: 0.75
