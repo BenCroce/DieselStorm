@@ -378,7 +378,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1236164245669982
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -475,7 +475,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1323132944345162
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -623,7 +623,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1349743686360662
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -1029,7 +1029,7 @@ GameObject:
   - component: {fileID: 114750960236341180}
   m_Layer: 0
   m_Name: CM FreeLook2
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1953,7 +1953,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4355834353707512
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1323132944345162}
@@ -2152,7 +2152,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4458938167934886
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1236164245669982}
@@ -2722,7 +2722,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4844698404907362
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1349743686360662}
@@ -3153,7 +3153,7 @@ MonoBehaviour:
   m_LocalPlayerAuthority: 1
 --- !u!114 &114077270886522970
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1349743686360662}
@@ -3177,7 +3177,7 @@ MonoBehaviour:
   m_BiasY: 0
 --- !u!114 &114083158329241008
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1323132944345162}
@@ -3220,7 +3220,7 @@ MonoBehaviour:
   m_InterpolateMovement: 0.5
 --- !u!114 &114127077818440336
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1236164245669982}
@@ -3308,7 +3308,7 @@ MonoBehaviour:
   m_InterpolateMovement: 0.5
 --- !u!114 &114263826861108376
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1349743686360662}
@@ -3496,7 +3496,7 @@ MonoBehaviour:
   m_rayRPos: {x: 2, y: 0, z: 0}
 --- !u!114 &114466463097756092
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1323132944345162}
@@ -3537,7 +3537,7 @@ MonoBehaviour:
   m_HeadingIsSlave: 1
 --- !u!114 &114481495082753058
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1323132944345162}
@@ -3628,7 +3628,7 @@ MonoBehaviour:
       PublicKeyToken=null
 --- !u!114 &114739526226423630
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1236164245669982}
@@ -3787,7 +3787,7 @@ MonoBehaviour:
       PublicKeyToken=null
 --- !u!114 &114945758716703252
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1349743686360662}
@@ -3798,7 +3798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &114966154848549490
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1236164245669982}
