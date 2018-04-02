@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class PlayerBehaviour : NetworkBehaviour
 {
-    [SyncVar] public string m_Name;
+    [SyncVar] public string m_ScreenName;
     [SyncVar] public int m_Score;
     [SyncVar] public Color m_TeamColor;
 
