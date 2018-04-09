@@ -10,6 +10,8 @@ public class TeamBehaviour : NetworkBehaviour
     [SerializeField]
     private Color m_Color;
 
+    public NetworkLobbyManager m_LobbyManager;
+
     public Color Color
     {
         get { return m_Color; }
@@ -21,5 +23,10 @@ public class TeamBehaviour : NetworkBehaviour
             return;
         m_Players.Add(player);
         m_OnPlayerAdded.Raise(this, player);        
+    }
+
+    void Update()
+    {
+        m_LobbyManager.gamePlayerPrefab;
     }
 }
