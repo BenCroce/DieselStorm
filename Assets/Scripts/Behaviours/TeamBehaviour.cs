@@ -12,21 +12,21 @@ public class TeamBehaviour : NetworkBehaviour
 
     public NetworkLobbyManager m_LobbyManager;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     public Color Color
     {
         get { return m_Color; }
     }
 
-    public void AddPlayer(PlayerBehaviour player)
+    [Server]
+    public void AddPlayer(UnityEngine.Object[] args)
     {
-        if(m_Players.Contains(player))
-            return;
-        m_Players.Add(player);
-        m_OnPlayerAdded.Raise(this, player);        
-    }
-
-    void Update()
-    {
-        m_LobbyManager.gamePlayerPrefab;
+        var go = args[2] as GameObject;
+        go.AddComponent<PlayerBehaviour>();
+        m_Players.Add(go.GetComponent<PlayerBehaviour>());
     }
 }
