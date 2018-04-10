@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Prototype.NetworkLobby;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -23,10 +24,8 @@ public class TeamBehaviour : NetworkBehaviour
     }
 
     [Server]
-    public void AddPlayer(UnityEngine.Object[] args)
-    {
-        var go = args[2] as GameObject;
-        go.AddComponent<PlayerBehaviour>();
-        m_Players.Add(go.GetComponent<PlayerBehaviour>());
+    public void AddPlayer(PlayerBehaviour player)
+    {        
+        m_Players.Add(player);
     }
 }
