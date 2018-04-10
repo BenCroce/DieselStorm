@@ -6,69 +6,33 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class GetPlayersBehaviour : NetworkBehaviour
+public class GetPlayersBehaviour : MonoBehaviour
 {
-    public GameEventArgs m_OnPlayerConnected;
+    
+    public GameEventArgs m_OnPlayerDisconnected;
     public TeamBehaviour m_RedTeam;
     public TeamBehaviour m_BlueTeam;
     public GameObject m_PlayerPrefab;
 
-    public List<LobbyPlayer> m_LobbyPlayers;
-    public List<PlayerBehaviour> m_PlayerBehaviours;
+    public List<LobbyPlayer> m_LobbyPlayers = new List<LobbyPlayer>();
+    public List<PlayerBehaviour> m_PlayerBehaviours = new List<PlayerBehaviour>();
     private int m_playerCount = 0;
-
-    void Awake()
+    
+    public void OnPlayerRemoved(Object[] args)
     {
-        DontDestroyOnLoad(this.gameObject);
+        var player = args[0] as LobbyPlayer;
+        m_LobbyPlayers.Remove(player);
+        
     }
 
-    void Start()
+    public void OnPlayerAdded(Object[] args)
     {
-        m_LobbyPlayers = new List<LobbyPlayer>();
-
-    }    
-
-    void Update()
-    {
-        m_LobbyPlayers = FindObjectsOfType<LobbyPlayer>().ToList();
-        for (int i = 0; i < m_PlayerBehaviours.Count; i++)
-        {
-            for (int j = 0; j < m_LobbyPlayers.Count; j++)
-            {
-                if (m_PlayerBehaviours[i].LobbyID == m_LobbyPlayers[j].GetInstanceID())
-                    break;
-                if (j == m_LobbyPlayers.Count &&
-                    m_PlayerBehaviours[i].LobbyID != m_LobbyPlayers[j].GetInstanceID())
-                {
-                    Destroy(m_PlayerBehaviours[i].gameObject);
-                    m_PlayerBehaviours.RemoveAt(i);
-                }
-            }
-        }
-
-        if (m_LobbyPlayers.Count == 0 || 
-            m_LobbyPlayers.Count != FindObjectsOfType<LobbyPlayer>().Length)
-        {                     
-            m_PlayerBehaviours = new List<PlayerBehaviour>();
-
-            foreach (var player in FindObjectsOfType<LobbyPlayer>())
-            {
-                if(m_LobbyPlayers.Contains(player))
-                    continue;
-                m_LobbyPlayers.Add(player);
-                var playerObject = Instantiate(m_PlayerPrefab);
-                //playerObject.name = player.playerName;
-                playerObject.GetComponent<PlayerBehaviour>().LobbyID = player.GetInstanceID();
-                playerObject.GetComponent<PlayerBehaviour>().m_ScreenName = player.playerName;
-                m_PlayerBehaviours.Add(playerObject.GetComponent<PlayerBehaviour>());
-
-            }
-            AutoBalance();
-            m_playerCount = m_LobbyPlayers.Count;
-        }
+        var player = args[0] as LobbyPlayer;
+        m_LobbyPlayers.Add(player);
     }
 
-    void AutoBalance()
+
+    public void AutoBalance()
     {
         for (int i = 0; i < m_PlayerBehaviours.Count; i += 2)
         {

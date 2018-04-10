@@ -8,6 +8,8 @@ namespace Prototype.NetworkLobby
     //List of players in the lobby
     public class LobbyPlayerList : MonoBehaviour
     {
+        public GameEventArgs OnPlayerRemoved;
+        public GameEventArgs OnPlayerAdded;
         public static LobbyPlayerList _instance = null;
 
         public RectTransform playerListContentTransform;
@@ -44,7 +46,8 @@ namespace Prototype.NetworkLobby
                 return;
 
             _players.Add(player);
-
+            //OnPlayerAdded.Raise(player);
+            TestTeamSingleton._instance.OnPlayerAdded(new Object[] {player});
             player.transform.SetParent(playerListContentTransform, false);
             addButtonRow.transform.SetAsLastSibling();
 
@@ -53,8 +56,11 @@ namespace Prototype.NetworkLobby
 
         public void RemovePlayer(LobbyPlayer player)
         {
+            //OnPlayerRemoved.Raise(player);
+            TestTeamSingleton._instance.OnPlayerRemoved(new Object[] { player });
             _players.Remove(player);
             PlayerListModified();
+            
         }
 
         public void PlayerListModified()
