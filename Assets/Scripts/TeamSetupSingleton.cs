@@ -57,7 +57,7 @@ public class TeamSetupSingleton : ScriptableObject
         m_lobbyPlayerEntries = new List<LobbyPlayerEntry>();
         m_LobbyPlayers.ForEach(x => m_lobbyPlayerEntries.Add
             (
-                new LobbyPlayerEntry() {Name = x.name, Player = x}
+                new LobbyPlayerEntry() {Name = x.name, Player = x, ID = x.GetInstanceID()}
             )
         );
         for (int i = 0; i < m_PlayerBehaviours.Count; i++)
@@ -65,20 +65,19 @@ public class TeamSetupSingleton : ScriptableObject
             if(m_LobbyPlayers.Count != 0)
                 for (int j = 0; j < m_LobbyPlayers.Count; j++)
                 {
-                    if (m_PlayerBehaviours[i].LobbyID == m_LobbyPlayers[j].GetInstanceID())
+                    if (m_PlayerBehaviours[i].LobbyID == m_lobbyPlayerEntries[j].ID)
                         break;
                     if (j == m_LobbyPlayers.Count - 1 &&
-                        m_PlayerBehaviours[i].LobbyID != m_LobbyPlayers[j].GetInstanceID())
+                        m_PlayerBehaviours[i].LobbyID != m_lobbyPlayerEntries[j].ID)
                     {
+                        m_BlueTeam.RemovePlayer(m_PlayerBehaviours[i]);
+                        m_RedTeam.RemovePlayer(m_PlayerBehaviours[i]);
+                        if (m_PlayerBehaviours[i].gameObject != null)
+                            Destroy(m_PlayerBehaviours[i].gameObject);
                         m_PlayerBehaviours.Remove(m_PlayerBehaviours[i]);
+                        i--;
                     }
-                }
-            m_BlueTeam.RemovePlayer(m_PlayerBehaviours[i]);
-            m_RedTeam.RemovePlayer(m_PlayerBehaviours[i]);
-            if(m_PlayerBehaviours[i].gameObject != null)
-                Destroy(m_PlayerBehaviours[i].gameObject);
-            m_PlayerBehaviours.Remove(m_PlayerBehaviours[i]);
-            
+                }            
         }        
 
         m_PlayerBehaviourEntries = new List<PlayerBehaviourEntry>();
