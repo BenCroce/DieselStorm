@@ -10,8 +10,8 @@ public class GetPlayersBehaviour : MonoBehaviour
 {
     
     public GameEventArgs m_OnPlayerDisconnected;
-    public TeamBehaviour m_RedTeam;
-    public TeamBehaviour m_BlueTeam;
+    public TeamSriptable m_RedTeam;
+    public TeamSriptable m_BlueTeam;
     public GameObject m_PlayerPrefab;
 
     public List<LobbyPlayer> m_LobbyPlayers = new List<LobbyPlayer>();

@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4618983280735510}
-  - component: {fileID: 114228217784790508}
   - component: {fileID: 114848581741815080}
   m_Layer: 0
   m_Name: Blue
@@ -41,21 +40,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114228217784790508
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1011718969566688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3fb7e64bf5afbd4aa65cad6832dee98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Players: []
-  m_OnPlayerAdded: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_LobbyManager: {fileID: 0}
 --- !u!114 &114848581741815080
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -4,7 +4,8 @@ using Prototype.NetworkLobby;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class TeamBehaviour : NetworkBehaviour
+[CreateAssetMenu(menuName = "TeamScriptable")]
+public class TeamSriptable : ScriptableObject
 {
     public List<PlayerBehaviour> m_Players;
     public GameEventArgs m_OnPlayerAdded;
@@ -13,19 +14,25 @@ public class TeamBehaviour : NetworkBehaviour
 
     public NetworkLobbyManager m_LobbyManager;
 
-    void Awake()
+    void OnEnable()
     {
-        DontDestroyOnLoad(this.gameObject);
+        m_Players = new List<PlayerBehaviour>();
     }
 
     public Color Color
     {
         get { return m_Color; }
     }
-
-    [Server]
+    
     public void AddPlayer(PlayerBehaviour player)
     {        
-        m_Players.Add(player);
+        if(!m_Players.Contains(player))
+            m_Players.Add(player);
+    }
+
+    public void RemovePlayer(PlayerBehaviour player)
+    {
+        if(m_Players.Contains(player))
+            m_Players.Remove(player);
     }
 }

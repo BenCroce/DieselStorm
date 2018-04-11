@@ -9,11 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a62d06ff68790e4eb684f7ce2549ace, type: 3}
-  m_Name: New Test Team Singleton
+  m_Name: New Team Setup Singleton
   m_EditorClassIdentifier: 
   m_OnPlayerDisconnected: {fileID: 0}
-  m_RedTeam: {fileID: 0}
-  m_BlueTeam: {fileID: 0}
-  m_PlayerPrefab: {fileID: 0}
+  m_RedTeam: {fileID: 11400000, guid: afac491789226544d9408601a982a46d, type: 2}
+  m_BlueTeam: {fileID: 11400000, guid: 91a4fbfa0dfc78c428224c2e6b16d9f1, type: 2}
+  m_PlayerPrefab: {fileID: 1373863025843376, guid: d698d400c334a104dbeeab85f4202096,
+    type: 2}
+  m_lobbyPlayerEntries: []
+  m_PlayerBehaviourEntries: []
   m_LobbyPlayers: []
   m_PlayerBehaviours: []

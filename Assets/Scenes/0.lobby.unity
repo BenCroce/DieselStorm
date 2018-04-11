@@ -228,7 +228,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 634447520}
-  - component: {fileID: 634447519}
   - component: {fileID: 634447518}
   - component: {fileID: 634447521}
   - component: {fileID: 634447522}
@@ -271,24 +270,6 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 1
   m_LocalPlayerAuthority: 0
---- !u!114 &634447519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 634447517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48dcadd29768617499a06fd93fda7e7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OnPlayerDisconnected: {fileID: 0}
-  m_RedTeam: {fileID: 1036476738}
-  m_BlueTeam: {fileID: 2036523604}
-  m_PlayerPrefab: {fileID: 1373863025843376, guid: d698d400c334a104dbeeab85f4202096,
-    type: 2}
-  m_LobbyPlayers: []
-  m_PlayerBehaviours: []
 --- !u!4 &634447520
 Transform:
   m_ObjectHideFlags: 0
@@ -318,7 +299,7 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 634447519}
+      - m_Target: {fileID: 0}
         m_MethodName: OnPlayerRemoved
         m_Mode: 0
         m_Arguments:
@@ -347,7 +328,7 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 634447519}
+      - m_Target: {fileID: 0}
         m_MethodName: OnPlayerAdded
         m_Mode: 0
         m_Arguments:
@@ -399,7 +380,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114228217784790508, guid: bd8b0d26a005e654aaeb2e789e4b6ae9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: bd8b0d26a005e654aaeb2e789e4b6ae9, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &688607502
@@ -697,12 +679,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1036476738 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114228217784790508, guid: bd8b0d26a005e654aaeb2e789e4b6ae9,
-    type: 2}
-  m_PrefabInternal: {fileID: 639313268}
-  m_Script: {fileID: 11500000, guid: a3fb7e64bf5afbd4aa65cad6832dee98, type: 3}
 --- !u!1001 &1070560723
 Prefab:
   m_ObjectHideFlags: 0
@@ -1040,9 +1016,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2036523604 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114308981007953566, guid: 73c51f3de5abb4849b4450378813a89e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1070560723}
-  m_Script: {fileID: 11500000, guid: a3fb7e64bf5afbd4aa65cad6832dee98, type: 3}

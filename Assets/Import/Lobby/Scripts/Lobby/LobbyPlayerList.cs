@@ -47,7 +47,7 @@ namespace Prototype.NetworkLobby
 
             _players.Add(player);
             //OnPlayerAdded.Raise(player);
-            TestTeamSingleton._instance.OnPlayerAdded(new Object[] {player});
+            TeamSetupSingleton._instance.OnPlayerAdded(new Object[] {player});
             player.transform.SetParent(playerListContentTransform, false);
             addButtonRow.transform.SetAsLastSibling();
 
@@ -57,7 +57,7 @@ namespace Prototype.NetworkLobby
         public void RemovePlayer(LobbyPlayer player)
         {
             //OnPlayerRemoved.Raise(player);
-            TestTeamSingleton._instance.OnPlayerRemoved(new Object[] { player });
+            TeamSetupSingleton._instance.OnPlayerRemoved(new Object[] { player });
             _players.Remove(player);
             PlayerListModified();
             

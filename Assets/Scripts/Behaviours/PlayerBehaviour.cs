@@ -17,7 +17,7 @@ public class PlayerBehaviour : NetworkBehaviour
 
     public void SetTeamColor(UnityEngine.Object[] obj)
     {
-        var sender = obj[0] as TeamBehaviour;
+        var sender = obj[0] as TeamSriptable;
         var player = obj[1] as PlayerBehaviour;
        
         if (player == this)
