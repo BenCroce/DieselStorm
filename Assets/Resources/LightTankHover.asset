@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f9dea3b91fc454a98f72aefb142be5, type: 3}
   m_Name: LightTankHover
   m_EditorClassIdentifier: 
-  m_HooverForce: 70
+  m_HooverForce: 50
   m_StrafeForce: 15
   m_ForwardMovementSpeed: 20
   m_TurnSpeed: 100
-  m_HooverHeight: 0.75
+  m_HooverHeight: 1.2
