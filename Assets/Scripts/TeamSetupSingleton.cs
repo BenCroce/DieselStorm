@@ -8,6 +8,7 @@ using Prototype.NetworkLobby;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using System.Linq;
 
 [CreateAssetMenu(menuName = "TeamSetupSingleton")]
 public class TeamSetupSingleton : ScriptableObject
@@ -28,8 +29,17 @@ public class TeamSetupSingleton : ScriptableObject
         public int ID;
     }
 
-    public static TeamSetupSingleton _instance;
-    public GameEventArgs m_OnPlayerDisconnected;
+    private static TeamSetupSingleton _instance;
+
+    public static TeamSetupSingleton Instance
+    {
+        get
+        {
+            if (_instance == null)
+                _instance = Resources.FindObjectsOfTypeAll<TeamSetupSingleton>().FirstOrDefault();
+            return _instance;
+        }
+    }
     public TeamSriptable m_RedTeam;
     public TeamSriptable m_BlueTeam;
     public GameObject m_PlayerPrefab;
@@ -41,14 +51,19 @@ public class TeamSetupSingleton : ScriptableObject
 
     void OnEnable()
     {
-        if (_instance == null)
-            _instance = this;
         m_PlayerBehaviourEntries = new List<PlayerBehaviourEntry>();
         m_PlayerBehaviours = new List<PlayerBehaviour>();
         m_LobbyPlayers = new List<LobbyPlayer>();
         m_lobbyPlayerEntries = new List<LobbyPlayerEntry>();
     }
 
+    public void ResetLists()
+    {
+        m_lobbyPlayerEntries = new List<LobbyPlayerEntry>();
+        m_PlayerBehaviours = new List<PlayerBehaviour>();
+        m_PlayerBehaviourEntries = new List<PlayerBehaviourEntry>();
+        m_LobbyPlayers = new List<LobbyPlayer>();
+    }
 
     public void OnPlayerRemoved(Object[] args)
     {
@@ -107,8 +122,7 @@ public class TeamSetupSingleton : ScriptableObject
         m_LobbyPlayers.ForEach(x => m_lobbyPlayerEntries.Add
             (new LobbyPlayerEntry() {Name = x.playerName, Player = x, ID = x.GetInstanceID()}));
         AutoBalance();
-    }
-
+    }    
 
     public void AutoBalance()
     {

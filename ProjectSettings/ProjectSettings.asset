@@ -127,7 +127,8 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -654,9 +655,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: a45c674d-8260-4c8d-ab2a-9e504685a620
+  cloudProjectId: 00339634-c2b8-4cb3-9b4a-7c61b68c9196
   projectName: Diesel_Storm
-  organizationId: aie_software
+  organizationId: dylan-3923841
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

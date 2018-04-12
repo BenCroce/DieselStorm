@@ -8,16 +8,19 @@ namespace Prototype.NetworkLobby
     //List of players in the lobby
     public class LobbyPlayerList : MonoBehaviour
     {
-        public GameEventArgs OnPlayerRemoved;
-        public GameEventArgs OnPlayerAdded;
         public static LobbyPlayerList _instance = null;
 
         public RectTransform playerListContentTransform;
         public GameObject warningDirectPlayServer;
-        public Transform addButtonRow;
+        public Transform addButtonRow;        
 
         protected VerticalLayoutGroup _layout;
         protected List<LobbyPlayer> _players = new List<LobbyPlayer>();
+
+        public List<LobbyPlayer>Players
+        {
+            get { return _players; }
+        }
 
         public void OnEnable()
         {
@@ -40,14 +43,17 @@ namespace Prototype.NetworkLobby
                 _layout.childAlignment = Time.frameCount%2 == 0 ? TextAnchor.UpperCenter : TextAnchor.UpperLeft;
         }
 
+        //public GameEventArgs OnPlayerRemoved;
+        //public GameEventArgs OnPlayerAdded;
+        //public TeamSetupSingleton m_TeamSetupSingleton;
         public void AddPlayer(LobbyPlayer player)
         {
             if (_players.Contains(player))
                 return;
 
             _players.Add(player);
-            //OnPlayerAdded.Raise(player);
-            TeamSetupSingleton._instance.OnPlayerAdded(new Object[] {player});
+            //OnPlayerAdded.Raise(new Object[] {player});            
+            //m_TeamSetupSingleton.OnPlayerAdded(new Object[] { player });
             player.transform.SetParent(playerListContentTransform, false);
             addButtonRow.transform.SetAsLastSibling();
 
@@ -56,11 +62,10 @@ namespace Prototype.NetworkLobby
 
         public void RemovePlayer(LobbyPlayer player)
         {
-            //OnPlayerRemoved.Raise(player);
-            TeamSetupSingleton._instance.OnPlayerRemoved(new Object[] { player });
+            //OnPlayerRemoved.Raise(new Object[] { player });
+            //m_TeamSetupSingleton.OnPlayerRemoved(new Object[] { player });
             _players.Remove(player);
-            PlayerListModified();
-            
+            PlayerListModified();            
         }
 
         public void PlayerListModified()
