@@ -1,19 +1,50 @@
 fileFormatVersion: 2
-guid: 3341292e79c4c634a93585a9aa6ef4ae
-timeCreated: 1522276019
+guid: 38665e746c180e6448c9a1976493c089
+timeCreated: 1523572587
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: lambert1
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: AirshipMesh
+    100000: Airship_MainBody
+    100002: //RootNode
+    100004: Airship_Root
+    100006: Back_Mid_Wing
+    100008: L_Back_Wing
+    100010: L_Front_Wing
+    100012: L_HatchDoor
+    100014: L_Mid_Wing
+    100016: R_Back_Wing
+    100018: R_Front_Wing
+    100020: R_HatchDoor
+    100022: R_Mid_Wing
+    100024: Turret_Barrel
+    100026: Turret_Body
+    100028: Wires
+    400000: Airship_MainBody
+    400002: //RootNode
+    400004: Airship_Root
+    400006: Back_Mid_Wing
+    400008: L_Back_Wing
+    400010: L_Front_Wing
+    400012: L_HatchDoor
+    400014: L_Mid_Wing
+    400016: R_Back_Wing
+    400018: R_Front_Wing
+    400020: R_HatchDoor
+    400022: R_Mid_Wing
+    400024: Turret_Barrel
+    400026: Turret_Body
+    400028: Wires
+    2100000: StingrayPBS1
+    2100002: blinn1
+    4300000: Airship_MainBody
+    4300002: Wires
+    9500000: //RootNode
+    13700000: Airship_MainBody
+    13700002: Wires
   externalObjects: {}
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -85,7 +116,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
