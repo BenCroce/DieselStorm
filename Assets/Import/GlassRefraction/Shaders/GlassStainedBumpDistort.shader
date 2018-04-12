@@ -1,109 +1,211 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-// Per pixel bumped refraction.
-// Uses a normal map to distort the image behind, and
-// an additional texture to tint the color.
+// Shader created with Shader Forge v1.38 
+// Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
+// Note: Manually altering this data may prevent you from opening it in Shader Forge
+/*SF_DATA;ver:1.38;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:1,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:False,hqlp:False,rprd:False,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:False,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:True,qofs:0,qpre:3,rntp:2,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:6511,x:32505,y:32734,varname:node_6511,prsc:2|diff-4134-RGB,spec-6497-OUT,gloss-9076-OUT,normal-5138-RGB,alpha-5111-OUT,refract-3259-OUT;n:type:ShaderForge.SFN_Append,id:3259,x:31978,y:33210,varname:node_3259,prsc:2|A-5138-R,B-5138-G;n:type:ShaderForge.SFN_Tex2d,id:5138,x:31711,y:33188,ptovrint:False,ptlb:Normal,ptin:_Normal,varname:node_5138,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Slider,id:5111,x:31702,y:32977,ptovrint:False,ptlb:Opacity,ptin:_Opacity,varname:node_5111,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.5,max:1;n:type:ShaderForge.SFN_Tex2d,id:4134,x:31734,y:32491,ptovrint:False,ptlb:Albedo,ptin:_Albedo,varname:node_4134,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Slider,id:6497,x:31702,y:32713,ptovrint:False,ptlb:Specular,ptin:_Specular,varname:node_6497,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Slider,id:9076,x:31702,y:32824,ptovrint:False,ptlb:Gloss,ptin:_Gloss,varname:node_9076,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;proporder:5138-5111-4134-6497-9076;pass:END;sub:END;*/
 
 Shader "FX/Glass/Stained BumpDistort" {
-Properties {
-	_BumpAmt  ("Distortion", range (0,128)) = 10
-	_MainTex ("Tint Color (RGB)", 2D) = "white" {}
-	_BumpMap ("Normalmap", 2D) = "bump" {}
-}
-
-Category {
-
-	// We must be transparent, so other objects are drawn before this one.
-	Tags { "Queue"="Transparent" "RenderType"="Opaque" }
-
-
-	SubShader {
-
-		// This pass grabs the screen behind the object into a texture.
-		// We can access the result in the next pass as _GrabTexture
-		GrabPass {
-			Name "BASE"
-			Tags { "LightMode" = "Always" }
-		}
-		
-		// Main pass: Take the texture grabbed above and use the bumpmap to perturb it
-		// on to the screen
-		Pass {
-			Name "BASE"
-			Tags { "LightMode" = "Always" }
-			
-CGPROGRAM
-#pragma vertex vert
-#pragma fragment frag
-#pragma multi_compile_fog
-#include "UnityCG.cginc"
-
-struct appdata_t {
-	float4 vertex : POSITION;
-	float2 texcoord: TEXCOORD0;
-};
-
-struct v2f {
-	float4 vertex : SV_POSITION;
-	float4 uvgrab : TEXCOORD0;
-	float2 uvbump : TEXCOORD1;
-	float2 uvmain : TEXCOORD2;
-	UNITY_FOG_COORDS(3)
-};
-
-float _BumpAmt;
-float4 _BumpMap_ST;
-float4 _MainTex_ST;
-
-v2f vert (appdata_t v)
-{
-	v2f o;
-	o.vertex = UnityObjectToClipPos(v.vertex);
-	#if UNITY_UV_STARTS_AT_TOP
-	float scale = -1.0;
-	#else
-	float scale = 1.0;
-	#endif
-	o.uvgrab.xy = (float2(o.vertex.x, o.vertex.y*scale) + o.vertex.w) * 0.5;
-	o.uvgrab.zw = o.vertex.zw;
-	o.uvbump = TRANSFORM_TEX( v.texcoord, _BumpMap );
-	o.uvmain = TRANSFORM_TEX( v.texcoord, _MainTex );
-	UNITY_TRANSFER_FOG(o,o.vertex);
-	return o;
-}
-
-sampler2D _GrabTexture;
-float4 _GrabTexture_TexelSize;
-sampler2D _BumpMap;
-sampler2D _MainTex;
-
-half4 frag (v2f i) : SV_Target
-{
-	// calculate perturbed coordinates
-	half2 bump = UnpackNormal(tex2D( _BumpMap, i.uvbump )).rg; // we could optimize this by just reading the x & y without reconstructing the Z
-	float2 offset = bump * _BumpAmt * _GrabTexture_TexelSize.xy;
-	i.uvgrab.xy = offset * i.uvgrab.z + i.uvgrab.xy;
-	
-	half4 col = tex2Dproj( _GrabTexture, UNITY_PROJ_COORD(i.uvgrab));
-	half4 tint = tex2D(_MainTex, i.uvmain);
-	col *= tint;
-	UNITY_APPLY_FOG(i.fogCoord, col);
-	return col;
-}
-ENDCG
-		}
-	}
-
-	// ------------------------------------------------------------------
-	// Fallback for older cards and Unity non-Pro
-
-	SubShader {
-		Blend DstColor Zero
-		Pass {
-			Name "BASE"
-			SetTexture [_MainTex] {	combine texture }
-		}
-	}
-}
-
+    Properties {
+        _Normal ("Normal", 2D) = "bump" {}
+        _Opacity ("Opacity", Range(0, 1)) = 0.5
+        _Albedo ("Albedo", 2D) = "white" {}
+        _Specular ("Specular", Range(0, 1)) = 0
+        _Gloss ("Gloss", Range(0, 1)) = 0
+        [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
+    }
+    SubShader {
+        Tags {
+            "IgnoreProjector"="True"
+            "Queue"="Transparent"
+            "RenderType"="Transparent"
+        }
+        GrabPass{ }
+        Pass {
+            Name "FORWARD"
+            Tags {
+                "LightMode"="ForwardBase"
+            }
+            ZWrite Off
+            
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #define UNITY_PASS_FORWARDBASE
+            #include "UnityCG.cginc"
+            #pragma multi_compile_fwdbase
+            #pragma multi_compile_fog
+            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma target 3.0
+            uniform float4 _LightColor0;
+            uniform sampler2D _GrabTexture;
+            uniform sampler2D _Normal; uniform float4 _Normal_ST;
+            uniform float _Opacity;
+            uniform sampler2D _Albedo; uniform float4 _Albedo_ST;
+            uniform float _Specular;
+            uniform float _Gloss;
+            struct VertexInput {
+                float4 vertex : POSITION;
+                float3 normal : NORMAL;
+                float4 tangent : TANGENT;
+                float2 texcoord0 : TEXCOORD0;
+            };
+            struct VertexOutput {
+                float4 pos : SV_POSITION;
+                float2 uv0 : TEXCOORD0;
+                float4 posWorld : TEXCOORD1;
+                float3 normalDir : TEXCOORD2;
+                float3 tangentDir : TEXCOORD3;
+                float3 bitangentDir : TEXCOORD4;
+                float4 projPos : TEXCOORD5;
+                UNITY_FOG_COORDS(6)
+            };
+            VertexOutput vert (VertexInput v) {
+                VertexOutput o = (VertexOutput)0;
+                o.uv0 = v.texcoord0;
+                o.normalDir = UnityObjectToWorldNormal(v.normal);
+                o.tangentDir = normalize( mul( unity_ObjectToWorld, float4( v.tangent.xyz, 0.0 ) ).xyz );
+                o.bitangentDir = normalize(cross(o.normalDir, o.tangentDir) * v.tangent.w);
+                o.posWorld = mul(unity_ObjectToWorld, v.vertex);
+                float3 lightColor = _LightColor0.rgb;
+                o.pos = UnityObjectToClipPos( v.vertex );
+                UNITY_TRANSFER_FOG(o,o.pos);
+                o.projPos = ComputeScreenPos (o.pos);
+                COMPUTE_EYEDEPTH(o.projPos.z);
+                return o;
+            }
+            float4 frag(VertexOutput i) : COLOR {
+                i.normalDir = normalize(i.normalDir);
+                float3x3 tangentTransform = float3x3( i.tangentDir, i.bitangentDir, i.normalDir);
+                float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
+                float3 _Normal_var = UnpackNormal(tex2D(_Normal,TRANSFORM_TEX(i.uv0, _Normal)));
+                float3 normalLocal = _Normal_var.rgb;
+                float3 normalDirection = normalize(mul( normalLocal, tangentTransform )); // Perturbed normals
+                float2 sceneUVs = (i.projPos.xy / i.projPos.w) + float2(_Normal_var.r,_Normal_var.g);
+                float4 sceneColor = tex2D(_GrabTexture, sceneUVs);
+                float3 lightDirection = normalize(_WorldSpaceLightPos0.xyz);
+                float3 lightColor = _LightColor0.rgb;
+                float3 halfDirection = normalize(viewDirection+lightDirection);
+////// Lighting:
+                float attenuation = 1;
+                float3 attenColor = attenuation * _LightColor0.xyz;
+///////// Gloss:
+                float gloss = _Gloss;
+                float specPow = exp2( gloss * 10.0 + 1.0 );
+////// Specular:
+                float NdotL = saturate(dot( normalDirection, lightDirection ));
+                float3 specularColor = float3(_Specular,_Specular,_Specular);
+                float3 directSpecular = attenColor * pow(max(0,dot(halfDirection,normalDirection)),specPow)*specularColor;
+                float3 specular = directSpecular;
+/////// Diffuse:
+                NdotL = max(0.0,dot( normalDirection, lightDirection ));
+                float3 directDiffuse = max( 0.0, NdotL) * attenColor;
+                float3 indirectDiffuse = float3(0,0,0);
+                indirectDiffuse += UNITY_LIGHTMODEL_AMBIENT.rgb; // Ambient Light
+                float4 _Albedo_var = tex2D(_Albedo,TRANSFORM_TEX(i.uv0, _Albedo));
+                float3 diffuseColor = _Albedo_var.rgb;
+                float3 diffuse = (directDiffuse + indirectDiffuse) * diffuseColor;
+/// Final Color:
+                float3 finalColor = diffuse + specular;
+                fixed4 finalRGBA = fixed4(lerp(sceneColor.rgb, finalColor,_Opacity),1);
+                UNITY_APPLY_FOG(i.fogCoord, finalRGBA);
+                return finalRGBA;
+            }
+            ENDCG
+        }
+        Pass {
+            Name "FORWARD_DELTA"
+            Tags {
+                "LightMode"="ForwardAdd"
+            }
+            Blend One One
+            ZWrite Off
+            
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #define UNITY_PASS_FORWARDADD
+            #include "UnityCG.cginc"
+            #include "AutoLight.cginc"
+            #pragma multi_compile_fwdadd
+            #pragma multi_compile_fog
+            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma target 3.0
+            uniform float4 _LightColor0;
+            uniform sampler2D _GrabTexture;
+            uniform sampler2D _Normal; uniform float4 _Normal_ST;
+            uniform float _Opacity;
+            uniform sampler2D _Albedo; uniform float4 _Albedo_ST;
+            uniform float _Specular;
+            uniform float _Gloss;
+            struct VertexInput {
+                float4 vertex : POSITION;
+                float3 normal : NORMAL;
+                float4 tangent : TANGENT;
+                float2 texcoord0 : TEXCOORD0;
+            };
+            struct VertexOutput {
+                float4 pos : SV_POSITION;
+                float2 uv0 : TEXCOORD0;
+                float4 posWorld : TEXCOORD1;
+                float3 normalDir : TEXCOORD2;
+                float3 tangentDir : TEXCOORD3;
+                float3 bitangentDir : TEXCOORD4;
+                float4 projPos : TEXCOORD5;
+                LIGHTING_COORDS(6,7)
+                UNITY_FOG_COORDS(8)
+            };
+            VertexOutput vert (VertexInput v) {
+                VertexOutput o = (VertexOutput)0;
+                o.uv0 = v.texcoord0;
+                o.normalDir = UnityObjectToWorldNormal(v.normal);
+                o.tangentDir = normalize( mul( unity_ObjectToWorld, float4( v.tangent.xyz, 0.0 ) ).xyz );
+                o.bitangentDir = normalize(cross(o.normalDir, o.tangentDir) * v.tangent.w);
+                o.posWorld = mul(unity_ObjectToWorld, v.vertex);
+                float3 lightColor = _LightColor0.rgb;
+                o.pos = UnityObjectToClipPos( v.vertex );
+                UNITY_TRANSFER_FOG(o,o.pos);
+                o.projPos = ComputeScreenPos (o.pos);
+                COMPUTE_EYEDEPTH(o.projPos.z);
+                TRANSFER_VERTEX_TO_FRAGMENT(o)
+                return o;
+            }
+            float4 frag(VertexOutput i) : COLOR {
+                i.normalDir = normalize(i.normalDir);
+                float3x3 tangentTransform = float3x3( i.tangentDir, i.bitangentDir, i.normalDir);
+                float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
+                float3 _Normal_var = UnpackNormal(tex2D(_Normal,TRANSFORM_TEX(i.uv0, _Normal)));
+                float3 normalLocal = _Normal_var.rgb;
+                float3 normalDirection = normalize(mul( normalLocal, tangentTransform )); // Perturbed normals
+                float2 sceneUVs = (i.projPos.xy / i.projPos.w) + float2(_Normal_var.r,_Normal_var.g);
+                float4 sceneColor = tex2D(_GrabTexture, sceneUVs);
+                float3 lightDirection = normalize(lerp(_WorldSpaceLightPos0.xyz, _WorldSpaceLightPos0.xyz - i.posWorld.xyz,_WorldSpaceLightPos0.w));
+                float3 lightColor = _LightColor0.rgb;
+                float3 halfDirection = normalize(viewDirection+lightDirection);
+////// Lighting:
+                float attenuation = LIGHT_ATTENUATION(i);
+                float3 attenColor = attenuation * _LightColor0.xyz;
+///////// Gloss:
+                float gloss = _Gloss;
+                float specPow = exp2( gloss * 10.0 + 1.0 );
+////// Specular:
+                float NdotL = saturate(dot( normalDirection, lightDirection ));
+                float3 specularColor = float3(_Specular,_Specular,_Specular);
+                float3 directSpecular = attenColor * pow(max(0,dot(halfDirection,normalDirection)),specPow)*specularColor;
+                float3 specular = directSpecular;
+/////// Diffuse:
+                NdotL = max(0.0,dot( normalDirection, lightDirection ));
+                float3 directDiffuse = max( 0.0, NdotL) * attenColor;
+                float4 _Albedo_var = tex2D(_Albedo,TRANSFORM_TEX(i.uv0, _Albedo));
+                float3 diffuseColor = _Albedo_var.rgb;
+                float3 diffuse = directDiffuse * diffuseColor;
+/// Final Color:
+                float3 finalColor = diffuse + specular;
+                fixed4 finalRGBA = fixed4(finalColor * _Opacity,0);
+                UNITY_APPLY_FOG(i.fogCoord, finalRGBA);
+                return finalRGBA;
+            }
+            ENDCG
+        }
+    }
+    FallBack "Diffuse"
+    CustomEditor "ShaderForgeMaterialInspector"
 }
