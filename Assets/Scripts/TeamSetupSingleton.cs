@@ -157,11 +157,13 @@ public class TeamSetupSingleton : ScriptableObject
         {
             m_BlueTeam.AddPlayer(m_PlayerBehaviours[i]);
             m_LobbyPlayers[i].playerColor = Color.blue;
+            m_PlayerBehaviours[i].m_TeamColor = Color.blue;
             i++;
             if (i >= m_PlayerBehaviours.Count)
                 break;
             m_RedTeam.AddPlayer(m_PlayerBehaviours[i]);
             m_LobbyPlayers[i].playerColor = Color.red;
+            m_PlayerBehaviours[i].m_TeamColor = Color.red;
         }
 
     }
