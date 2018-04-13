@@ -18,16 +18,28 @@ public class PlayerBehaviour : NetworkBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    [Command]
+    void CmdAssignClientAuthority(NetworkIdentity id)
+    {
+        var newid = m_SceneObject.GetComponent<NetworkIdentity>();
+        var connection = newid.connectionToClient;
+        id.AssignClientAuthority(connection);
+    }
+
     public void ReSpawn(Object[] args)
     {
         var sender = args[0] as TeamBehaviour;
-        var obj = args[1] as PlayerBehaviour;
+        var behaviour = args[1] as PlayerBehaviour;
         var location = args[2] as Transform;
+        m_SceneObject = args[3] as GameObject;
 
-        if (obj == this)
+        if (behaviour == this)
         {
-            m_SceneObject.transform.position = location.position;
             m_SceneObject.SetActive(true);
+            CmdAssignClientAuthority(m_SceneObject.GetComponent<NetworkIdentity>());
+            m_SceneObject.transform.position = location.position;
+            m_SceneObject.transform.SetParent( this.transform);
+           
         }
     }    
 }

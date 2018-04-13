@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Name: Blue Team
   m_EditorClassIdentifier: 
   m_Players: []
+  m_OnAllPlayerLeftTeam: {fileID: 0}
+  m_MaxPlayers: 12
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_HeavyTankPrefab: {fileID: 0}
-  m_LightTankPrefab: {fileID: 0}
+  m_HeavyTankPrefab: {fileID: 1807453203385458, guid: 2e5893d6428df4f4db29a08c519f536c,
+    type: 2}
+  m_LightTankPrefab: {fileID: 1054708008941050, guid: 05e9308a5a9fca7479a94928580e7a1e,
+    type: 2}

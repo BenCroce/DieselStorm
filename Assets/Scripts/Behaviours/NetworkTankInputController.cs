@@ -66,7 +66,9 @@ public class NetworkTankInputController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isLocalPlayer)
+        //if (!isLocalPlayer)
+        //    return;
+        if (!hasAuthority)
             return;
         m_hinput = m_HorizontalAxis.AxisValue();
         m_vinput = m_VerticalAxis.AxisValue();

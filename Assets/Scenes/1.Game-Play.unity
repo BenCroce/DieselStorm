@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -1208,6 +1208,81 @@ MonoBehaviour:
   oldBaseMapDistance: 0
   reenabled: 1
   sTerrainDirty: 1
+--- !u!1 &925745214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 925745216}
+  - component: {fileID: 925745215}
+  - component: {fileID: 925745217}
+  m_Layer: 0
+  m_Name: TeamSetUp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &925745215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925745214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a392201be1439640ad3c0c09ed09fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TeamSetupSingleton: {fileID: 11400000, guid: 15bf77c75f43a55439f5a92ca9054372,
+    type: 2}
+--- !u!4 &925745216
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925745214}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.000000834465, y: -63.267998, z: 0.0589056}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &925745217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925745214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!1 &970676338
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,6 +1668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1242882320}
   - component: {fileID: 1242882319}
+  - component: {fileID: 1242882321}
   m_Layer: 0
   m_Name: Blue_Team
   m_TagString: Untagged
@@ -1612,8 +1688,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TeamScriptable: {fileID: 11400000, guid: 506def79fccf50944939a014f19ebff0, type: 2}
-  m_SpawnLocation: {fileID: 0}
-  m_PlayerRespawn: {fileID: 0}
+  m_SpawnLocation: {fileID: 389840752}
+  m_PlayerRespawn: {fileID: 11400000, guid: fc63c85cc0446b24d8a6bd24ec034179, type: 2}
 --- !u!4 &1242882320
 Transform:
   m_ObjectHideFlags: 0
@@ -1627,6 +1703,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1242882321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1242882318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!1 &1283279589
 GameObject:
   m_ObjectHideFlags: 0
@@ -2733,6 +2841,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2050773704}
   - component: {fileID: 2050773703}
+  - component: {fileID: 2050773705}
   m_Layer: 0
   m_Name: Red_Team
   m_TagString: Untagged
@@ -2752,8 +2861,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TeamScriptable: {fileID: 11400000, guid: f7c06211e6623e3439bd966b5f2bc1c0, type: 2}
-  m_SpawnLocation: {fileID: 0}
-  m_PlayerRespawn: {fileID: 0}
+  m_SpawnLocation: {fileID: 1707884923}
+  m_PlayerRespawn: {fileID: 11400000, guid: fc63c85cc0446b24d8a6bd24ec034179, type: 2}
 --- !u!4 &2050773704
 Transform:
   m_ObjectHideFlags: 0
@@ -2767,3 +2876,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2050773705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2050773702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
