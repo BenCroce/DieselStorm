@@ -7,12 +7,12 @@ using UnityEngine.Networking;
 [CreateAssetMenu(menuName = "TeamScriptable")]
 public class TeamSriptable : ScriptableObject
 {
-    public List<PlayerBehaviour> m_Players;
-    public GameEventArgs m_OnPlayerAdded;
+    public List<PlayerBehaviour> m_Players;    
     [SerializeField]
     private Color m_Color;
 
-    public NetworkLobbyManager m_LobbyManager;
+    public GameObject m_HeavyTankPrefab;
+    public GameObject m_LightTankPrefab;
 
     void OnEnable()
     {

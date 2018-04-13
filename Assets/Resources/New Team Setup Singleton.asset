@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a62d06ff68790e4eb684f7ce2549ace, type: 3}
   m_Name: New Team Setup Singleton
   m_EditorClassIdentifier: 
-  m_RedTeam: {fileID: 11400000, guid: afac491789226544d9408601a982a46d, type: 2}
-  m_BlueTeam: {fileID: 11400000, guid: 91a4fbfa0dfc78c428224c2e6b16d9f1, type: 2}
+  m_RedTeam: {fileID: 11400000, guid: f7c06211e6623e3439bd966b5f2bc1c0, type: 2}
+  m_BlueTeam: {fileID: 11400000, guid: 506def79fccf50944939a014f19ebff0, type: 2}
   m_PlayerPrefab: {fileID: 1373863025843376, guid: d698d400c334a104dbeeab85f4202096,
     type: 2}
   m_lobbyPlayerEntries: []
