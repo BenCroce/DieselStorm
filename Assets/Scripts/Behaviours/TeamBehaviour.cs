@@ -7,7 +7,7 @@ public class TeamBehaviour : MonoBehaviour
     public TeamSriptable m_TeamScriptable;
     public Transform m_SpawnLocation;
     public GameEventArgs m_PlayerRespawn;
-
+    
     public void SpawnTank(Object[] args)
     {
         var player = args[0] as PlayerBehaviour;

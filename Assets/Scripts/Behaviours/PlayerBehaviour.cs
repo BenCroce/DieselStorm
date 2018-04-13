@@ -8,6 +8,9 @@ public class PlayerBehaviour : NetworkBehaviour
     [SyncVar] public string m_ScreenName;
     [SyncVar] public int m_Score;
     [SyncVar] public Color m_TeamColor;
+
+    public GameObject m_SceneObject;
+
     public int LobbyID;
 
     void Awake()
@@ -15,15 +18,17 @@ public class PlayerBehaviour : NetworkBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void SetTeamColor(UnityEngine.Object[] obj)
+    public void ReSpawn(Object[] args)
     {
-        var sender = obj[0] as TeamSriptable;
-        var player = obj[1] as PlayerBehaviour;
-       
-        if (player == this)
-        {                          
-            m_TeamColor = (sender.Color == null) ?  Color.gray : sender.Color;
+        var sender = args[0] as TeamBehaviour;
+        var obj = args[1] as PlayerBehaviour;
+        var location = args[2] as Transform;
+
+        if (obj == this)
+        {
+            m_SceneObject.transform.position = location.position;
+            m_SceneObject.SetActive(true);
         }
-    }
+    }    
 }
 
