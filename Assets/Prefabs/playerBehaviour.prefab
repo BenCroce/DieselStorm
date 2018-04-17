@@ -119,3 +119,4 @@ MonoBehaviour:
   m_TeamColor: {r: 0, g: 0, b: 0, a: 0}
   m_SceneObject: {fileID: 0}
   LobbyID: 0
+  m_PlayerObjectDestroyed: {fileID: 0}

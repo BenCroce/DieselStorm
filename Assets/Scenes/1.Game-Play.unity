@@ -1669,6 +1669,7 @@ GameObject:
   - component: {fileID: 1242882320}
   - component: {fileID: 1242882319}
   - component: {fileID: 1242882321}
+  - component: {fileID: 1242882322}
   m_Layer: 0
   m_Name: Blue_Team
   m_TagString: Untagged
@@ -1690,6 +1691,7 @@ MonoBehaviour:
   m_TeamScriptable: {fileID: 11400000, guid: 506def79fccf50944939a014f19ebff0, type: 2}
   m_SpawnLocation: {fileID: 389840752}
   m_PlayerRespawn: {fileID: 11400000, guid: fc63c85cc0446b24d8a6bd24ec034179, type: 2}
+  m_RespawningPlayer: {fileID: 0}
 --- !u!4 &1242882320
 Transform:
   m_ObjectHideFlags: 0
@@ -1735,6 +1737,35 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 1
   m_LocalPlayerAuthority: 0
+--- !u!114 &1242882322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1242882318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3585c62ef44f14546b8830a61975bc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: a2b6ff5998a74074ab4d77b346477fbe, type: 2}
+  Sender: {fileID: 0}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1242882319}
+        m_MethodName: SpawnTank
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: GameEventArgsResponse, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1283279589
 GameObject:
   m_ObjectHideFlags: 0
@@ -2842,6 +2873,7 @@ GameObject:
   - component: {fileID: 2050773704}
   - component: {fileID: 2050773703}
   - component: {fileID: 2050773705}
+  - component: {fileID: 2050773706}
   m_Layer: 0
   m_Name: Red_Team
   m_TagString: Untagged
@@ -2863,6 +2895,7 @@ MonoBehaviour:
   m_TeamScriptable: {fileID: 11400000, guid: f7c06211e6623e3439bd966b5f2bc1c0, type: 2}
   m_SpawnLocation: {fileID: 1707884923}
   m_PlayerRespawn: {fileID: 11400000, guid: fc63c85cc0446b24d8a6bd24ec034179, type: 2}
+  m_RespawningPlayer: {fileID: 0}
 --- !u!4 &2050773704
 Transform:
   m_ObjectHideFlags: 0
@@ -2908,3 +2941,32 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 1
   m_LocalPlayerAuthority: 0
+--- !u!114 &2050773706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2050773702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3585c62ef44f14546b8830a61975bc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: a2b6ff5998a74074ab4d77b346477fbe, type: 2}
+  Sender: {fileID: 0}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2050773703}
+        m_MethodName: SpawnTank
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: GameEventArgsResponse, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null

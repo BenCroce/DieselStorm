@@ -8,20 +8,46 @@ public class TeamBehaviour : NetworkBehaviour
     public TeamSriptable m_TeamScriptable;
     public Transform m_SpawnLocation;
     public GameEventArgs m_PlayerRespawn;
-        
+
+    void Start()
+    {
+        StartCoroutine(InitalSpawn());
+    }
+
+    public void SpawnTank(Object[] args)
+    {
+        var senderGameObject = args[0] as PlayerBehaviour;
+        if (m_TeamScriptable.m_Players.Contains(senderGameObject))
+        {
+            m_RespawningPlayer = senderGameObject;
+            CmdSpawnTank();            
+        }
+    }
+
+    public PlayerBehaviour m_RespawningPlayer;
+
     [ContextMenu("Force Spawn")]
     [Command]
     public void CmdSpawnTank()
     {
         GameObject tank = Instantiate(m_TeamScriptable.m_HeavyTankPrefab);
-        m_PlayerRespawn.Raise(this, m_TeamScriptable.m_Players[0], m_SpawnLocation, tank);
         NetworkServer.Spawn(tank);
+        m_PlayerRespawn.Raise(this, m_RespawningPlayer, m_SpawnLocation, tank);       
+        m_RespawningPlayer = null;
+    }
 
-        //var player = args[0] as PlayerBehaviour;
-        //if (m_TeamScriptable.m_Players.Contains(player))
-        //{
-        //    m_PlayerRespawn.Raise(this, player, m_SpawnLocation, 
-        //        m_TeamScriptable.m_HeavyTankPrefab);
-        //}
-    }    
+    IEnumerator InitalSpawn()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1.0f);
+            foreach (var player in m_TeamScriptable.m_Players)
+            {
+                GameObject tank = Instantiate(m_TeamScriptable.m_HeavyTankPrefab);
+                m_PlayerRespawn.Raise(this, player, m_SpawnLocation, tank);
+                NetworkServer.Spawn(tank);
+            }
+            break;
+        }
+    }
 }

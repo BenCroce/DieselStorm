@@ -13,6 +13,8 @@ public class PlayerBehaviour : NetworkBehaviour
 
     public int LobbyID;
 
+    public GameEventArgs m_PlayerObjectDestroyed; 
+
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -25,7 +27,7 @@ public class PlayerBehaviour : NetworkBehaviour
         var connection = newid.connectionToClient;
         id.AssignClientAuthority(connection);
     }
-
+    
     public void ReSpawn(Object[] args)
     {
         var sender = args[0] as TeamBehaviour;
@@ -34,13 +36,16 @@ public class PlayerBehaviour : NetworkBehaviour
         m_SceneObject = args[3] as GameObject;
 
         if (behaviour == this)
-        {
-            m_SceneObject.SetActive(true);
-            CmdAssignClientAuthority(m_SceneObject.GetComponent<NetworkIdentity>());
+        {                        
             m_SceneObject.transform.position = location.position;
-            m_SceneObject.transform.SetParent( this.transform);
-           
+            CmdAssignClientAuthority(m_SceneObject.GetComponent<NetworkIdentity>());
         }
-    }    
-}
+    }
 
+    public void SceneObjectDestroyed(Object[] args)
+    {
+        var senderGameObject = args[0] as GameObject;
+        if(senderGameObject == m_SceneObject)
+            m_PlayerObjectDestroyed.Raise(this);
+    }
+}
