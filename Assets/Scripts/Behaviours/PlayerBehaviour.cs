@@ -20,13 +20,13 @@ public class PlayerBehaviour : NetworkBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    [Command]
-    void CmdAssignClientAuthority(NetworkIdentity id)
-    {
-        var newid = m_SceneObject.GetComponent<NetworkIdentity>();
-        var connection = newid.connectionToClient;
-        id.AssignClientAuthority(connection);
-    }
+    //[Command]
+    //void CmdAssignClientAuthority(NetworkIdentity id)
+    //{
+    //    var newid = m_SceneObject.GetComponent<NetworkIdentity>();
+    //    var connection = newid.connectionToClient;
+    //    id.AssignClientAuthority(connection);
+    //}
     
     public void ReSpawn(Object[] args)
     {
@@ -38,7 +38,8 @@ public class PlayerBehaviour : NetworkBehaviour
         if (behaviour == this)
         {                        
             m_SceneObject.transform.position = location.position;
-            CmdAssignClientAuthority(m_SceneObject.GetComponent<NetworkIdentity>());
+            m_SceneObject.GetComponent<ClientAuthorityBehaviour>().
+                CmdAssignClientAuthority(m_SceneObject.GetComponent<NetworkIdentity>());
         }
     }
 
