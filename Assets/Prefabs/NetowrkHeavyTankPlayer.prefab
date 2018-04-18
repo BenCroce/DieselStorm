@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 136379378249268166}
   - component: {fileID: 114776555332004582}
   - component: {fileID: 114147661516829482}
-  - component: {fileID: 114207192333662526}
+  - component: {fileID: 114872546404093766}
   - component: {fileID: 114169411088744900}
   - component: {fileID: 114174089018670736}
   - component: {fileID: 114431257029717128}
@@ -3215,7 +3215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_vcam: {fileID: 1770520987920330}
-  m_movement: {fileID: 114207192333662526}
+  m_movement: {fileID: 114872546404093766}
   m_Mag: {fileID: 114425516467148810}
   m_HorizontalAxis: {fileID: 11400000, guid: 887e3c9442d5a2148b9130986fb0dbd8, type: 2}
   m_VerticalAxis: {fileID: 11400000, guid: 91fbc89a25db0414a852ec07e0173402, type: 2}
@@ -3259,22 +3259,6 @@ MonoBehaviour:
   m_turretPos: {fileID: 4161191844826076}
   m_shootForce: 100
   m_shootCooldown: 1
---- !u!114 &114207192333662526
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1278390446558002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21412e4e413ae1346a45334b88b71912, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_forces: {fileID: 11400000, guid: 6aa139186f839114e89167d5fb90200b, type: 2}
-  m_steerGuide: {fileID: 0}
-  m_rayTPos: {x: 0, y: 0, z: 2}
-  m_rayLPos: {x: -2, y: 0, z: 0}
-  m_rayRPos: {x: 2, y: 0, z: 0}
 --- !u!114 &114209103833854204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3788,6 +3772,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114872546404093766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1278390446558002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092b6ab7712f396448fd376054bd0c1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_forces: {fileID: 11400000, guid: 90e5bf241e088094abee70f2ff505262, type: 2}
+  m_steerGuide: {fileID: 0}
 --- !u!114 &114920163598748548
 MonoBehaviour:
   m_ObjectHideFlags: 1

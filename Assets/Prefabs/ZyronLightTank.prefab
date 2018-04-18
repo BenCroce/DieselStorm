@@ -451,6 +451,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1975511838122908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4407669948434812}
+  m_Layer: 0
+  m_Name: AimPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1976968512873568
 GameObject:
   m_ObjectHideFlags: 1
@@ -479,7 +494,6 @@ GameObject:
   - component: {fileID: 65202996559528962}
   - component: {fileID: 136635753386189824}
   - component: {fileID: 136724494121090562}
-  - component: {fileID: 114764922857299326}
   - component: {fileID: 114291403370408154}
   - component: {fileID: 114352714724419994}
   - component: {fileID: 114633509896727680}
@@ -665,6 +679,19 @@ Transform:
   m_Father: {fileID: 4243959327744410}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4407669948434812
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1975511838122908}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4504906343468682}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4445031595570126
 Transform:
   m_ObjectHideFlags: 1
@@ -689,6 +716,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4325534819946026}
+  - {fileID: 4407669948434812}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -991,21 +1019,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_forces: {fileID: 11400000, guid: ca62984da82045a43b80299d473cf5e8, type: 2}
   m_steerGuide: {fileID: 0}
---- !u!114 &114764922857299326
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1989276738112400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeddf9591e1f8f74bb82a860881034d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_shell: {fileID: 0}
-  m_turretPos: {fileID: 0}
-  m_shootForce: 200
-  m_shootCooldown: 1
 --- !u!136 &136635753386189824
 CapsuleCollider:
   m_ObjectHideFlags: 1
