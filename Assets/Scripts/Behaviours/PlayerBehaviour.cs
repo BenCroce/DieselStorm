@@ -19,14 +19,6 @@ public class PlayerBehaviour : NetworkBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
     }
-
-    //[Command]
-    //void CmdAssignClientAuthority(NetworkIdentity id)
-    //{
-    //    var newid = m_SceneObject.GetComponent<NetworkIdentity>();
-    //    var connection = newid.connectionToClient;
-    //    id.AssignClientAuthority(connection);
-    //}
     
     public void ReSpawn(Object[] args)
     {
@@ -42,7 +34,6 @@ public class PlayerBehaviour : NetworkBehaviour
             StartCoroutine(RPCCall());
         }
     }
-
 
     [ClientRpc]
     public void RpcAssignClientAuthority(NetworkIdentity local, NetworkIdentity id)
