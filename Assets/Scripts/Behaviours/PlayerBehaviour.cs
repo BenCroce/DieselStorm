@@ -33,11 +33,12 @@ public class PlayerBehaviour : NetworkBehaviour
         var sender = args[0] as TeamBehaviour;
         var behaviour = args[1] as PlayerBehaviour;
         var location = args[2] as Transform;
-        m_SceneObject = args[3] as GameObject;
 
         if (behaviour == this)
-        {                        
-            m_SceneObject.transform.position = location.position;
+        {
+            m_SceneObject = args[3] as GameObject;
+            m_SceneObject.transform.position = location.position + 
+                new Vector3(Random.Range(0,25),0, Random.Range(0,25));
             StartCoroutine(RPCCall());
         }
     }
@@ -55,8 +56,8 @@ public class PlayerBehaviour : NetworkBehaviour
     [Command]
     void CmdAssignAuthority(NetworkIdentity local, NetworkIdentity id)
     {
-        var connection = local.connectionToClient;
-        id.AssignClientAuthority(connection);
+        var connection = local.connectionToClient;        
+        id.AssignClientAuthority(connection);        
     }
 
     IEnumerator RPCCall()
@@ -64,8 +65,6 @@ public class PlayerBehaviour : NetworkBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1.5f);
-            //m_SceneObject.GetComponent<ClientAuthorityBehaviour>().
-              //  RpcAssignClientAuthority(GetComponent<NetworkIdentity>());
               RpcAssignClientAuthority(GetComponent<NetworkIdentity>(), 
                   m_SceneObject.GetComponent<NetworkIdentity>());
             break;
@@ -74,8 +73,8 @@ public class PlayerBehaviour : NetworkBehaviour
 
     public void SceneObjectDestroyed(Object[] args)
     {
-        var senderGameObject = args[0] as GameObject;
-        if(senderGameObject == m_SceneObject)
+        var senderGameObject = args[0] as TankStats;
+        if(senderGameObject.gameObject == m_SceneObject)
             m_PlayerObjectDestroyed.Raise(this);
     }
 }

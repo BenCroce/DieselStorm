@@ -46,7 +46,7 @@ public class TankStats : MonoBehaviour, IDamageable
         else
             rt_Health.Apply(modifier);
             
-        m_TankStatsChanged.Raise(this);       
+        m_TankStatsChanged.Raise(this);    
     }   
 
     public void OnTakeDamage(UnityEngine.Object[] args)
