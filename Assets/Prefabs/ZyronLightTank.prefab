@@ -481,7 +481,8 @@ GameObject:
   - component: {fileID: 136724494121090562}
   - component: {fileID: 114764922857299326}
   - component: {fileID: 114291403370408154}
-  - component: {fileID: 114945770977442172}
+  - component: {fileID: 114352714724419994}
+  - component: {fileID: 114633509896727680}
   m_Layer: 0
   m_Name: ZyronLightTank
   m_TagString: Player
@@ -963,7 +964,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f09a73bba52b234aa50f456ba0944d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 114945770977442172}
+  movement: {fileID: 114633509896727680}
+--- !u!114 &114352714724419994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1989276738112400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4178e6828fd030a4eb54f2486556fc58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_hoverValues: {fileID: 11400000, guid: a05802d19e84d944e8b8fb7483a51095, type: 2}
+  m_input: {fileID: 114291403370408154}
+--- !u!114 &114633509896727680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1989276738112400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092b6ab7712f396448fd376054bd0c1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_forces: {fileID: 11400000, guid: ca62984da82045a43b80299d473cf5e8, type: 2}
+  m_steerGuide: {fileID: 0}
 --- !u!114 &114764922857299326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -975,26 +1002,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeddf9591e1f8f74bb82a860881034d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_shell: {fileID: 1448822658572678, guid: 0ff9ca6d8824e434bbf61e08b10bbb12, type: 2}
-  m_turretPos: {fileID: 4819448890303238}
+  m_shell: {fileID: 0}
+  m_turretPos: {fileID: 0}
   m_shootForce: 200
   m_shootCooldown: 1
---- !u!114 &114945770977442172
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1989276738112400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 092b6ab7712f396448fd376054bd0c1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_forces: {fileID: 11400000, guid: 1db4a511cc2d8694ea2947632ebc5444, type: 2}
-  m_steerGuide: {fileID: 0}
-  m_rayTPos: {x: 0, y: 0, z: 1.8}
-  m_rayLPos: {x: -1.8, y: 0, z: 0}
-  m_rayRPos: {x: 1.8, y: 0, z: 0}
 --- !u!136 &136635753386189824
 CapsuleCollider:
   m_ObjectHideFlags: 1

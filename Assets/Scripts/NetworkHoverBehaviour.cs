@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class HoverBehaviour : MonoBehaviour
-{
+public class NetworkHoverBehaviour : MonoBehaviour {
+
     public HoverScriptable m_hoverValues;
-    public TankInputController m_input;
+    public NetworkTankInputController m_input;
 
     //Hover and balance rays
     Ray m_ray, m_rayT, m_rayL, m_rayR;
@@ -17,7 +17,7 @@ public class HoverBehaviour : MonoBehaviour
     Rigidbody m_self;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         //Define rigidbody
         m_self = GetComponent<Rigidbody>();
@@ -30,25 +30,28 @@ public class HoverBehaviour : MonoBehaviour
         if (!m_input)
             Debug.LogWarning("There is no controller set! Hover on/off switching is disabled.");
     }
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+
+    // Update is called once per frame
+    void FixedUpdate()
     {
         //Are we over the ground?
         m_ray = new Ray(transform.position, -transform.up);
         RaycastHit ground;
 
-        //Will balance to ground slope up to balance height limit above ground
-        if (m_input.Jinput <= 0.99f && Physics.Raycast(m_ray, out ground, m_hoverValues.m_balanceHeightLimit))
+        //Will balance to ground slope up to 5 units above ground
+        if (m_input.Jinput <= 0.99f && Physics.Raycast(m_ray, out ground, m_hoverValues.m_hoverHeight + 5))
         {
             HoverBalance();
-
-            if (ground.distance <= m_hoverValues.m_hoverHeight)
+            //Can move and steer up to 2 units above hover height
+            if (ground.distance <= m_hoverValues.m_hoverHeight + 2)
             {
-                Hover(ground, 0);
+                if (ground.distance <= m_hoverValues.m_hoverHeight)
+                {
+                    Hover(ground, 0);
 
-                if (m_input != null)
-                    Hover(ground, m_input.Jinput);
+                    if (m_input != null)
+                        Hover(ground, m_input.Jinput);
+                }
             }
         }
         else
@@ -67,9 +70,9 @@ public class HoverBehaviour : MonoBehaviour
         RaycastHit balR;
 
         //If all raycasts are hitting
-        if (Physics.Raycast(m_rayT, out balT, m_hoverValues.m_balanceHeightLimit)
-        && Physics.Raycast(m_rayL, out balL, m_hoverValues.m_balanceHeightLimit)
-        && Physics.Raycast(m_rayR, out balR, m_hoverValues.m_balanceHeightLimit))
+        if (Physics.Raycast(m_rayT, out balT, m_hoverValues.m_hoverHeight + 2)
+        && Physics.Raycast(m_rayL, out balL, m_hoverValues.m_hoverHeight + 2)
+        && Physics.Raycast(m_rayR, out balR, m_hoverValues.m_hoverHeight + 2))
         {
             //Get the average normal between the three raycast hits
             Vector3 norm = Vector3.Normalize(balT.normal + balL.normal + balR.normal);
@@ -79,7 +82,7 @@ public class HoverBehaviour : MonoBehaviour
             m_self.AddTorque(new Vector3(bal.x -
                 (m_self.angularVelocity.x / 20), bal.y -
                 (m_self.angularVelocity.y / 20), bal.z -
-                (m_self.angularVelocity.z / 20)) * m_hoverValues.m_balanceMultiplier,
+                (m_self.angularVelocity.z / 20)) * 60,
                 ForceMode.Acceleration);
         }
 
@@ -98,6 +101,6 @@ public class HoverBehaviour : MonoBehaviour
     void Rebalance()
     {
         Quaternion rot = Quaternion.FromToRotation(transform.up, Vector3.up);
-        m_self.AddTorque(new Vector3(rot.x, rot.y, rot.z) * m_hoverValues.m_uprightMultiplier);
+        m_self.AddTorque(new Vector3(rot.x, rot.y, rot.z) * 200);
     }
 }
