@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
+
 public class ClientAuthorityBehaviour : NetworkBehaviour
-{    
-    public void CmdAssignClientAuthority(NetworkIdentity id)
+{
+    [ClientRpc]
+    public void RpcAssignClientAuthority(NetworkIdentity id)
     {
-        var newid = this.GetComponent<NetworkIdentity>();
-        var connection = newid.connectionToClient;
-        id.AssignClientAuthority(connection);
+        var curid = this.GetComponent<NetworkIdentity>();
+        var connection = curid.connectionToClient;
+        curid.AssignClientAuthority(connection);        
     }
 }

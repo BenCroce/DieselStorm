@@ -38,8 +38,37 @@ public class PlayerBehaviour : NetworkBehaviour
         if (behaviour == this)
         {                        
             m_SceneObject.transform.position = location.position;
-            m_SceneObject.GetComponent<ClientAuthorityBehaviour>().
-                CmdAssignClientAuthority(m_SceneObject.GetComponent<NetworkIdentity>());
+            StartCoroutine(RPCCall());
+        }
+    }
+
+
+    [ClientRpc]
+    public void RpcAssignClientAuthority(NetworkIdentity local, NetworkIdentity id)
+    {
+        if (local.isLocalPlayer)
+        {
+            CmdAssignAuthority(local, id);
+        }        
+    }
+
+    [Command]
+    void CmdAssignAuthority(NetworkIdentity local, NetworkIdentity id)
+    {
+        var connection = local.connectionToClient;
+        id.AssignClientAuthority(connection);
+    }
+
+    IEnumerator RPCCall()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1.5f);
+            //m_SceneObject.GetComponent<ClientAuthorityBehaviour>().
+              //  RpcAssignClientAuthority(GetComponent<NetworkIdentity>());
+              RpcAssignClientAuthority(GetComponent<NetworkIdentity>(), 
+                  m_SceneObject.GetComponent<NetworkIdentity>());
+            break;
         }
     }
 
