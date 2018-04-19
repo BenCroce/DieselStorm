@@ -216,7 +216,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4145185258225102, guid: a07a8e62407bc4f42b9e8c008a31f6b3, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -5.313
+      value: 3.26
       objectReference: {fileID: 0}
     - target: {fileID: 4145185258225102, guid: a07a8e62407bc4f42b9e8c008a31f6b3, type: 2}
       propertyPath: m_LocalRotation.x
@@ -547,7 +547,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -244360909
+  randomSeed: -1146942303
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4156,6 +4156,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 198484730546809348, guid: 1f94f2a3aa059e64fa62929cbdc52a7d,
+        type: 2}
+      propertyPath: CollisionModule.plane0
+      value: 
+      objectReference: {fileID: 2142134060}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f94f2a3aa059e64fa62929cbdc52a7d, type: 2}
   m_IsPrefabParent: 0
@@ -4445,7 +4450,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1483709079
+  randomSeed: -2039516129
   InitialModule:
     serializedVersion: 3
     enabled: 1
