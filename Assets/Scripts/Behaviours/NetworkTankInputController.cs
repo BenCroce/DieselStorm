@@ -62,6 +62,7 @@ public class NetworkTankInputController : NetworkBehaviour
     {
         if (!isLocalPlayer)
             m_vcam.SetActive(false);
+        m_movement = GetComponent<TankMovementBehaviour>();
     }
     // Update is called once per frame
     void Update()
