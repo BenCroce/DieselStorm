@@ -55,7 +55,8 @@ public class TankMovementBehaviour : MovementBehaviour {
 
 
             //TANK TURNING//
-            Steer(m_steerGuide, m_jinput);
+            if(m_steerGuide != null)
+                Steer(m_steerGuide, m_jinput);
         }
     }
 

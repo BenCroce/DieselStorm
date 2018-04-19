@@ -70,9 +70,4 @@ public class PlayerBehaviour : NetworkBehaviour
         if(senderGameObject.gameObject == m_SceneObject)
             m_PlayerObjectDestroyed.Raise(this);
     }
-
-    void Update()
-    {
-
-    }
 }

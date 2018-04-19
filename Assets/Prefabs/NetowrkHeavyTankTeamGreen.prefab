@@ -170,22 +170,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1083667688990660
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4604492564391156}
-  - component: {fileID: 114726306149016182}
-  m_Layer: 0
-  m_Name: CM FreeLook2
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1094844231765158
 GameObject:
   m_ObjectHideFlags: 1
@@ -1243,7 +1227,6 @@ GameObject:
   - component: {fileID: 136673174412712290}
   - component: {fileID: 114704749423503242}
   - component: {fileID: 114547824814802958}
-  - component: {fileID: 114045705419953968}
   - component: {fileID: 114146183765100044}
   - component: {fileID: 114024835384884690}
   - component: {fileID: 114814261748788110}
@@ -1256,6 +1239,7 @@ GameObject:
   - component: {fileID: 114165767753560270}
   - component: {fileID: 114881192472278596}
   - component: {fileID: 114123176727555956}
+  - component: {fileID: 114858460093541792}
   m_Layer: 0
   m_Name: NetowrkHeavyTankTeamGreen
   m_TagString: Player
@@ -1792,7 +1776,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4895132502266988}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4296931968722942
 Transform:
@@ -2131,19 +2115,6 @@ Transform:
   m_Father: {fileID: 4742371046331670}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4604492564391156
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083667688990660}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: -15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4895132502266988}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4605181483560314
 Transform:
   m_ObjectHideFlags: 1
@@ -2306,7 +2277,7 @@ Transform:
   - {fileID: 4763867924548718}
   - {fileID: 4149820764724228}
   m_Father: {fileID: 4895132502266988}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4714647706820758
 Transform:
@@ -2529,7 +2500,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4604492564391156}
   - {fileID: 4285319515838170}
   - {fileID: 4711978838685544}
   m_Father: {fileID: 0}
@@ -2948,22 +2918,6 @@ MonoBehaviour:
   m_turretPos: {fileID: 4056823715499636}
   m_shootForce: 100
   m_shootCooldown: 1
---- !u!114 &114045705419953968
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1807453203385458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21412e4e413ae1346a45334b88b71912, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_forces: {fileID: 11400000, guid: 6aa139186f839114e89167d5fb90200b, type: 2}
-  m_steerGuide: {fileID: 0}
-  m_rayTPos: {x: 0, y: 0, z: 2}
-  m_rayLPos: {x: -2, y: 0, z: 0}
-  m_rayRPos: {x: 2, y: 0, z: 0}
 --- !u!114 &114084761277578994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3146,8 +3100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d65e58b968fbd41a58af0587e21d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_vcam: {fileID: 1083667688990660}
-  m_movement: {fileID: 114045705419953968}
+  m_vcam: {fileID: 0}
+  m_movement: {fileID: 0}
   m_Mag: {fileID: 114287144515778404}
   m_HorizontalAxis: {fileID: 11400000, guid: 887e3c9442d5a2148b9130986fb0dbd8, type: 2}
   m_VerticalAxis: {fileID: 11400000, guid: 91fbc89a25db0414a852ec07e0173402, type: 2}
@@ -3220,71 +3174,6 @@ MonoBehaviour:
     i15: 108
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &114726306149016182
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083667688990660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 319d2fe34a804e245819465c9505ea59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  m_LockStageInInspector: 
-  m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_LookAt: {fileID: 4895132502266988}
-  m_Follow: {fileID: 4895132502266988}
-  m_CommonLens: 1
-  m_Lens:
-    FieldOfView: 40
-    OrthographicSize: 10
-    NearClipPlane: 0.1
-    FarClipPlane: 5000
-    Dutch: 0
-  m_YAxis:
-    Value: 0.5
-    m_MaxSpeed: 2
-    m_AccelTime: 0.2
-    m_DecelTime: 0.1
-    m_InputAxisName: Mouse Y
-    m_InputAxisValue: 0
-    m_InvertAxis: 0
-  m_XAxis:
-    Value: 0
-    m_MaxSpeed: 300
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
-    m_InputAxisName: Mouse X
-    m_InputAxisValue: 0
-    m_InvertAxis: 1
-  m_Heading:
-    m_HeadingDefinition: 2
-    m_VelocityFilterStrength: 4
-    m_HeadingBias: 0
-  m_RecenterToTargetHeading:
-    m_enabled: 0
-    m_RecenterWaitTime: 1
-    m_RecenteringTime: 2
-    m_LegacyHeadingDefinition: -1
-    m_LegacyVelocityFilterStrength: -1
-  m_BindingMode: 5
-  m_SplineCurvature: 0.2
-  m_Orbits:
-  - m_Height: 4.5
-    m_Radius: 10
-  - m_Height: 2.5
-    m_Radius: 15
-  - m_Height: 0.4
-    m_Radius: 10
-  m_LegacyHeadingBias: 3.4028235e+38
-  m_Rigs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &114814261748788110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3297,6 +3186,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updatesPerSecond: 60
+--- !u!114 &114858460093541792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807453203385458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092b6ab7712f396448fd376054bd0c1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_forces: {fileID: 11400000, guid: 90e5bf241e088094abee70f2ff505262, type: 2}
+  m_steerGuide: {fileID: 0}
 --- !u!114 &114881192472278596
 MonoBehaviour:
   m_ObjectHideFlags: 1

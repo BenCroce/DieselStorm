@@ -44,8 +44,8 @@ public class TeamBehaviour : NetworkBehaviour
             foreach (var player in m_TeamScriptable.m_Players)
             {
                 GameObject tank = Instantiate(m_TeamScriptable.m_HeavyTankPrefab);
-                m_PlayerRespawn.Raise(this, player, m_SpawnLocation, tank);
                 NetworkServer.Spawn(tank);
+                m_PlayerRespawn.Raise(this, player, m_SpawnLocation, tank);                
             }
             break;
         }
