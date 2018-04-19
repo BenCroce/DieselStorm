@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CinemachineSteerguide : MonoBehaviour {
+public class CameraSteerguide : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate ()

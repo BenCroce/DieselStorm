@@ -339,7 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 5, z: -12}
-  m_XDamping: 1
+  m_XDamping: 0.2
   m_YDamping: 0.2
   m_ZDamping: 0.2
   m_PitchDamping: 0
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 5, z: -12}
-  m_XDamping: 1
+  m_XDamping: 0.2
   m_YDamping: 0.2
   m_ZDamping: 0.2
   m_PitchDamping: 0
@@ -854,6 +854,8 @@ GameObject:
   - component: {fileID: 1170939146}
   - component: {fileID: 1170939145}
   - component: {fileID: 1170939147}
+  - component: {fileID: 1170939148}
+  - component: {fileID: 1170939149}
   m_Layer: 0
   m_Name: CM FreeLook3
   m_TagString: Untagged
@@ -965,6 +967,47 @@ MonoBehaviour:
   m_MaximumEffort: 4
   m_Damping: 0
   m_OptimalTargetDistance: 0
+--- !u!114 &1170939148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1170939144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3585c62ef44f14546b8830a61975bc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: fccbdb84fca084c41b01025bc3cffa12, type: 2}
+  Sender: {fileID: 0}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1170939149}
+        m_MethodName: setFocus
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: GameEventArgsResponse, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &1170939149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1170939144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123eb27f1cdcd4c44bc45d8166d062f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cam: {fileID: 1170939145}
 --- !u!1 &1247010100
 GameObject:
   m_ObjectHideFlags: 3
@@ -1080,7 +1123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 5, z: -12}
-  m_XDamping: 1
+  m_XDamping: 0.2
   m_YDamping: 0.2
   m_ZDamping: 0.2
   m_PitchDamping: 0
