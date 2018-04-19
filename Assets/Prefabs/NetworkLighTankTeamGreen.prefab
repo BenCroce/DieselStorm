@@ -84,7 +84,6 @@ GameObject:
   - component: {fileID: 114170494087302388}
   - component: {fileID: 114682627967594654}
   - component: {fileID: 114746336411129402}
-  - component: {fileID: 114512023291813530}
   m_Layer: 0
   m_Name: NetworkLighTankTeamGreen
   m_TagString: Player
@@ -1716,17 +1715,6 @@ MonoBehaviour:
   m_turretPos: {fileID: 4881916231923628}
   m_shootForce: 100
   m_shootCooldown: 1
---- !u!114 &114512023291813530
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1054708008941050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 128727d0a5ea46449aca77bfaca3973f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114551362584665762
 MonoBehaviour:
   m_ObjectHideFlags: 3

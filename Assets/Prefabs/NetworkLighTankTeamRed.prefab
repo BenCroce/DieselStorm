@@ -277,7 +277,6 @@ GameObject:
   - component: {fileID: 114852695662586332}
   - component: {fileID: 114947428382542690}
   - component: {fileID: 114401393399624692}
-  - component: {fileID: 114748613908849822}
   m_Layer: 0
   m_Name: NetworkLighTankTeamRed
   m_TagString: Player
@@ -1889,17 +1888,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: GameEventArgsResponse, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &114748613908849822
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1376321339698396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 128727d0a5ea46449aca77bfaca3973f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114756979663424726
 MonoBehaviour:
   m_ObjectHideFlags: 3
