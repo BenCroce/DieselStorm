@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a62d06ff68790e4eb684f7ce2549ace, type: 3}
+  m_Name: New Team Setup Singleton
+  m_EditorClassIdentifier: 
+  m_RedTeam: {fileID: 11400000, guid: f7c06211e6623e3439bd966b5f2bc1c0, type: 2}
+  m_BlueTeam: {fileID: 11400000, guid: 506def79fccf50944939a014f19ebff0, type: 2}
+  m_PlayerPrefab: {fileID: 1373863025843376, guid: d698d400c334a104dbeeab85f4202096,
+    type: 2}
+  m_lobbyPlayerEntries: []
+  m_PlayerBehaviourEntries: []
+  m_LobbyPlayers: []
+  m_PlayerBehaviours: []
