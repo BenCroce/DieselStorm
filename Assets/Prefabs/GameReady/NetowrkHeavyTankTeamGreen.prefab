@@ -3076,8 +3076,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 1.25, z: 3.7}
-  m_Center: {x: 0, y: 0.53, z: 0}
+  m_Size: {x: 3.341542, y: 2.2203624, z: 4.3975296}
+  m_Center: {x: 0.09739101, y: 1.0151812, z: -0.34876537}
 --- !u!82 &82261460415798606
 AudioSource:
   m_ObjectHideFlags: 1
@@ -3715,9 +3715,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.6
+  m_Height: 3.5
   m_Direction: 0
-  m_Center: {x: 0, y: 0.3, z: 1.98}
+  m_Center: {x: 0, y: 0.3, z: 2}
 --- !u!136 &136673174412712290
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -3728,9 +3728,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.6
+  m_Height: 3.5
   m_Direction: 0
-  m_Center: {x: 0, y: 0.3, z: -1.97}
+  m_Center: {x: 0, y: 0.3, z: -2.5}
 --- !u!137 &137019348431636432
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -6845,7 +6845,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -10206,7 +10206,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -16979,7 +16979,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -23650,7 +23650,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 0
   useRigidbodyForVelocity: 1
