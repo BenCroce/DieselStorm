@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ClampVertical: 1
   m_InvertVerticalAxis: 1
-  m_MaxUpRadian: 0.25
+  m_MaxUpRadian: 0.07
   m_MaxDownRadian: -0.25
   m_InvertHorizontalAxis: 0
   m_ClampHorizontal: 1
