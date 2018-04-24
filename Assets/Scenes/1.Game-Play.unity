@@ -376,8 +376,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 925745216}
-  - component: {fileID: 925745215}
   - component: {fileID: 925745217}
+  - component: {fileID: 925745215}
   m_Layer: 0
   m_Name: TeamSetUp
   m_TagString: Untagged
@@ -398,6 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TeamSetupSingleton: {fileID: 11400000, guid: 15bf77c75f43a55439f5a92ca9054372,
     type: 2}
+  m_TeamConfig: {fileID: 11400000, guid: f7c06211e6623e3439bd966b5f2bc1c0, type: 2}
 --- !u!4 &925745216
 Transform:
   m_ObjectHideFlags: 0
