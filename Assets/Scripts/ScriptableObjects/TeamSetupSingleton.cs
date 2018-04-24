@@ -9,7 +9,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using System.Linq;
-using UnityEditor;
 
 [CreateAssetMenu(menuName = "TeamSetupSingleton")]
 public class TeamSetupSingleton : ScriptableObject
@@ -20,6 +19,11 @@ public class TeamSetupSingleton : ScriptableObject
     public TeamSriptable m_DefaultTeamScriptable;
     public int m_MaxTeams;
 
+    void OnEnable()
+    {
+        m_Players = new List<PlayerBehaviour>();
+    }
+
 
     public void AddPlayer(PlayerBehaviour player)
     {
@@ -27,7 +31,7 @@ public class TeamSetupSingleton : ScriptableObject
             m_Players.Add(player);
     }
 
-    public void AddTeam(TeamSriptable team)
+    public bool AddTeam(TeamSriptable team)
     {
         if (m_Teams.Count < m_MaxTeams && !m_Teams.Contains(team))
         {
@@ -39,7 +43,9 @@ public class TeamSetupSingleton : ScriptableObject
             }
             team.m_Color = teamColor;
             m_TeamColors.Add(teamColor);
+            return true;
         }
+        return false;
     }
 
     public void ClearTeams()
