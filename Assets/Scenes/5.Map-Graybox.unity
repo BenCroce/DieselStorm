@@ -1530,7 +1530,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400038, guid: 4814ba98bccf2da4fa86a7cf0e3a127c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400038, guid: 4814ba98bccf2da4fa86a7cf0e3a127c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
