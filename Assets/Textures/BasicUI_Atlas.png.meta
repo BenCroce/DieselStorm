@@ -1,28 +1,36 @@
 fileFormatVersion: 2
-guid: c730064469e9dc945a7e7399df08eb93
-timeCreated: 1524175664
+guid: 27294367de063ab47b39dfbf87ce005d
+timeCreated: 1524694258
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: Compass
-    21300002: Attack_Waypoint
-    21300004: Defend_Waypoint
-    21300006: Move_Waypoint
-    21300008: BasicUI_Atlas_8
-    21300010: BasicUI_Atlas_9
-    21300012: BasicUI_Atlas_11
-    21300014: CapturepointA_Team1
-    21300016: BasicUI_Atlas_15
-    21300018: CapturepointB_Team1
-    21300020: CapturepointC_Team1
-    21300022: Aiming_Reticule
-    21300024: CapturepointA_Neutral
-    21300026: CapturepointB_Neutral
-    21300028: CapturepointC_Neutral
-    21300030: Compass_Border
-    21300032: CapturepointA_Team2
-    21300034: CapturepointB_Team2
-    21300036: CapturepointC_Team2
+    21300002: ControlpointA_Neutral
+    21300004: ControlpointB_Neutral
+    21300006: BasicUI_Atlas_3
+    21300008: Defend_Waypoint
+    21300010: ControlpointA_Team1
+    21300012: ControlpointB_Team1
+    21300014: ControlpointC_Team1
+    21300016: Move_Waypoint
+    21300018: ControlpointA_Team2
+    21300020: ControlpointB_Team2
+    21300022: ControlpointC_Team2
+    21300024: Attack_Waypoint
+    21300026: ControlpointA_Border
+    21300028: Compass_Border
+    21300030: ControlpointB_Border
+    21300032: ControlpointC_Border
+    21300034: Reticule_Lines_Top
+    21300036: ControlpointA_Blank
+    21300038: Reticule_Outside_Left
+    21300040: Reticule_Outside_Right
+    21300042: Reticule_Center
+    21300044: ControlpointB_Blank
+    21300046: ControlpointC_Blank
+    21300048: Reticule_Lines_Left
+    21300050: Reticule_Lines_Bottom
+    21300052: Reticule_Lines_Right
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -113,13 +121,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Attack_Waypoint
+      name: ControlpointA_Neutral
       rect:
         serializedVersion: 2
-        x: 31
-        y: 1339
-        width: 404
-        height: 441
+        x: 3
+        y: 1503
+        width: 345
+        height: 357
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ControlpointB_Neutral
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 1503
+        width: 345
+        height: 357
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasicUI_Atlas_3
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 1503
+        width: 342
+        height: 361
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,10 +166,52 @@ TextureImporter:
       name: Defend_Waypoint
       rect:
         serializedVersion: 2
-        x: 611
-        y: 1339
-        width: 277
-        height: 413
+        x: 1148
+        y: 1520
+        width: 213
+        height: 319
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ControlpointA_Team1
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1140
+        width: 345
+        height: 357
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ControlpointB_Team1
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 1140
+        width: 345
+        height: 358
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ControlpointC_Team1
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 1140
+        width: 344
+        height: 359
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,10 +222,10 @@ TextureImporter:
       name: Move_Waypoint
       rect:
         serializedVersion: 2
-        x: 1047
-        y: 1360
-        width: 430
-        height: 397
+        x: 1089
+        y: 1173
+        width: 331
+        height: 306
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,13 +233,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: CapturepointA_Team1
+      name: ControlpointA_Team2
       rect:
         serializedVersion: 2
-        x: 19
-        y: 888
-        width: 409
-        height: 428
+        x: 3
+        y: 752
+        width: 345
+        height: 357
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,13 +247,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: CapturepointB_Team1
+      name: ControlpointB_Team2
       rect:
         serializedVersion: 2
-        x: 546
-        y: 889
-        width: 406
-        height: 432
+        x: 368
+        y: 750
+        width: 345
+        height: 363
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,13 +261,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: CapturepointC_Team1
+      name: ControlpointC_Team2
       rect:
         serializedVersion: 2
-        x: 1071
-        y: 888
-        width: 409
-        height: 430
+        x: 738
+        y: 752
+        width: 342
+        height: 361
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,13 +275,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Aiming_Reticule
+      name: Attack_Waypoint
       rect:
         serializedVersion: 2
-        x: 1510
-        y: 912
-        width: 476
-        height: 916
+        x: 1099
+        y: 761
+        width: 311
+        height: 340
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,41 +289,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: CapturepointA_Neutral
+      name: ControlpointA_Border
       rect:
         serializedVersion: 2
-        x: 19
-        y: 440
-        width: 406
-        height: 428
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: CapturepointB_Neutral
-      rect:
-        serializedVersion: 2
-        x: 546
-        y: 439
-        width: 406
-        height: 431
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: CapturepointC_Neutral
-      rect:
-        serializedVersion: 2
-        x: 1071
-        y: 439
-        width: 406
-        height: 442
+        x: 0
+        y: 364
+        width: 348
+        height: 360
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,10 +306,10 @@ TextureImporter:
       name: Compass_Border
       rect:
         serializedVersion: 2
-        x: 1804
-        y: 24
-        width: 199
-        height: 704
+        x: 1141
+        y: 507
+        width: 703
+        height: 199
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,13 +317,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: CapturepointA_Team2
+      name: ControlpointB_Border
       rect:
         serializedVersion: 2
-        x: 19
-        y: 4
-        width: 409
-        height: 428
+        x: 370
+        y: 364
+        width: 343
+        height: 365
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,13 +331,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: CapturepointB_Team2
+      name: ControlpointC_Border
       rect:
         serializedVersion: 2
-        x: 546
-        y: 5
-        width: 409
-        height: 433
+        x: 738
+        y: 364
+        width: 342
+        height: 363
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -295,13 +345,139 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: CapturepointC_Team2
+      name: Reticule_Lines_Top
       rect:
         serializedVersion: 2
-        x: 1071
-        y: 2
-        width: 409
-        height: 433
+        x: 1454
+        y: 389
+        width: 17
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ControlpointA_Blank
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 3
+        width: 342
+        height: 356
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Reticule_Outside_Left
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 138
+        width: 133
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Reticule_Outside_Right
+      rect:
+        serializedVersion: 2
+        x: 1528
+        y: 136
+        width: 136
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Reticule_Center
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 187
+        width: 112
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ControlpointB_Blank
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 3
+        width: 343
+        height: 340
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ControlpointC_Blank
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 3
+        width: 342
+        height: 335
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Reticule_Lines_Left
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 71
+        width: 116
+        height: 342
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Reticule_Lines_Bottom
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 12
+        width: 22
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Reticule_Lines_Right
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 71
+        width: 118
+        height: 342
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
