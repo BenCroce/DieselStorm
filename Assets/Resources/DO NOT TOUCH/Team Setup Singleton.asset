@@ -12,12 +12,8 @@ MonoBehaviour:
   m_Name: Team Setup Singleton
   m_EditorClassIdentifier: 
   m_Players: []
-  m_Teams:
-  - {fileID: 11400000, guid: 833db5076afaa284e8722c2ab2976f97, type: 2}
-  - {fileID: 11400000, guid: 29a4becafc10e6142b2c8032e03c46d8, type: 2}
-  m_TeamColors:
-  - {r: 0.27213886, g: 0.21217586, b: 0.13691896, a: 1}
-  - {r: 0.35192198, g: 0.49770147, b: 0.45816228, a: 1}
+  m_Teams: []
+  m_TeamColors: []
   m_DefaultTeamScriptable: {fileID: 11400000, guid: f7c06211e6623e3439bd966b5f2bc1c0,
     type: 2}
   m_MaxTeams: 2

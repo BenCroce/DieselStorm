@@ -27,7 +27,7 @@ public class TeamBehaviour : NetworkBehaviour
     public PlayerBehaviour m_RespawningPlayer;
 
     [ContextMenu("Force Spawn")]
-    [Command]
+    //[Command]
     public void CmdSpawnTank()
     {
         GameObject tank = Instantiate(m_TeamScriptable.m_HeavyTankPrefab);

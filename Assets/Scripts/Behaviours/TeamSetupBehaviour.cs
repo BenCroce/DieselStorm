@@ -18,6 +18,7 @@ public class TeamSetupBehaviour : NetworkBehaviour
     {
         if (!isServer)
             return;
+        CreateTeams();
         StartCoroutine(GetPlayers());
     }
 
@@ -32,6 +33,20 @@ public class TeamSetupBehaviour : NetworkBehaviour
             }
             m_TeamSetupSingleton.BalanceTeams();
             break;
+        }
+    }
+
+    void CreateTeams()
+    {
+        for (int i = 0; i < m_TeamSetupSingleton.m_MaxTeams; i++)
+        {
+            var newTeam = m_TeamConfig.CreateInstance();
+            if (m_TeamSetupSingleton.AddTeam(newTeam))
+            {
+                var teamObj = Instantiate(m_TeamObject);
+                teamObj.GetComponent<TeamBehaviour>().m_TeamScriptable = newTeam;
+                teamObj.name = newTeam.name;                
+            }
         }
     }
 }
@@ -50,7 +65,7 @@ public class TeamSetupEditor : UnityEditor.Editor
             var newTeam = tar.m_TeamConfig.CreateInstance();            
             AssetDatabase.CreateAsset(newTeam, "Assets/Resources/newTeam" + 
                 (tar.m_TeamSetupSingleton.m_Teams.Count + 1));
-            AssetDatabase.SaveAssets();
+            AssetDatabase.SaveAssets();            
             if (tar.m_TeamSetupSingleton.AddTeam(newTeam))
             {
                 var teamObj = Instantiate(tar.m_TeamObject);

@@ -29,9 +29,10 @@ public class PlayerBehaviour : NetworkBehaviour
 
         if (behaviour == this)
         {
+            m_TeamColor = sender.m_TeamScriptable.m_Color;
             m_SceneObject = args[3] as GameObject;            
             m_OnPlayerConnected.Raise(this.gameObject, m_SceneObject);
-            m_SceneObject.transform.position = location.position + 
+            m_SceneObject.transform.position = new Vector3(2450, 580, 1690) + 
                 new Vector3(Random.Range(0,25),0, Random.Range(0,25));
             StartCoroutine(RPCCall());
         }

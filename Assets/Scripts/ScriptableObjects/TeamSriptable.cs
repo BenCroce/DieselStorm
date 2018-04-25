@@ -38,7 +38,7 @@ public class TeamSriptable : ScriptableObject
         if (!m_Players.Contains(player) && m_Players.Count < m_MaxPlayers && player != null)
         {
             m_Players.Add(player);
-            //player.m_TeamColor = m_Color;
+            player.m_TeamColor = m_Color;
         }
     }
 
