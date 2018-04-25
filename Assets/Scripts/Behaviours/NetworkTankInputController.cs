@@ -60,13 +60,16 @@ public class NetworkTankInputController : NetworkBehaviour
     // Use this for initialization
     void Start()
     {
-        if (!isLocalPlayer)
-            m_vcam.SetActive(false);
+        //if (!isLocalPlayer)
+            //m_vcam.SetActive(false);
+        m_movement = GetComponent<TankMovementBehaviour>();
     }
     // Update is called once per frame
     void Update()
     {
-        if (!isLocalPlayer)
+        //if (!isLocalPlayer)
+        //    return;
+        if (!hasAuthority)
             return;
         m_hinput = m_HorizontalAxis.AxisValue();
         m_vinput = m_VerticalAxis.AxisValue();

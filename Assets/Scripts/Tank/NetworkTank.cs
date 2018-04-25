@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-[RequireComponent(typeof(LightTankMovement))]
+[RequireComponent(typeof(TankMovementBehaviour))]
 [RequireComponent(typeof(TankShoot))]
 public class NetworkTank : NetworkBehaviour {
 
