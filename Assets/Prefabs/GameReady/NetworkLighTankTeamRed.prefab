@@ -380,6 +380,7 @@ GameObject:
   - component: {fileID: 114947428382542690}
   - component: {fileID: 114401393399624692}
   - component: {fileID: 114600366960328692}
+  - component: {fileID: 114037287665789730}
   m_Layer: 0
   m_Name: NetworkLighTankTeamRed
   m_TagString: Player
@@ -1908,6 +1909,19 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0
   m_Autodestruct: 0
+--- !u!114 &114037287665789730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1376321339698396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf26de9202e528408cc0e6430f4e289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_hoverValues: {fileID: 11400000, guid: a05802d19e84d944e8b8fb7483a51095, type: 2}
+  m_input: {fileID: 114537720199712544}
 --- !u!114 &114050535050721516
 MonoBehaviour:
   m_ObjectHideFlags: 1

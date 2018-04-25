@@ -15,6 +15,7 @@ public class TankMovementBehaviour : MovementBehaviour {
     void Start()
     {
         m_self = GetComponent<Rigidbody>();
+        m_steerGuide = Camera.main.transform;
         if (m_steerGuide == null)
             Debug.LogWarning("you must have a steerguide, this is usually the camera... did you forget to assign it?");
     }
