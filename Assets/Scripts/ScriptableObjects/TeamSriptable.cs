@@ -9,13 +9,20 @@ public class TeamSriptable : ScriptableObject
 {
     public List<PlayerBehaviour> m_Players;
     public GameEventArgs m_OnAllPlayerLeftTeam;
-    public int m_MaxPlayers;
-    [SerializeField]
-    private Color m_Color;
+    public int m_MaxPlayers;    
+    public Color m_Color;
 
     public GameObject m_HeavyTankPrefab;
     public GameObject m_LightTankPrefab;
 
+    public TeamSriptable CreateInstance()
+    {
+        var tmp = Instantiate(this);
+        tmp.m_OnAllPlayerLeftTeam = this.m_OnAllPlayerLeftTeam;
+        tmp.m_HeavyTankPrefab = this.m_HeavyTankPrefab;
+        tmp.m_LightTankPrefab = this.m_LightTankPrefab;    
+        return tmp;
+    }
     void OnEnable()
     {
         m_Players = new List<PlayerBehaviour>();

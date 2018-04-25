@@ -18,12 +18,12 @@ public class CameraSetFocus : MonoBehaviour {
 
     public void setFocus(UnityEngine.Object[] args)
     {
-        var sender = args[0] as PlayerBehaviour;
-        var obj = args[1] as GameObject;
-        if(sender == GetComponentInParent<PlayerBehaviour>())
-        {
-            m_cam.m_Follow = obj.transform;
-            m_cam.m_LookAt = obj.transform;
-        }        
+        //var sender = args[0] as GameObject;
+        //var obj = args[1] as GameObject;
+        //if(sender == this.transform.parent.gameObject)
+        //{
+        //    m_cam.m_Follow = obj.transform;
+        //    m_cam.m_LookAt = obj.transform;
+        //}        
     }
 }

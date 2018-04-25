@@ -29,8 +29,8 @@ public class PlayerBehaviour : NetworkBehaviour
 
         if (behaviour == this)
         {
-            m_SceneObject = args[3] as GameObject;
-            m_OnPlayerConnected.Raise(this, m_SceneObject);
+            m_SceneObject = args[3] as GameObject;            
+            m_OnPlayerConnected.Raise(this.gameObject, m_SceneObject);
             m_SceneObject.transform.position = location.position + 
                 new Vector3(Random.Range(0,25),0, Random.Range(0,25));
             StartCoroutine(RPCCall());

@@ -14,24 +14,55 @@ using System.Linq;
 public class TeamSetupSingleton : ScriptableObject
 {
     public List<PlayerBehaviour> m_Players;
-    public TeamSriptable m_RedTeam;
-    public TeamSriptable m_BlueTeam;
+    public List<TeamSriptable> m_Teams;
+    public List<Color> m_TeamColors;
+    public TeamSriptable m_DefaultTeamScriptable;
+    public int m_MaxTeams;
+
+    void OnEnable()
+    {
+        m_Players = new List<PlayerBehaviour>();
+    }
+
 
     public void AddPlayer(PlayerBehaviour player)
     {
         if (!m_Players.Contains(player))
             m_Players.Add(player);
-    }    
+    }
+
+    public bool AddTeam(TeamSriptable team)
+    {
+        if (m_Teams.Count < m_MaxTeams && !m_Teams.Contains(team))
+        {
+            m_Teams.Add(team);
+            var teamColor = Random.ColorHSV();
+            while (m_TeamColors.Contains(teamColor))
+            {
+                teamColor = Random.ColorHSV();
+            }
+            team.m_Color = teamColor;
+            m_TeamColors.Add(teamColor);
+            return true;
+        }
+        return false;
+    }
+
+    public void ClearTeams()
+    {
+        m_Teams = new List<TeamSriptable>();
+        m_TeamColors = new List<Color>();
+    }
 
     public void BalanceTeams()
     {
+        int teamCount = 0;
         for(int i = 0; i < m_Players.Count; i++)
         {
-            m_BlueTeam.AddPlayer(m_Players[i]);
-            i++;
-            if (i >= m_Players.Count)
-                break;
-            m_RedTeam.AddPlayer(m_Players[i]);
+            m_Teams[teamCount].AddPlayer(m_Players[i]);
+            teamCount++;
+            if (teamCount >= m_Teams.Count)
+                teamCount = 0;
         }
     }
 }
