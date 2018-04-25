@@ -1,13 +1,15 @@
 // Shader created with Shader Forge v1.38 
 // Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.38;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:1,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:32719,y:32712,varname:node_2865,prsc:2|diff-7736-RGB,spec-2309-B,gloss-2309-G,normal-5964-RGB,difocc-2309-R;n:type:ShaderForge.SFN_Tex2d,id:7736,x:32392,y:32661,ptovrint:True,ptlb:Base Color,ptin:_MainTex,varname:_MainTex,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:5964,x:32407,y:32978,ptovrint:True,ptlb:Normal Map,ptin:_BumpMap,varname:_BumpMap,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Tex2d,id:2309,x:32258,y:32810,ptovrint:False,ptlb:ORM,ptin:_ORM,varname:node_2309,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;proporder:5964-7736-2309;pass:END;sub:END;*/
+/*SF_DATA;ver:1.38;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:1,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:32719,y:32712,varname:node_2865,prsc:2|diff-8448-OUT,spec-2309-B,gloss-2309-G,normal-5964-RGB,difocc-2309-R;n:type:ShaderForge.SFN_Tex2d,id:7736,x:32220,y:32473,ptovrint:True,ptlb:Base Color,ptin:_MainTex,varname:_MainTex,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:5964,x:32385,y:33073,ptovrint:True,ptlb:Normal Map,ptin:_BumpMap,varname:_BumpMap,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Tex2d,id:2309,x:32385,y:32896,ptovrint:False,ptlb:ORM,ptin:_ORM,varname:node_2309,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Color,id:9596,x:32220,y:32650,ptovrint:False,ptlb:Color Picker,ptin:_ColorPicker,varname:node_9596,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:1,c2:1,c3:1,c4:1;n:type:ShaderForge.SFN_Tex2d,id:9765,x:32220,y:32807,ptovrint:False,ptlb:Mask,ptin:_Mask,varname:node_9765,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Lerp,id:8448,x:32582,y:32517,varname:node_8448,prsc:2|A-7736-RGB,B-9310-OUT,T-9765-RGB;n:type:ShaderForge.SFN_Multiply,id:9310,x:32471,y:32703,varname:node_9310,prsc:2|A-9596-RGB,B-9765-RGB,C-9765-A;proporder:5964-7736-9596-2309-9765;pass:END;sub:END;*/
 
 Shader "Shader Forge/Tank_Shader" {
     Properties {
         _BumpMap ("Normal Map", 2D) = "bump" {}
         _MainTex ("Base Color", 2D) = "white" {}
+        _ColorPicker ("Color Picker", Color) = (1,1,1,1)
         _ORM ("ORM", 2D) = "white" {}
+        _Mask ("Mask", 2D) = "white" {}
     }
     SubShader {
         Tags {
@@ -41,6 +43,8 @@ Shader "Shader Forge/Tank_Shader" {
             uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
             uniform sampler2D _BumpMap; uniform float4 _BumpMap_ST;
             uniform sampler2D _ORM; uniform float4 _ORM_ST;
+            uniform float4 _ColorPicker;
+            uniform sampler2D _Mask; uniform float4 _Mask_ST;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -155,7 +159,8 @@ Shader "Shader Forge/Tank_Shader" {
                 float3 specularColor = _ORM_var.b;
                 float specularMonochrome;
                 float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(i.uv0, _MainTex));
-                float3 diffuseColor = _MainTex_var.rgb; // Need this for specular when using metallic
+                float4 _Mask_var = tex2D(_Mask,TRANSFORM_TEX(i.uv0, _Mask));
+                float3 diffuseColor = lerp(_MainTex_var.rgb,(_ColorPicker.rgb*_Mask_var.rgb*_Mask_var.a),_Mask_var.rgb); // Need this for specular when using metallic
                 diffuseColor = DiffuseAndSpecularFromMetallic( diffuseColor, specularColor, specularColor, specularMonochrome );
                 specularMonochrome = 1.0-specularMonochrome;
                 float NdotV = abs(dot( normalDirection, viewDirection ));
@@ -231,6 +236,8 @@ Shader "Shader Forge/Tank_Shader" {
             uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
             uniform sampler2D _BumpMap; uniform float4 _BumpMap_ST;
             uniform sampler2D _ORM; uniform float4 _ORM_ST;
+            uniform float4 _ColorPicker;
+            uniform sampler2D _Mask; uniform float4 _Mask_ST;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -293,7 +300,8 @@ Shader "Shader Forge/Tank_Shader" {
                 float3 specularColor = _ORM_var.b;
                 float specularMonochrome;
                 float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(i.uv0, _MainTex));
-                float3 diffuseColor = _MainTex_var.rgb; // Need this for specular when using metallic
+                float4 _Mask_var = tex2D(_Mask,TRANSFORM_TEX(i.uv0, _Mask));
+                float3 diffuseColor = lerp(_MainTex_var.rgb,(_ColorPicker.rgb*_Mask_var.rgb*_Mask_var.a),_Mask_var.rgb); // Need this for specular when using metallic
                 diffuseColor = DiffuseAndSpecularFromMetallic( diffuseColor, specularColor, specularColor, specularMonochrome );
                 specularMonochrome = 1.0-specularMonochrome;
                 float NdotV = abs(dot( normalDirection, viewDirection ));
@@ -355,6 +363,8 @@ Shader "Shader Forge/Tank_Shader" {
             #pragma target 3.0
             uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
             uniform sampler2D _ORM; uniform float4 _ORM_ST;
+            uniform float4 _ColorPicker;
+            uniform sampler2D _Mask; uniform float4 _Mask_ST;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float2 texcoord0 : TEXCOORD0;
@@ -385,7 +395,8 @@ Shader "Shader Forge/Tank_Shader" {
                 o.Emission = 0;
                 
                 float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(i.uv0, _MainTex));
-                float3 diffColor = _MainTex_var.rgb;
+                float4 _Mask_var = tex2D(_Mask,TRANSFORM_TEX(i.uv0, _Mask));
+                float3 diffColor = lerp(_MainTex_var.rgb,(_ColorPicker.rgb*_Mask_var.rgb*_Mask_var.a),_Mask_var.rgb);
                 float specularMonochrome;
                 float3 specColor;
                 float4 _ORM_var = tex2D(_ORM,TRANSFORM_TEX(i.uv0, _ORM));
