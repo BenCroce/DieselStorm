@@ -34,6 +34,12 @@ public class PlayerBehaviour : NetworkBehaviour
             m_OnPlayerConnected.Raise(this.gameObject, m_SceneObject);
             m_SceneObject.transform.position = new Vector3(2450, 580, 1690) + 
                 new Vector3(Random.Range(0,25),0, Random.Range(0,25));
+            var mats = m_SceneObject.GetComponentsInChildren<Renderer>();
+            foreach (var mat in mats)
+            {
+                if(mat.material != null)
+                    mat.material.color = m_TeamColor;
+            }
             StartCoroutine(RPCCall());
         }
     }
