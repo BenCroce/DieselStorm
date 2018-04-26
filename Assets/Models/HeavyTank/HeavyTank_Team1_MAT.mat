@@ -93,6 +93,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorPicker: {r: 0.2994183, g: 0.41911763, b: 0.28352076, a: 1}
+    - _ColorPicker: {r: 0.9944219, g: 1, b: 0.5955882, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _node_9596: {r: 1, g: 1, b: 1, a: 1}

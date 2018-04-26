@@ -153,3 +153,5 @@ MonoBehaviour:
     type: 2}
   m_OnPlayerConnected: {fileID: 11400000, guid: d7f281939454a504b87bc8efa5eb68ed,
     type: 2}
+  m_SceneObjectMaterial: {fileID: 2100000, guid: 04db8494eccaa134a80e6039d58e9116,
+    type: 2}

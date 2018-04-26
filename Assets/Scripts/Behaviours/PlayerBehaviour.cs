@@ -35,17 +35,8 @@ public class PlayerBehaviour : NetworkBehaviour
             m_OnPlayerConnected.Raise(this.gameObject, m_SceneObject);
             m_SceneObject.transform.position = new Vector3(2450, 580, 1690) + 
                 new Vector3(Random.Range(0,25),0, Random.Range(0,25));
-            var a = m_SceneObject.GetComponentsInChildren<SkinnedMeshRenderer>();
-            m_SceneObjectMaterial.color = m_TeamColor;
-            foreach (var A in a)
-            {
-                if (A.material == null)
-                    break;
-                A.material = new Material(Shader.Find("Shader Forge/Tank_Shader"));
-                A.material.color = m_TeamColor;
-                A.material.mainTexture = m_SceneObjectMaterial.mainTexture;                
-            }            
-            StartCoroutine(RPCCall());
+            if(!m_SceneObject.GetComponent<NetworkIdentity>().hasAuthority)            
+                StartCoroutine(RPCCall());
         }
     }
 
@@ -55,6 +46,16 @@ public class PlayerBehaviour : NetworkBehaviour
         if (local.isLocalPlayer)
         {
             CmdAssignAuthority(local, id);
+            var renders = m_SceneObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+            m_SceneObjectMaterial.color = m_TeamColor;
+            foreach (var renderer in renders)
+            {
+                if (renderer.material.shader != m_SceneObjectMaterial.shader)
+                    break;
+                renderer.material = new Material(Shader.Find("Shader Forge/Tank_Shader"));
+                renderer.material.CopyPropertiesFromMaterial(m_SceneObjectMaterial);
+                renderer.material.SetColor("_ColorPicker", m_TeamColor);
+            }
         }        
     }
 
@@ -62,7 +63,7 @@ public class PlayerBehaviour : NetworkBehaviour
     void CmdAssignAuthority(NetworkIdentity local, NetworkIdentity id)
     {
         var connection = local.connectionToClient;        
-        id.AssignClientAuthority(connection);        
+        id.AssignClientAuthority(connection);
     }
 
     IEnumerator RPCCall()

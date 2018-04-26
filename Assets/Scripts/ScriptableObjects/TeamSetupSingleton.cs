@@ -22,6 +22,8 @@ public class TeamSetupSingleton : ScriptableObject
     void OnEnable()
     {
         m_Players = new List<PlayerBehaviour>();
+        m_Teams = new List<TeamSriptable>();
+        m_TeamColors = new List<Color>();
     }
 
 
@@ -61,7 +63,7 @@ public class TeamSetupSingleton : ScriptableObject
         {
             m_Teams[teamCount].AddPlayer(m_Players[i]);
             teamCount++;
-            if (teamCount >= m_Teams.Count)
+            if (teamCount >= m_Teams.Count - 1)
                 teamCount = 0;
         }
     }
