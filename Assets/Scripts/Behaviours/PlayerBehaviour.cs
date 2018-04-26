@@ -15,6 +15,7 @@ public class PlayerBehaviour : NetworkBehaviour
 
     public GameEventArgs m_PlayerObjectDestroyed;
     public GameEventArgs m_OnPlayerConnected;
+    public Material m_SceneObjectMaterial;    
 
     void Awake()
     {
@@ -34,12 +35,16 @@ public class PlayerBehaviour : NetworkBehaviour
             m_OnPlayerConnected.Raise(this.gameObject, m_SceneObject);
             m_SceneObject.transform.position = new Vector3(2450, 580, 1690) + 
                 new Vector3(Random.Range(0,25),0, Random.Range(0,25));
-            var mats = m_SceneObject.GetComponentsInChildren<Renderer>();
-            foreach (var mat in mats)
+            var a = m_SceneObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+            m_SceneObjectMaterial.color = m_TeamColor;
+            foreach (var A in a)
             {
-                if(mat.material != null)
-                    mat.material.color = m_TeamColor;
-            }
+                if (A.material == null)
+                    break;
+                A.material = new Material(Shader.Find("Shader Forge/Tank_Shader"));
+                A.material.color = m_TeamColor;
+                A.material.mainTexture = m_SceneObjectMaterial.mainTexture;                
+            }            
             StartCoroutine(RPCCall());
         }
     }
