@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae095d42872c2034db22d86407f9d191, type: 3}
   m_Name: HeavyTankMovement
   m_EditorClassIdentifier: 
-  m_forwardForce: 10
+  m_forwardForce: 12
   m_strafeForce: 8
   m_turnSpeed: 20
   m_heightLimit: 4

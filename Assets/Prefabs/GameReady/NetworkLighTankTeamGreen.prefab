@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 114682627967594654}
   - component: {fileID: 114746336411129402}
   - component: {fileID: 114827855952268108}
+  - component: {fileID: 114393847303452624}
   m_Layer: 0
   m_Name: NetworkLighTankTeamGreen
   m_TagString: Player
@@ -2219,6 +2220,19 @@ MonoBehaviour:
     FarClipPlane: 5000
     Dutch: 0
   m_ComponentOwner: {fileID: 4196476920952574}
+--- !u!114 &114393847303452624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1054708008941050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf26de9202e528408cc0e6430f4e289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_hoverValues: {fileID: 11400000, guid: a05802d19e84d944e8b8fb7483a51095, type: 2}
+  m_input: {fileID: 114284329061707936}
 --- !u!114 &114438211126974206
 MonoBehaviour:
   m_ObjectHideFlags: 1
