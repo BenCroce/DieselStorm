@@ -59,10 +59,9 @@ public class NetworkTankInputController : NetworkBehaviour
 
     // Use this for initialization
     void Start()
-    {
-        m_vcam = GetComponentInChildren<Cinemachine.CinemachineFreeLook>().gameObject;
-        if (!hasAuthority)
-            m_vcam.SetActive(false);
+    {        
+        //if (!isLocalPlayer)
+        //    m_vcam.SetActive(false);
         m_movement = GetComponent<TankMovementBehaviour>();
     }
     // Update is called once per frame

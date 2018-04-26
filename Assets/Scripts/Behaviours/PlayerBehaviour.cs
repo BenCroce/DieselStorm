@@ -65,6 +65,8 @@ public class PlayerBehaviour : NetworkBehaviour
             renderer.material.CopyPropertiesFromMaterial(m_SceneObjectMaterial);
             renderer.material.SetColor("_ColorPicker", m_TeamColor);
         }
+
+        m_SceneObject.GetComponent<NetworkTankInputController>().m_vcam.SetActive(true);
     }
 
     IEnumerator RPCCall()

@@ -4289,7 +4289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d65e58b968fbd41a58af0587e21d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_vcam: {fileID: 0}
+  m_vcam: {fileID: 1219319417943656}
   m_movement: {fileID: 114051009392136372}
   m_Mag: {fileID: 114779054782867324}
   m_HorizontalAxis: {fileID: 11400000, guid: 887e3c9442d5a2148b9130986fb0dbd8, type: 2}
