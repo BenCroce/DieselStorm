@@ -11,34 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a62d06ff68790e4eb684f7ce2549ace, type: 3}
   m_Name: Team Setup Singleton
   m_EditorClassIdentifier: 
-  m_Players:
-  - {fileID: 0}
-  m_Teams:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_TeamColors:
-  - {r: 0.019295571, g: 0.023862246, b: 0.011562242, a: 1}
-  - {r: 0.32166457, g: 0.060017344, b: 0.3394504, a: 1}
-  - {r: 0.39248607, g: 0.48970923, b: 0.69991916, a: 1}
-  - {r: 0.22365737, g: 0.20696402, b: 0.24632207, a: 1}
-  - {r: 0.8130982, g: 0.0511765, b: 0.18718547, a: 1}
-  - {r: 0.50654954, g: 0.49530843, b: 0.48113266, a: 1}
-  - {r: 0.3473513, g: 0.54205936, b: 0.6559245, a: 1}
-  - {r: 0.28557882, g: 0.34375754, b: 0.32067138, a: 1}
-  - {r: 0.1018814, g: 0.013266333, b: 0.054322686, a: 1}
-  - {r: 0.43958217, g: 0.84701145, b: 0.41540784, a: 1}
-  - {r: 0.3246063, g: 0.38903517, b: 0.094436124, a: 1}
-  - {r: 0.3839347, g: 0.42914635, b: 0.4120351, a: 1}
+  m_Players: []
+  m_Teams: []
+  m_TeamColors: []
   m_DefaultTeamScriptable: {fileID: 11400000, guid: f7c06211e6623e3439bd966b5f2bc1c0,
     type: 2}
-  m_MaxTeams: 12
+  m_MaxTeams: 2

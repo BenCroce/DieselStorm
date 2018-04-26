@@ -46,16 +46,6 @@ public class PlayerBehaviour : NetworkBehaviour
         if (local.isLocalPlayer)
         {
             CmdAssignAuthority(local, id);
-            var renders = m_SceneObject.GetComponentsInChildren<SkinnedMeshRenderer>();
-            m_SceneObjectMaterial.color = m_TeamColor;
-            foreach (var renderer in renders)
-            {
-                if (renderer.material.shader != m_SceneObjectMaterial.shader)
-                    break;
-                renderer.material = new Material(Shader.Find("Shader Forge/Tank_Shader"));
-                renderer.material.CopyPropertiesFromMaterial(m_SceneObjectMaterial);
-                renderer.material.SetColor("_ColorPicker", m_TeamColor);
-            }
         }        
     }
 
@@ -64,6 +54,17 @@ public class PlayerBehaviour : NetworkBehaviour
     {
         var connection = local.connectionToClient;        
         id.AssignClientAuthority(connection);
+
+        var renders = m_SceneObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+        m_SceneObjectMaterial.color = m_TeamColor;
+        foreach (var renderer in renders)
+        {
+            if (renderer.material.shader != m_SceneObjectMaterial.shader)
+                break;
+            renderer.material = new Material(Shader.Find("Shader Forge/Tank_Shader"));
+            renderer.material.CopyPropertiesFromMaterial(m_SceneObjectMaterial);
+            renderer.material.SetColor("_ColorPicker", m_TeamColor);
+        }
     }
 
     IEnumerator RPCCall()

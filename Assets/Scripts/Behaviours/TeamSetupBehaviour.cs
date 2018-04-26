@@ -44,6 +44,7 @@ public class TeamSetupBehaviour : NetworkBehaviour
             if (m_TeamSetupSingleton.AddTeam(newTeam))
             {
                 var teamObj = Instantiate(m_TeamObject);
+                NetworkServer.Spawn(teamObj);
                 teamObj.GetComponent<TeamBehaviour>().m_TeamScriptable = newTeam;
                 teamObj.name = newTeam.name;                
             }

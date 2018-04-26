@@ -12,6 +12,8 @@ public class TeamBehaviour : NetworkBehaviour
     void Start()
     {
         StartCoroutine(InitalSpawn());
+        var listener = GetComponent<GameEventArgsListener>();
+        listener.Response.AddListener(SpawnTank);
     }
 
     public void SpawnTank(Object[] args)
