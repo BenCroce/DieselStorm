@@ -9,6 +9,7 @@ public class PlayerBehaviour : NetworkBehaviour
     [SyncVar] public int m_Score;
     [SyncVar] public Color m_TeamColor;
 
+    [SyncVar]
     public GameObject m_SceneObject;
 
     public int LobbyID;
@@ -29,15 +30,35 @@ public class PlayerBehaviour : NetworkBehaviour
         var location = args[2] as Transform;
 
         if (behaviour == this)
-        {
-            m_TeamColor = sender.m_TeamScriptable.m_Color;
-            m_SceneObject = args[3] as GameObject;            
+        {            
+            CmdSetMeshColors(sender.m_TeamScriptable.m_Color);
+            RpcSetColor(m_TeamColor, args[3] as GameObject);                     
             m_OnPlayerConnected.Raise(this.gameObject, m_SceneObject);
-            m_SceneObject.transform.position = new Vector3(2450, 580, 1690) + 
+            (args[3] as GameObject).transform.position = new Vector3(2450, 580, 1690) + 
                 new Vector3(Random.Range(0,25),0, Random.Range(0,25));
-            if(!m_SceneObject.GetComponent<NetworkIdentity>().hasAuthority)            
+            if(!(args[3] as GameObject).GetComponent<NetworkIdentity>().hasAuthority)            
                 StartCoroutine(RPCCall());
         }
+    }
+
+    [ClientRpc]
+    void RpcSetColor(Color c, GameObject obj)
+    {
+        m_SceneObject = obj;
+        var renders = obj.GetComponentsInChildren<SkinnedMeshRenderer>();
+        foreach (var renderer in renders)
+        {
+            var oldMaterial = renderer.material;
+            renderer.material = new Material(Shader.Find("Shader Forge/Tank_Shader"));
+            renderer.material.CopyPropertiesFromMaterial(oldMaterial);
+            renderer.material.SetColor("_ColorPicker", m_TeamColor);
+        }
+    }
+
+    [Command]
+    void CmdSetMeshColors(Color c)
+    {
+        m_TeamColor = c;
     }
 
     [ClientRpc]
@@ -46,7 +67,10 @@ public class PlayerBehaviour : NetworkBehaviour
         if (local.isLocalPlayer)
         {
             CmdAssignAuthority(local, id);
-        }        
+            m_SceneObject.GetComponentInChildren<Cinemachine.CinemachineFreeLook>().gameObject.SetActive(true);
+            return;
+        }
+        m_SceneObject.GetComponentInChildren<Cinemachine.CinemachineFreeLook>().gameObject.SetActive(false);
     }
 
     [Command]
@@ -55,16 +79,7 @@ public class PlayerBehaviour : NetworkBehaviour
         var connection = local.connectionToClient;        
         id.AssignClientAuthority(connection);
 
-        var renders = m_SceneObject.GetComponentsInChildren<SkinnedMeshRenderer>();
-        m_SceneObjectMaterial.color = m_TeamColor;
-        foreach (var renderer in renders)
-        {
-            if (renderer.material.shader != m_SceneObjectMaterial.shader)
-                break;
-            renderer.material = new Material(Shader.Find("Shader Forge/Tank_Shader"));
-            renderer.material.CopyPropertiesFromMaterial(m_SceneObjectMaterial);
-            renderer.material.SetColor("_ColorPicker", m_TeamColor);
-        }
+
 
         m_SceneObject.GetComponent<NetworkTankInputController>().m_vcam.SetActive(true);
     }
