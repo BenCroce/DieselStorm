@@ -22,7 +22,7 @@ public class TurrentAimBehaviour : NetworkBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (!isLocalPlayer)
+        if (!hasAuthority)
             return;
 
         if (!m_aimGuide)

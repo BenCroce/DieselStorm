@@ -82,7 +82,7 @@ public class PlayerBehaviour : NetworkBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2f);
             CmdSetMeshColors(m_TeamColor);
             RpcSetColor(m_TeamColor, m_SceneObject);
             RpcAssignClientAuthority(GetComponent<NetworkIdentity>(), 
