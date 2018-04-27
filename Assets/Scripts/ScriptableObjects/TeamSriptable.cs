@@ -10,12 +10,19 @@ public class TeamSriptable : ScriptableObject
     public List<PlayerBehaviour> m_Players;
     public GameEventArgs m_OnAllPlayerLeftTeam;
     public int m_MaxPlayers;
-    [SerializeField]
-    private Color m_Color;
+    public Color m_Color;
 
     public GameObject m_HeavyTankPrefab;
     public GameObject m_LightTankPrefab;
 
+    public TeamSriptable CreateInstance()
+    {
+        var tmp = Instantiate(this);
+        tmp.m_OnAllPlayerLeftTeam = this.m_OnAllPlayerLeftTeam;
+        tmp.m_HeavyTankPrefab = this.m_HeavyTankPrefab;
+        tmp.m_LightTankPrefab = this.m_LightTankPrefab;    
+        return tmp;
+    }
     void OnEnable()
     {
         m_Players = new List<PlayerBehaviour>();
@@ -31,7 +38,7 @@ public class TeamSriptable : ScriptableObject
         if (!m_Players.Contains(player) && m_Players.Count < m_MaxPlayers && player != null)
         {
             m_Players.Add(player);
-            //player.m_TeamColor = m_Color;
+            player.m_TeamColor = m_Color;
         }
     }
 
