@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class TurrentAimBehaviour : MonoBehaviour {
+public class TurrentAimBehaviour : NetworkBehaviour {
 
     public Transform m_aimGuide;
     public Transform m_verticalAxis;
@@ -21,6 +22,9 @@ public class TurrentAimBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if (!isLocalPlayer)
+            return;
+
         if (!m_aimGuide)
             return;
 
