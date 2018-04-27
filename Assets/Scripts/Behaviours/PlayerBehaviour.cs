@@ -67,8 +67,7 @@ public class PlayerBehaviour : NetworkBehaviour
     {
         if (local.isLocalPlayer)
         {
-            CmdAssignAuthority(local, id);
-            //m_SceneObject.GetComponentInChildren<Cinemachine.CinemachineFreeLook>().gameObject.SetActive(true);
+            CmdAssignAuthority(local, id);            
         }        
     }
 
