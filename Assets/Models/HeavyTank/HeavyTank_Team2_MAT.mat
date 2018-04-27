@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: HeavyTank_Team2_MAT
   m_Shader: {fileID: 4800000, guid: 6616345f891ce6b468bb64b5e2e9e08e, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -43,7 +43,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c1f4fe74f1bdebc46b0421e6e179ecca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -80,6 +80,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorPicker: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.4949945, g: 0.7303695, b: 0.56723696, a: 1}
+    - _ColorPicker: {r: 0.30588236, g: 0.78823537, b: 0.6901961, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

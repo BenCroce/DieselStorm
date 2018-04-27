@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class CameraSteerguide : MonoBehaviour {
 
+    public Transform guide;
+
 	// Update is called once per frame
-	void FixedUpdate ()
+	void FixedUpdate()
     {
-        transform.rotation = new Quaternion(0, Camera.main.transform.rotation.y, 0, 0);
+        if (!Input.GetKey(KeyCode.C))
+            transform.rotation = guide.rotation;
     }
 }

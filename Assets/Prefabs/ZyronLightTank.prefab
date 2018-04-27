@@ -497,6 +497,7 @@ GameObject:
   - component: {fileID: 114291403370408154}
   - component: {fileID: 114352714724419994}
   - component: {fileID: 114633509896727680}
+  - component: {fileID: 114034236253394868}
   m_Layer: 0
   m_Name: ZyronLightTank
   m_TagString: Player
@@ -712,7 +713,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1989276738112400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 2389.996, y: 498.12363, z: 2002.6355}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4325534819946026}
@@ -981,6 +982,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114034236253394868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1989276738112400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a483df0343f5c9948a9f6a62dfe0992a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_aimGuide: {fileID: 0}
+  m_verticalAxis: {fileID: 4949378560100030}
+  m_horizontalAxis: {fileID: 0}
+  m_pitchMinimum: -15
 --- !u!114 &114291403370408154
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -15,6 +15,7 @@ public class TankMovementBehaviour : MovementBehaviour {
     void Start()
     {
         m_self = GetComponent<Rigidbody>();
+        m_steerGuide = Camera.main.transform;
         if (m_steerGuide == null)
             Debug.LogWarning("you must have a steerguide, this is usually the camera... did you forget to assign it?");
     }
@@ -23,7 +24,17 @@ public class TankMovementBehaviour : MovementBehaviour {
     void Steer(Transform m_steerinput, float m_jinput)
     {
         Quaternion steerdir = Quaternion.FromToRotation(transform.forward, m_steerinput.forward);
-        m_self.AddRelativeTorque(new Vector3(0, (steerdir.y - (m_self.angularVelocity.y / Mathf.Max(8, m_forces.m_turnSpeed/10)))
+        Vector3 difference = transform.forward - m_steerinput.forward;
+
+        //The way this is set up is to make sure the forward vectors match as closely as possible, 
+        //without a weird wobble that was caused by applying non-relative torque first.
+        //It will add relative torque until a certain threshold, then apply torque to match the
+        //forward vector to the steer direction in world orientation, rather than relative orientation
+        if(difference.magnitude > 0.3f)
+            m_self.AddRelativeTorque(new Vector3(0, (steerdir.y - (m_self.angularVelocity.y / Mathf.Max(8, m_forces.m_turnSpeed / 10)))
+            * (-m_jinput + 1), 0) * m_forces.m_turnSpeed, ForceMode.Impulse);
+        else
+            m_self.AddTorque(new Vector3(0, (steerdir.y - (m_self.angularVelocity.y / Mathf.Max(8, m_forces.m_turnSpeed/10)))
             * (-m_jinput + 1), 0) * m_forces.m_turnSpeed, ForceMode.Impulse);
     }
 
