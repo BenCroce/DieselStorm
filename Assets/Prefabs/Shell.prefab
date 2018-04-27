@@ -23,10 +23,10 @@ GameObject:
   - component: {fileID: 135068061043453152}
   - component: {fileID: 23629307560303612}
   - component: {fileID: 54300826194846362}
-  - component: {fileID: 114949658026565402}
   - component: {fileID: 114602165500586274}
   - component: {fileID: 114571728026933174}
   - component: {fileID: 114011490351318314}
+  - component: {fileID: 114817426756473696}
   m_Layer: 0
   m_Name: Shell
   m_TagString: Untagged
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4980870451680218}
   - component: {fileID: 198870368052730988}
   - component: {fileID: 199157624901193148}
-  - component: {fileID: 114207912945156030}
+  - component: {fileID: 114678859627759870}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -148,17 +148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ProjectileHit: {fileID: 11400000, guid: 8320fd256e5cedd40918378123b1b239, type: 2}
   m_HealthModifier: {fileID: 11400000, guid: 781b60f724cfbf3469dea6488c011b9e, type: 2}
---- !u!114 &114207912945156030
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1870366845539662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a3ef472dda6b9644b19376efc64408c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114571728026933174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,7 +201,18 @@ MonoBehaviour:
     i15: 18
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &114949658026565402
+--- !u!114 &114678859627759870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870366845539662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6526d119267c5444954217ca8149e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114817426756473696
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1448822658572678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c4ee89d3d05b47ac31f3721d605b7, type: 3}
+  m_Script: {fileID: 11500000, guid: ba3c096d4cb7ab54fbd51317d10d46d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_lifetime: 3
