@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114825734327852800}
   - component: {fileID: 114386546814597672}
   - component: {fileID: 114769952714964086}
+  - component: {fileID: 114720765860707128}
   m_Layer: 0
   m_Name: TeamPrefab
   m_TagString: Untagged
@@ -74,6 +75,35 @@ MonoBehaviour:
     i15: 146
   m_ServerOnly: 1
   m_LocalPlayerAuthority: 0
+--- !u!114 &114720765860707128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1623951393644474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3585c62ef44f14546b8830a61975bc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 38bd94d0cd5fc274ea167c7498487f0e, type: 2}
+  Sender: {fileID: 0}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114825734327852800}
+        m_MethodName: SetSpawnPoint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: GameEventArgsResponse, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114769952714964086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,4 +147,5 @@ MonoBehaviour:
   m_TeamScriptable: {fileID: 11400000, guid: 506def79fccf50944939a014f19ebff0, type: 2}
   m_SpawnLocation: {fileID: 0}
   m_PlayerRespawn: {fileID: 11400000, guid: fc63c85cc0446b24d8a6bd24ec034179, type: 2}
+  m_TeamColor: {r: 0, g: 0, b: 0, a: 0}
   m_RespawningPlayer: {fileID: 0}

@@ -34,8 +34,7 @@ public class PlayerBehaviour : NetworkBehaviour
             m_SceneObject = args[3] as GameObject;
             m_TeamColor = sender.m_TeamColor;
             m_OnPlayerConnected.Raise(this.gameObject, m_SceneObject);
-            m_SceneObject.transform.position = new Vector3(2450, 580, 1690) + 
-                new Vector3(Random.Range(0,25),0, Random.Range(0,25));
+            m_SceneObject.transform.position = location.position;
             if(!m_SceneObject.GetComponent<NetworkIdentity>().hasAuthority)            
                 StartCoroutine(RPCCall());
         }

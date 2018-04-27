@@ -60,4 +60,13 @@ public class TeamBehaviour : NetworkBehaviour
             break;
         }
     }
+
+    public void SetSpawnPoint(Object[] args)
+    {
+        var sender = args[0] as SpawnPointController;
+        if (sender != null)
+        {
+            m_SpawnLocation = args[1] as Transform;
+        }
+    }
 }
