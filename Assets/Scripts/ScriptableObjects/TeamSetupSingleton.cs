@@ -63,7 +63,7 @@ public class TeamSetupSingleton : ScriptableObject
         {
             m_Teams[teamCount].AddPlayer(m_Players[i]);
             teamCount++;
-            if (teamCount >= m_Teams.Count - 1)
+            if (teamCount >= m_Teams.Count)
                 teamCount = 0;
         }
     }

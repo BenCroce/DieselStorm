@@ -29,14 +29,14 @@ public class PlayerBehaviour : NetworkBehaviour
         var behaviour = args[1] as PlayerBehaviour;
         var location = args[2] as Transform;
 
-        if (behaviour == this)
-        {            
-            CmdSetMeshColors(sender.m_TeamScriptable.m_Color);
-            RpcSetColor(m_TeamColor, args[3] as GameObject);                     
+        if (behaviour.gameObject == this.gameObject)
+        {
+            m_SceneObject = args[3] as GameObject;
+            m_TeamColor = sender.m_TeamColor;
             m_OnPlayerConnected.Raise(this.gameObject, m_SceneObject);
-            (args[3] as GameObject).transform.position = new Vector3(2450, 580, 1690) + 
+            m_SceneObject.transform.position = new Vector3(2450, 580, 1690) + 
                 new Vector3(Random.Range(0,25),0, Random.Range(0,25));
-            if(!(args[3] as GameObject).GetComponent<NetworkIdentity>().hasAuthority)            
+            if(!m_SceneObject.GetComponent<NetworkIdentity>().hasAuthority)            
                 StartCoroutine(RPCCall());
         }
     }
@@ -49,9 +49,10 @@ public class PlayerBehaviour : NetworkBehaviour
         foreach (var renderer in renders)
         {
             var oldMaterial = renderer.material;
-            renderer.material = new Material(Shader.Find("Shader Forge/Tank_Shader"));
-            renderer.material.CopyPropertiesFromMaterial(oldMaterial);
-            renderer.material.SetColor("_ColorPicker", m_TeamColor);
+            m_SceneObjectMaterial = new Material(Shader.Find("Shader Forge/Tank_Shader"));
+            m_SceneObjectMaterial.CopyPropertiesFromMaterial(oldMaterial);            
+            m_SceneObjectMaterial.SetColor("_ColorPicker", m_TeamColor);
+            renderer.material = m_SceneObjectMaterial;
         }
     }
 
@@ -67,21 +68,15 @@ public class PlayerBehaviour : NetworkBehaviour
         if (local.isLocalPlayer)
         {
             CmdAssignAuthority(local, id);
-            m_SceneObject.GetComponentInChildren<Cinemachine.CinemachineFreeLook>().gameObject.SetActive(true);
-            return;
-        }
-        m_SceneObject.GetComponentInChildren<Cinemachine.CinemachineFreeLook>().gameObject.SetActive(false);
+            //m_SceneObject.GetComponentInChildren<Cinemachine.CinemachineFreeLook>().gameObject.SetActive(true);
+        }        
     }
 
     [Command]
     void CmdAssignAuthority(NetworkIdentity local, NetworkIdentity id)
     {
         var connection = local.connectionToClient;        
-        id.AssignClientAuthority(connection);
-
-
-
-        m_SceneObject.GetComponent<NetworkTankInputController>().m_vcam.SetActive(true);
+        id.AssignClientAuthority(connection);        
     }
 
     IEnumerator RPCCall()
@@ -89,7 +84,9 @@ public class PlayerBehaviour : NetworkBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1.5f);
-              RpcAssignClientAuthority(GetComponent<NetworkIdentity>(), 
+            CmdSetMeshColors(m_TeamColor);
+            RpcSetColor(m_TeamColor, m_SceneObject);
+            RpcAssignClientAuthority(GetComponent<NetworkIdentity>(), 
                   m_SceneObject.GetComponent<NetworkIdentity>());
             break;
         }

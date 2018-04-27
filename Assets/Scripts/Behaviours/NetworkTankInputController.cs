@@ -70,7 +70,9 @@ public class NetworkTankInputController : NetworkBehaviour
         //if (!isLocalPlayer)
         //    return;
         if (!hasAuthority)
-            return;
+            return;      
+        if(m_vcam.activeSelf == false)
+            m_vcam.gameObject.SetActive(true);
         m_hinput = m_HorizontalAxis.AxisValue();
         m_vinput = m_VerticalAxis.AxisValue();
         m_jinput = m_JumpAxis.AxisValue();
