@@ -30,7 +30,7 @@ public class ScoreBehaviour : NetworkBehaviour
     {
         if (args[0].GetType() == typeof(TeamSriptable))
         {
-            Debug.Log("Checking For Vicotry");
+            Debug.Log("Checking For Victory");
             int teamsWithTickets = 0;
             foreach (var team in m_Teams)
             {
