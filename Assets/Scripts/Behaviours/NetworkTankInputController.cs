@@ -1,6 +1,8 @@
 ﻿using UnityEngine.Networking;
 using UnityEngine;
 using System.Collections.Generic;
+
+[NetworkSettings(channel = Channels.DefaultReliable, sendInterval = 0.05f)]
 public class NetworkTankInputController : NetworkBehaviour
 {
     private float m_hinput;
