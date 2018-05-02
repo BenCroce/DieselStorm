@@ -9,6 +9,7 @@ public class TeamSriptable : ScriptableObject
 {
     public List<PlayerBehaviour> m_Players;
     public GameEventArgs m_OnAllPlayerLeftTeam;
+    public int m_TicketsRemaining;
     public int m_MaxPlayers;
     public Color m_Color;
 

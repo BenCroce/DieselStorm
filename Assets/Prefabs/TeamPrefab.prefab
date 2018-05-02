@@ -147,5 +147,9 @@ MonoBehaviour:
   m_TeamScriptable: {fileID: 11400000, guid: 506def79fccf50944939a014f19ebff0, type: 2}
   m_SpawnLocation: {fileID: 0}
   m_PlayerRespawn: {fileID: 11400000, guid: fc63c85cc0446b24d8a6bd24ec034179, type: 2}
+  m_OnTicketsRemaingChanged: {fileID: 11400000, guid: 035c5d6a30a3f9f4fa26858aa37354f3,
+    type: 2}
+  m_OnTicketsDepleted: {fileID: 11400000, guid: 1f0e6f389f533b549a84b21371582618,
+    type: 2}
   m_TeamColor: {r: 0, g: 0, b: 0, a: 0}
   m_RespawningPlayer: {fileID: 0}

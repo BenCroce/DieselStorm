@@ -8,6 +8,8 @@ public class TeamBehaviour : NetworkBehaviour
     public TeamSriptable m_TeamScriptable;
     public Transform m_SpawnLocation;
     public GameEventArgs m_PlayerRespawn;
+    public GameEventArgs m_OnTicketsRemaingChanged;
+    public GameEventArgs m_OnTicketsDepleted;
     [SyncVar] public Color m_TeamColor;
 
     void Start()
@@ -31,10 +33,14 @@ public class TeamBehaviour : NetworkBehaviour
     [ContextMenu("Force Spawn")]
     [Command]
     public void CmdSpawnTank()
-    {
+    {        
         GameObject tank = Instantiate(m_TeamScriptable.m_HeavyTankPrefab);
         NetworkServer.Spawn(tank);
-        m_PlayerRespawn.Raise(this, m_RespawningPlayer, m_SpawnLocation, tank);       
+        m_PlayerRespawn.Raise(this, m_RespawningPlayer, m_SpawnLocation, tank);
+        m_TeamScriptable.m_TicketsRemaining--;
+        m_OnTicketsRemaingChanged.Raise(m_TeamScriptable);
+        if(m_TeamScriptable.m_TicketsRemaining <= 0)
+            m_OnTicketsDepleted.Raise(m_TeamScriptable);
         m_RespawningPlayer = null;
     }
 
