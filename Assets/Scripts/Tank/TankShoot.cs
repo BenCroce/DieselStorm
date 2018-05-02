@@ -19,11 +19,12 @@ public class TankShoot : NetworkBehaviour {
             CmdShoot();
     }
 
-    [Command]
+    [Command(channel = Channels.DefaultReliable)]
     public void CmdShoot()
     {
-        GameObject shot = Instantiate(m_shell, m_turretPos.position, m_turretPos.rotation);       
+        GameObject shot = Instantiate(m_shell, m_turretPos.position + (GetComponent<Rigidbody>().velocity.normalized * 0.1f), m_turretPos.rotation, this.transform);
         shot.GetComponent<Rigidbody>().velocity = shot.transform.forward * m_shootForce + GetComponent<Rigidbody>().velocity;
+
         NetworkServer.Spawn(shot);
     }
 }

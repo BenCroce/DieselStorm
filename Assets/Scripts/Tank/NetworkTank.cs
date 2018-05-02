@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 
-[NetworkSettings(channel = Channels.DefaultReliable, sendInterval = 0.05f)]
+[NetworkSettings(channel = Channels.DefaultUnreliable, sendInterval = 0.05f)]
 public class NetworkTank : NetworkBehaviour {
 
     public PlayerBehaviour m_player;

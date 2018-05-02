@@ -30,12 +30,15 @@ public class ShellBehaviour : MonoBehaviour {
         m_trail.GetComponent<ShellTrailBehaviour>().enabled = true;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        Destroy(gameObject);
-        m_trail.transform.parent = null;
-        m_trail.transform.localScale = new Vector3(1, 1, 1);
-        m_trail.Stop();
-        m_trail.GetComponent<ShellTrailBehaviour>().enabled = true;
+        if (transform.parent.gameObject != collision.gameObject)
+        {
+            Destroy(gameObject);
+            m_trail.transform.parent = null;
+            m_trail.transform.localScale = new Vector3(1, 1, 1);
+            m_trail.Stop();
+            m_trail.GetComponent<ShellTrailBehaviour>().enabled = true;
+        }
     }
 }
