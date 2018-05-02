@@ -43,7 +43,7 @@ public class GameStateController : MonoBehaviour
     }
 
     [ContextMenu("ToGame")]
-    public void TransitionToGame()
+    public void TransitionToGame(Object[] args)
     {
         TransitionToState(new Object[] { m_CurrentState, m_States[0] });
     }

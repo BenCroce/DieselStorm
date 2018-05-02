@@ -21,7 +21,6 @@ public class UICoreBehaviour : MonoBehaviour
         m_LoadScreen.SetActive(false);
     }
 
-
     public void ToggleGamePlayScreenOn(Object[] args)
     {
         m_GameplayUI.SetActive(true);

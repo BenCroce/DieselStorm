@@ -248,6 +248,46 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 272ab8416e47a5a4da730e41123984e3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1303948225 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1652306337836412, guid: 272ab8416e47a5a4da730e41123984e3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1303948224}
+--- !u!114 &1303948226 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114210212057034010, guid: 272ab8416e47a5a4da730e41123984e3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1303948224}
+  m_Script: {fileID: 11500000, guid: 746de48aec0af9d40b1bcac13e34cee6, type: 3}
+--- !u!114 &1303948227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1303948225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3585c62ef44f14546b8830a61975bc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 0d521afb1bcc7f543aedae820c341e53, type: 2}
+  Sender: {fileID: 0}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1303948226}
+        m_MethodName: TransitionToGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: GameEventArgsResponse, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1001 &1563582151
 Prefab:
   m_ObjectHideFlags: 0
