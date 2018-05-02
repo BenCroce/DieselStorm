@@ -97,6 +97,7 @@ public class NetworkTank : NetworkBehaviour {
         m_aim = m_player.m_SceneObject.GetComponent<TurrentAimBehaviour>();
         m_movement = m_player.m_SceneObject.GetComponent<TankMovementBehaviour>();
         input = m_player.m_SceneObject.GetComponent<NetworkTankInputController>();
+        m_player.m_SceneObject.GetComponent<TankShoot>().player = this;
         getting = false;
     }
 }

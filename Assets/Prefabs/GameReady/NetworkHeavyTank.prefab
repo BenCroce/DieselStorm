@@ -170,7 +170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1058419789978808
 GameObject:
   m_ObjectHideFlags: 1
@@ -538,7 +538,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1362575580842222
 GameObject:
   m_ObjectHideFlags: 1
@@ -1050,7 +1050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1588703751485386
 GameObject:
   m_ObjectHideFlags: 1
@@ -1969,7 +1969,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1844070630989302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2339.2773, y: 481.88663, z: 1585.7944}
+  m_LocalPosition: {x: 2584.4917, y: 467.14383, z: 1725.6686}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4714705160052468}
@@ -3675,6 +3675,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244f88a0804611349925540c8175ed6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_player: {fileID: 0}
+  local: {fileID: 0}
   input: {fileID: 114953783671591890}
   m_movement: {fileID: 114843248427303764}
   m_aim: {fileID: 114569346855139810}
@@ -3854,7 +3856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_shell: {fileID: 1448822658572678, guid: 0ff9ca6d8824e434bbf61e08b10bbb12, type: 2}
   m_turretPos: {fileID: 4189472124445260}
-  m_shootForce: 100
+  m_shootForce: 150
   m_shootCooldown: 1
 --- !u!114 &114417871750058294
 MonoBehaviour:
@@ -7467,7 +7469,7 @@ ParticleSystem:
   lengthInSec: 4
   simulationSpeed: 2
   stopAction: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -10789,7 +10791,7 @@ ParticleSystem:
   lengthInSec: 4
   simulationSpeed: 2
   stopAction: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -10839,7 +10841,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1611675384
+  randomSeed: 19311284
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -20959,7 +20961,7 @@ ParticleSystem:
   lengthInSec: 4
   simulationSpeed: 2
   stopAction: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -21009,7 +21011,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -523082007
+  randomSeed: -1472016767
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -27693,7 +27695,7 @@ ParticleSystem:
   lengthInSec: 4
   simulationSpeed: 2
   stopAction: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -27743,7 +27745,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -1906408840
+  randomSeed: -1702864878
   InitialModule:
     serializedVersion: 3
     enabled: 1
