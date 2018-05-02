@@ -1588,7 +1588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1081462661
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1716,7 +1716,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2249,8 +2249,11 @@ GameObject:
   - component: {fileID: 1529197857}
   - component: {fileID: 1529197856}
   - component: {fileID: 1529197863}
+  - component: {fileID: 1529197866}
   - component: {fileID: 1529197862}
+  - component: {fileID: 1529197865}
   - component: {fileID: 1529197861}
+  - component: {fileID: 1529197864}
   - component: {fileID: 1529197860}
   m_Layer: 5
   m_Name: Canvas
@@ -2349,11 +2352,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LoadScreen: {fileID: 1081462660}
-  m_LoadScreenState: 1
   m_GameplayUI: {fileID: 710854465}
-  m_GameplayUIState: 0
   m_VictoryScreen: {fileID: 1640120420}
-  m_VictoryScreenState: 0
 --- !u!114 &1529197861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2365,13 +2365,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3585c62ef44f14546b8830a61975bc4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 7f8abd6bd7de30142a4bba754d53b202, type: 2}
+  Event: {fileID: 11400000, guid: 4a63ba6d84239704da41038383b5572c, type: 2}
   Sender: {fileID: 0}
   Response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1529197860}
-        m_MethodName: ToggleVictoryScreen
+        m_MethodName: ToggleVictoryScreenOn
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2394,13 +2394,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3585c62ef44f14546b8830a61975bc4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 271b771412f82b042ba1e4953aa3caba, type: 2}
+  Event: {fileID: 11400000, guid: 146008e1d9727584fb51cb66b104355a, type: 2}
   Sender: {fileID: 0}
   Response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1529197860}
-        m_MethodName: ToggleGamePlayScreen
+        m_MethodName: ToggleGamePlayScreenOn
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2423,13 +2423,100 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3585c62ef44f14546b8830a61975bc4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 7193bc49bb45434489c146a3b88315c2, type: 2}
+  Event: {fileID: 11400000, guid: 064204759672bb24f83d9767f36b5122, type: 2}
   Sender: {fileID: 0}
   Response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1529197860}
-        m_MethodName: ToggleLoadScreen
+        m_MethodName: ToggleLoadScreenOn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: GameEventArgsResponse, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &1529197864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1529197855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3585c62ef44f14546b8830a61975bc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 3f280667bf9f7854b8e190050766ef9e, type: 2}
+  Sender: {fileID: 0}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1529197860}
+        m_MethodName: ToggleVictoryScreenOff
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: GameEventArgsResponse, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &1529197865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1529197855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3585c62ef44f14546b8830a61975bc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: c252bdb6dcb06e047b49e23a7ae5a00d, type: 2}
+  Sender: {fileID: 0}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1529197860}
+        m_MethodName: ToggleGamePlayScreenOff
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: GameEventArgsResponse, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &1529197866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1529197855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3585c62ef44f14546b8830a61975bc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 0f20a35e6163090428e8ead5ea694ff9, type: 2}
+  Sender: {fileID: 0}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1529197860}
+        m_MethodName: ToggleLoadScreenOff
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -5,30 +5,40 @@ using UnityEngine;
 public class UICoreBehaviour : MonoBehaviour
 {
     public GameObject m_LoadScreen;
-    [SerializeField]
-    private bool m_LoadScreenState = true;
+
     public GameObject m_GameplayUI;
-    [SerializeField]
-    private bool m_GameplayUIState = false;
+
     public GameObject m_VictoryScreen;
-    [SerializeField]
-    private bool m_VictoryScreenState = false;
 
-    public void ToggleLoadScreen(Object[] args)
+
+    public void ToggleLoadScreenOn(Object[] args)
     {
-        m_LoadScreenState = !m_LoadScreenState;
-        m_LoadScreen.SetActive(m_LoadScreenState);
+        m_LoadScreen.SetActive(true);
     }
 
-    public void ToggleGamePlayScreen(Object[] args)
+    public void ToggleLoadScreenOff(Object[] args)
     {
-        m_GameplayUIState = !m_GameplayUIState;
-        m_GameplayUI.SetActive(m_GameplayUIState);
+        m_LoadScreen.SetActive(false);
     }
 
-    public void ToggleVictoryScreen(Object[] args)
+
+    public void ToggleGamePlayScreenOn(Object[] args)
     {
-        m_VictoryScreenState = !m_VictoryScreenState;
-        m_VictoryScreen.SetActive(m_VictoryScreenState);
+        m_GameplayUI.SetActive(true);
+    }
+
+    public void ToggleGamePlayScreenOff(Object[] args)
+    {
+        m_GameplayUI.SetActive(false);
+    }
+
+    public void ToggleVictoryScreenOn(Object[] args)
+    {
+        m_VictoryScreen.SetActive(true);
+    }
+
+    public void ToggleVictoryScreenOff(Object[] args)
+    {
+        m_VictoryScreen.SetActive(false);
     }
 }

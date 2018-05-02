@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a150193b0c0cfb4fa74526fce85878a, type: 3}
   m_Name: LobbyState
   m_EditorClassIdentifier: 
-  Transitions: []
-  m_OnStateEntered: {fileID: 0}
-  m_OnStateExit: {fileID: 0}
+  Transitions:
+  - {fileID: 11400000, guid: 78d1e80744682cc47862bdc0b972cbcf, type: 2}
+  m_OnStateEntered: {fileID: 11400000, guid: 806ea466094e9a24987b41b47340a556, type: 2}
+  m_OnStateExit: {fileID: 11400000, guid: 3e2fe8b9bd301164aaf096b76df242d4, type: 2}

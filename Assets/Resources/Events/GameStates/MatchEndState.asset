@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c928f836c9ac06438f3addb68906476, type: 3}
+  m_Name: MatchEndState
+  m_EditorClassIdentifier: 
+  Transitions:
+  - {fileID: 11400000, guid: bf44885363e27d149bc36a40f979d497, type: 2}
+  m_OnStateEntered: {fileID: 11400000, guid: 4a63ba6d84239704da41038383b5572c, type: 2}
+  m_OnStateExit: {fileID: 11400000, guid: 3f280667bf9f7854b8e190050766ef9e, type: 2}
