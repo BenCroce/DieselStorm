@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 114468776113590216}
   - component: {fileID: 114112349151423578}
   - component: {fileID: 114201364022315288}
-  - component: {fileID: 114920354518893396}
   m_Layer: 0
   m_Name: playerBehaviour
   m_TagString: Untagged
@@ -156,21 +155,3 @@ MonoBehaviour:
     type: 2}
   m_SceneObjectMaterial: {fileID: 2100000, guid: 04db8494eccaa134a80e6039d58e9116,
     type: 2}
---- !u!114 &114920354518893396
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1373863025843376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 244f88a0804611349925540c8175ed6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_player: {fileID: 114468776113590216}
-  local: {fileID: 114021761074792806}
-  input: {fileID: 0}
-  m_movement: {fileID: 0}
-  m_aim: {fileID: 0}
-  m_steerAimGuide: {fileID: 0}
-  updatesPerSecond: 60

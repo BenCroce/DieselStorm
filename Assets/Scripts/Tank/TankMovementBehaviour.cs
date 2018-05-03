@@ -5,8 +5,7 @@ using UnityEngine;
 public class TankMovementBehaviour : MovementBehaviour {
 
     public TankMoveScriptable m_forces;
-    //public Transform m_steerGuide;
-    public Vector3 m_steerForward;
+    public Transform m_steerGuide;
 
     Rigidbody m_self;
 
@@ -16,16 +15,16 @@ public class TankMovementBehaviour : MovementBehaviour {
     void Start()
     {
         m_self = GetComponent<Rigidbody>();
-        //m_steerGuide = Camera.main.transform;
-        //if (m_steerGuide == null)
-            //Debug.LogWarning("you must have a steerguide, this is usually the camera... did you forget to assign it?");
+        m_steerGuide = Camera.main.transform;
+        if (m_steerGuide == null)
+            Debug.LogWarning("you must have a steerguide, this is usually the camera... did you forget to assign it?");
     }
 
     //Turn to match the camera's orientation
-    void Steer(Vector3 m_steerinput, float m_jinput)
+    void Steer(Transform m_steerinput, float m_jinput)
     {
-        Quaternion steerdir = Quaternion.FromToRotation(transform.forward, m_steerinput);
-        Vector3 difference = transform.forward - m_steerinput;
+        Quaternion steerdir = Quaternion.FromToRotation(transform.forward, m_steerinput.forward);
+        Vector3 difference = transform.forward - m_steerinput.forward;
 
         //The way this is set up is to make sure the forward vectors match as closely as possible, 
         //without a weird wobble that was caused by applying non-relative torque first.
@@ -67,8 +66,8 @@ public class TankMovementBehaviour : MovementBehaviour {
 
 
             //TANK TURNING//
-            if(m_steerForward != null)
-                Steer(m_steerForward, m_jinput);
+            if(m_steerGuide != null)
+                Steer(m_steerGuide, m_jinput);
         }
     }
 

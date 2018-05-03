@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-[NetworkSettings(channel = Channels.DefaultReliable, sendInterval = 0.05f)]
 public class PlayerBehaviour : NetworkBehaviour
 {
     [SyncVar] public string m_ScreenName;
