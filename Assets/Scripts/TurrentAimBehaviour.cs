@@ -8,13 +8,15 @@ public class TurrentAimBehaviour : NetworkBehaviour {
     public Transform m_aimGuide;
     public Transform m_verticalAxis;
     public Transform m_horizontalAxis;
+    public Vector3 m_aimRotation;
 
     public float m_pitchMinimum;
 
 	// Use this for initialization
 	void Start ()
     {
-        m_aimGuide = Camera.main.transform;
+        if(hasAuthority)
+            m_aimGuide = Camera.main.transform;
         if (!m_aimGuide)
             Debug.Log("There is no aim guide... Did you forget to set it?");
 	}
@@ -22,11 +24,8 @@ public class TurrentAimBehaviour : NetworkBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (!hasAuthority)
-            return;
-
-        if (!m_aimGuide)
-            return;
+        if (m_aimGuide != null)
+            m_aimRotation = m_aimGuide.rotation.eulerAngles;
 
         verticalAim();
 
@@ -38,7 +37,7 @@ public class TurrentAimBehaviour : NetworkBehaviour {
     void horizontalAim()
     {
         //Rotate based on aim guide orientation
-        var aimDir = new Vector3(0, m_aimGuide.rotation.eulerAngles.y - m_horizontalAxis.rotation.eulerAngles.y, 0);
+        var aimDir = new Vector3(0, m_aimRotation.y - m_horizontalAxis.rotation.eulerAngles.y, 0);
 
         m_horizontalAxis.Rotate(aimDir);
     }
@@ -46,7 +45,7 @@ public class TurrentAimBehaviour : NetworkBehaviour {
     void verticalAim()
     {
         //Initial rotation based on aim guide orientation
-        var aimDir = new Vector3((m_aimGuide.rotation.eulerAngles.x - m_verticalAxis.rotation.eulerAngles.x), 0, 0);
+        var aimDir = new Vector3((m_aimRotation.x - m_verticalAxis.rotation.eulerAngles.x), 0, 0);
 
         m_verticalAxis.Rotate(aimDir);
 

@@ -170,7 +170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1058419789978808
 GameObject:
   m_ObjectHideFlags: 1
@@ -538,7 +538,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1362575580842222
 GameObject:
   m_ObjectHideFlags: 1
@@ -1050,7 +1050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1588703751485386
 GameObject:
   m_ObjectHideFlags: 1
@@ -1550,12 +1550,10 @@ GameObject:
   - component: {fileID: 114574666099741534}
   - component: {fileID: 114417871750058294}
   - component: {fileID: 114535078193960510}
-  - component: {fileID: 114519494656987600}
-  - component: {fileID: 114800989412910094}
-  - component: {fileID: 114661929772109030}
   - component: {fileID: 114843248427303764}
   - component: {fileID: 114095527131440652}
   - component: {fileID: 114569346855139810}
+  - component: {fileID: 114056509278715982}
   m_Layer: 0
   m_Name: NetworkHeavyTank
   m_TagString: Player
@@ -1971,7 +1969,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1844070630989302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2339.2773, y: 481.88663, z: 1585.7944}
+  m_LocalPosition: {x: 2584.4917, y: 467.14383, z: 1725.6686}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4714705160052468}
@@ -3666,6 +3664,24 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0
   m_Autodestruct: 0
+--- !u!114 &114056509278715982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1844070630989302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 244f88a0804611349925540c8175ed6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_player: {fileID: 0}
+  local: {fileID: 0}
+  input: {fileID: 114953783671591890}
+  m_movement: {fileID: 114843248427303764}
+  m_aim: {fileID: 114569346855139810}
+  m_steerAimGuide: {fileID: 0}
+  updatesPerSecond: 60
 --- !u!114 &114061710821575714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3840,7 +3856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_shell: {fileID: 1448822658572678, guid: 0ff9ca6d8824e434bbf61e08b10bbb12, type: 2}
   m_turretPos: {fileID: 4189472124445260}
-  m_shootForce: 100
+  m_shootForce: 150
   m_shootCooldown: 1
 --- !u!114 &114417871750058294
 MonoBehaviour:
@@ -3923,27 +3939,6 @@ MonoBehaviour:
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
   m_HeadingIsSlave: 1
---- !u!114 &114519494656987600
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1844070630989302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &114519915360312778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4033,6 +4028,7 @@ MonoBehaviour:
   m_aimGuide: {fileID: 0}
   m_verticalAxis: {fileID: 4442312821683654}
   m_horizontalAxis: {fileID: 4533455577292074}
+  m_aimRotation: {x: 0, y: 0, z: 0}
   m_pitchMinimum: -12
 --- !u!114 &114574666099741534
 MonoBehaviour:
@@ -4095,25 +4091,6 @@ MonoBehaviour:
     i15: 161
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &114661929772109030
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1844070630989302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 4442312821683654}
-  m_ChildIndex: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_MovementThreshold: 0.001
-  m_InterpolateRotation: 0.5
-  m_InterpolateMovement: 0.5
 --- !u!114 &114702207241817730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4196,25 +4173,6 @@ MonoBehaviour:
     FarClipPlane: 5000
     Dutch: 0
   m_ComponentOwner: {fileID: 4723157904535166}
---- !u!114 &114800989412910094
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1844070630989302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 4533455577292074}
-  m_ChildIndex: 0
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_MovementThreshold: 0.001
-  m_InterpolateRotation: 0.5
-  m_InterpolateMovement: 0.5
 --- !u!114 &114821977575327908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4250,7 +4208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_forces: {fileID: 11400000, guid: 90e5bf241e088094abee70f2ff505262, type: 2}
-  m_steerGuide: {fileID: 0}
+  m_steerForward: {x: 0, y: 0, z: 0}
 --- !u!114 &114932823681314508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7511,7 +7469,7 @@ ParticleSystem:
   lengthInSec: 4
   simulationSpeed: 2
   stopAction: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -10833,7 +10791,7 @@ ParticleSystem:
   lengthInSec: 4
   simulationSpeed: 2
   stopAction: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -10883,7 +10841,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1611675384
+  randomSeed: 19311284
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -21003,7 +20961,7 @@ ParticleSystem:
   lengthInSec: 4
   simulationSpeed: 2
   stopAction: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -21053,7 +21011,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -523082007
+  randomSeed: -1472016767
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -27737,7 +27695,7 @@ ParticleSystem:
   lengthInSec: 4
   simulationSpeed: 2
   stopAction: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -27787,7 +27745,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -1906408840
+  randomSeed: -1702864878
   InitialModule:
     serializedVersion: 3
     enabled: 1
