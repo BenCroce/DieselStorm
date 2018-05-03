@@ -364,7 +364,7 @@ MonoBehaviour:
   m_trail: {fileID: 198870368052730988}
   m_explosion: {fileID: 198199321238892558}
   m_explosionRadius: 30
-  m_explosionForce: 1000
+  m_explosionForce: 600
 --- !u!135 &135068061043453152
 SphereCollider:
   m_ObjectHideFlags: 1
