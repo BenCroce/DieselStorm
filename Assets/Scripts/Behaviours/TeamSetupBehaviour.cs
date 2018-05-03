@@ -16,9 +16,7 @@ public class TeamSetupBehaviour : NetworkBehaviour
     
     private void Start()
     {
-        if (!isServer)
-            return;
-        CreateTeams();
+        CmdCreateTeams();
         StartCoroutine(GetPlayers());
     }
 
@@ -36,7 +34,8 @@ public class TeamSetupBehaviour : NetworkBehaviour
         }
     }
 
-    void CreateTeams()
+    [Command]
+    void CmdCreateTeams()
     {
         for (int i = 0; i < m_TeamSetupSingleton.m_MaxTeams; i++)
         {

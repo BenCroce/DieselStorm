@@ -58,6 +58,7 @@ public class TeamSetupSingleton : ScriptableObject
     {
         m_Teams = new List<TeamSriptable>();
         m_TeamColors = new List<Color>();
+        m_Players = new List<PlayerBehaviour>();
     }
 
     public void BalanceTeams()

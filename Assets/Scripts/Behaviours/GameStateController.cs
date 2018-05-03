@@ -19,6 +19,7 @@ public class GameStateController : NetworkBehaviour
         m_CurrentState.OnEnter();
 
         SceneManager.sceneLoaded += SceneLoaded;
+        
     }
 
     void TransitionToState(Object[] args)
@@ -38,9 +39,15 @@ public class GameStateController : NetworkBehaviour
     public void SceneLoaded(Scene cur, LoadSceneMode mode)
     {
         if (cur.name == "1.Game-Play")
+        {
             TransitionToState(new Object[] { m_CurrentState, m_States[3] });
+            return;
+        }
         if (cur.name == "0.lobby")
+        {
             TransitionToState(new Object[] { m_CurrentState, m_States[1] });
+            return;
+        }
     }
 
     public void TransitionToGame(Object[] args)
