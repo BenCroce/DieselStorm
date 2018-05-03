@@ -29,19 +29,20 @@ public class TankShoot : NetworkBehaviour {
         {
             GameObject shot = Instantiate(m_shell, m_turretPos.position + (GetComponent<Rigidbody>().velocity.normalized * 0.1f), m_turretPos.rotation, this.transform);
             shot.GetComponent<Rigidbody>().velocity = shot.transform.forward * m_shootForce + GetComponent<Rigidbody>().velocity;
-            RpcShoot();
+            NetworkServer.SpawnWithClientAuthority(shot, player.gameObject);
+            RpcShoot(shot, gameObject);
             canshoot = false;
             StartCoroutine(Cooldown());
         }
     }
 
     [ClientRpc]
-    public void RpcShoot()
+    public void RpcShoot(GameObject shot, GameObject parent)
     {
-        if (!player.local.isLocalPlayer)
+        //if (!player.local.isLocalPlayer)
         {
-            GameObject shot = Instantiate(m_shell, m_turretPos.position + (GetComponent<Rigidbody>().velocity.normalized * 0.1f), m_turretPos.rotation, this.transform);
-            shot.GetComponent<Rigidbody>().velocity = shot.transform.forward * m_shootForce + GetComponent<Rigidbody>().velocity;
+            shot.transform.parent = parent.transform;
+            shot.GetComponent<Rigidbody>().velocity = shot.transform.forward * m_shootForce + parent.GetComponent<Rigidbody>().velocity;
         }
     }
 
