@@ -2,11 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 
-public class GameStateController : MonoBehaviour
+public class GameStateController : NetworkBehaviour
 {
     public List<StateScriptable> m_States;
     public StateScriptable m_CurrentState;    
@@ -42,21 +43,13 @@ public class GameStateController : MonoBehaviour
             TransitionToState(new Object[] { m_CurrentState, m_States[1] });
     }
 
-    [ContextMenu("ToGame")]
     public void TransitionToGame(Object[] args)
     {
         TransitionToState(new Object[] { m_CurrentState, m_States[0] });
     }
-
-    [ContextMenu("ToEnd")]
-    public void TransitionToEnd()
+    
+    public void TransitionToEnd(Object[] args)
     {
         TransitionToState(new Object[] { m_CurrentState, m_States[2] });
-    }
-
-    [ContextMenu("ToLobby")]
-    public void TransitionToLobby()
-    {
-        TransitionToState(new Object[] { m_CurrentState, m_States[1] });
     }
 }

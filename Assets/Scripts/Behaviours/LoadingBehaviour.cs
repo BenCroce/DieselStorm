@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Prototype.NetworkLobby;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class LoadingBehaviour : MonoBehaviour
+public class LoadingBehaviour : NetworkBehaviour
 {
     public float m_PercentComplete;
     public GameEventArgs m_OnLoadPercentChange;
