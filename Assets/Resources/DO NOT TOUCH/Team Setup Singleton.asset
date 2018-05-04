@@ -16,4 +16,5 @@ MonoBehaviour:
   m_TeamColors: []
   m_DefaultTeamScriptable: {fileID: 11400000, guid: f7c06211e6623e3439bd966b5f2bc1c0,
     type: 2}
+  m_TeamStartingTickets: 3
   m_MaxTeams: 2
