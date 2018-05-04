@@ -6,8 +6,7 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
-
-public class GameStateController : NetworkBehaviour
+public class GameStateController : MonoBehaviour
 {
     public List<StateScriptable> m_States;
     public StateScriptable m_CurrentState;    

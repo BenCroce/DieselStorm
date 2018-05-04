@@ -6,16 +6,38 @@ using UnityEngine.Networking;
 public class TeamBehaviour : NetworkBehaviour
 {
     public TeamSriptable m_TeamScriptable;
-    public Transform m_SpawnLocation;
+    [SyncVar]public Transform m_SpawnLocation;
     public GameEventArgs m_PlayerRespawn;
     public GameEventArgs m_OnTicketsRemaingChanged;
     public GameEventArgs m_OnTicketsDepleted;
     [SyncVar] public Color m_TeamColor;
+    [SyncVar] public int m_TicketsRemaining;
+    [SyncVar] public int m_MaxPlayers;
+    [SyncVar] public GameObject m_HeavyTankPrefab;
+    [SyncVar] public GameObject m_LightTankPrefab;
+
 
     void Start()
     {
         StartCoroutine(InitalSpawn());
         m_TeamColor = m_TeamScriptable.Color;
+    }
+
+    public void Setup(string newName)
+    {        
+        name = newName;
+        m_TeamScriptable.name = newName;
+        RpcSetup();
+    }
+
+    [ClientRpc]
+    public void RpcSetup()
+    {
+        m_TeamColor = m_TeamScriptable.m_Color;
+        m_TicketsRemaining = m_TeamScriptable.m_TicketsRemaining;
+        m_MaxPlayers = m_TeamScriptable.m_MaxPlayers;
+        m_HeavyTankPrefab = m_TeamScriptable.m_HeavyTankPrefab;
+        m_LightTankPrefab = m_TeamScriptable.m_LightTankPrefab;
     }
 
     public void SpawnTank(Object[] args)

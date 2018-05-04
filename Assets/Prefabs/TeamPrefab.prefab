@@ -73,8 +73,8 @@ MonoBehaviour:
     i13: 4
     i14: 155
     i15: 146
-  m_ServerOnly: 1
-  m_LocalPlayerAuthority: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114720765860707128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 961a3d76bba8361459a047895135df75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TeamScriptable: {fileID: 11400000, guid: 506def79fccf50944939a014f19ebff0, type: 2}
+  m_TeamScriptable: {fileID: 11400000, guid: f7c06211e6623e3439bd966b5f2bc1c0, type: 2}
   m_SpawnLocation: {fileID: 0}
   m_PlayerRespawn: {fileID: 11400000, guid: fc63c85cc0446b24d8a6bd24ec034179, type: 2}
   m_OnTicketsRemaingChanged: {fileID: 11400000, guid: 035c5d6a30a3f9f4fa26858aa37354f3,
@@ -152,4 +152,8 @@ MonoBehaviour:
   m_OnTicketsDepleted: {fileID: 11400000, guid: 1f0e6f389f533b549a84b21371582618,
     type: 2}
   m_TeamColor: {r: 0, g: 0, b: 0, a: 0}
+  m_TicketsRemaining: 0
+  m_MaxPlayers: 0
+  m_HeavyTankPrefab: {fileID: 0}
+  m_LightTankPrefab: {fileID: 0}
   m_RespawningPlayer: {fileID: 0}
