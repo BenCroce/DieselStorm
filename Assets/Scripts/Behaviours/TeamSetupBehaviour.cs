@@ -17,6 +17,7 @@ public class TeamSetupBehaviour : NetworkBehaviour
     private void Start()
     {
         CmdCreateTeams();
+        m_TeamSetupSingleton.m_Players = new List<PlayerBehaviour>();
         StartCoroutine(GetPlayers());
     }
 
@@ -39,12 +40,17 @@ public class TeamSetupBehaviour : NetworkBehaviour
     {
         for (int i = 0; i < m_TeamSetupSingleton.m_MaxTeams; i++)
         {
-            var newTeam = m_TeamConfig.CreateInstance();
+            var newTeam = m_TeamConfig.CreateInstance();            
             if (m_TeamSetupSingleton.AddTeam(newTeam))
             {
                 var teamObj = Instantiate(m_TeamObject);
-                teamObj.GetComponent<TeamBehaviour>().m_TeamScriptable = newTeam;
-                teamObj.GetComponent<TeamBehaviour>().Setup("Name" + i);                
+                var teamBeahviour = teamObj.GetComponent<TeamBehaviour>();
+                teamBeahviour.m_TeamScriptable = newTeam;
+                teamBeahviour.m_TicketsRemaining = newTeam.m_TicketsRemaining;                
+                teamObj.GetComponent<TeamBehaviour>().Setup("Name" + i);
+                teamBeahviour.m_MaxPlayers = teamBeahviour.m_TeamScriptable.m_MaxPlayers;
+                teamBeahviour.m_HeavyTankPrefab = teamBeahviour.m_TeamScriptable.m_HeavyTankPrefab;
+                teamBeahviour.m_LightTankPrefab = teamBeahviour.m_TeamScriptable.m_LightTankPrefab;
                 NetworkServer.Spawn(teamObj);                             
             }
         }

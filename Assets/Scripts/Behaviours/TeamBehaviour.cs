@@ -19,15 +19,27 @@ public class TeamBehaviour : NetworkBehaviour
 
     void Start()
     {
+        if (m_TeamScriptable == null)
+            return;
         StartCoroutine(InitalSpawn());
-        m_TeamColor = m_TeamScriptable.Color;
+        m_TeamColor = m_TeamScriptable.Color;      
     }
 
     public void Setup(string newName)
-    {        
+    {
         name = newName;
         m_TeamScriptable.name = newName;
         RpcSetup();
+    }
+
+    [SyncVar]private bool noTicket = true;
+    void Update()
+    {
+        if (m_TicketsRemaining <= 0 && noTicket)
+        {
+            m_OnTicketsDepleted.Raise(this);
+            noTicket = false;
+        }
     }
 
     [ClientRpc]
@@ -42,6 +54,8 @@ public class TeamBehaviour : NetworkBehaviour
 
     public void SpawnTank(Object[] args)
     {
+        if(m_TeamScriptable == null)
+            return;
         var senderGameObject = args[0] as PlayerBehaviour;
         if (m_TeamScriptable.m_Players.Contains(senderGameObject))
         {
@@ -59,10 +73,10 @@ public class TeamBehaviour : NetworkBehaviour
         GameObject tank = Instantiate(m_TeamScriptable.m_HeavyTankPrefab);
         NetworkServer.Spawn(tank);
         m_PlayerRespawn.Raise(this, m_RespawningPlayer, m_SpawnLocation, tank);
-        m_TeamScriptable.m_TicketsRemaining--;
-        m_OnTicketsRemaingChanged.Raise(m_TeamScriptable);
-        if(m_TeamScriptable.m_TicketsRemaining <= 0)
-            m_OnTicketsDepleted.Raise(m_TeamScriptable);
+        m_TicketsRemaining--;
+        m_OnTicketsRemaingChanged.Raise(this);
+        if(m_TicketsRemaining <= 0)
+            m_OnTicketsDepleted.Raise(this);
         m_RespawningPlayer = null;
     }
 

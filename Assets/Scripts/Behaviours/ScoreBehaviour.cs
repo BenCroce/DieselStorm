@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 public class ScoreBehaviour : NetworkBehaviour
 {
-    public List<TeamSriptable> m_Teams;    
+    public List<TeamBehaviour> m_Teams;    
     public GameEventArgs m_OnTeamsSorted;
     public GameEventArgs m_OnWinCondition;
 
@@ -15,38 +15,61 @@ public class ScoreBehaviour : NetworkBehaviour
         StartCoroutine(GetTeams());
     }
 
+    void Update()
+    {
+        CmdVictoryCheck();
+    }
+
     public void SortTeams(Object []args)
     {
-        if (args[0].GetType() == typeof(TeamSriptable))
+        if (args[0].GetType() == typeof(TeamBehaviour))
         {
-            var sortedList = m_Teams.OrderBy(order => order.m_TicketsRemaining).ToList();
-            m_Teams = sortedList;
-            m_OnTeamsSorted.Raise(this);
-            Debug.Log("Sorting Teams");
+            CmdTeamSort();
         }
+    }
+
+    [Command]
+    void CmdTeamSort()
+    {
+        var sortedList = m_Teams.OrderBy(order => order.m_TicketsRemaining).ToList();
+        m_Teams = sortedList;
+        m_OnTeamsSorted.Raise(this);
+        Debug.Log("Sorting Teams");
     }
 
     public void CheckForVictory(Object[] args)
     {
-        if (args[0].GetType() == typeof(TeamSriptable))
+        if (args[0].GetType() == typeof(TeamBehaviour))
         {
-            Debug.Log("Checking For Victory");
-            int teamsWithTickets = 0;
-            foreach (var team in m_Teams)
+            CmdVictoryCheck();
+        }
+    }
+
+    [Command]
+    void CmdVictoryCheck()
+    {
+        Debug.Log("Checking For Victory");
+        int teamsWithTickets = 0;
+        foreach (var team in m_Teams)
+        {
+            if (team.m_TicketsRemaining > 0)
             {
-                if (team.m_TicketsRemaining > 0)
-                {
-                    teamsWithTickets++;
-                    if (teamsWithTickets > 1)
-                        return;
-                }
-            }
-            if (teamsWithTickets == 1)
-            {
-                m_OnWinCondition.Raise(this);
-                Debug.Log("Victory Met");
+                teamsWithTickets++;
+                if (teamsWithTickets > 1)
+                    return;
             }
         }
+        if (teamsWithTickets == 1)
+        {
+            RpcVicotryMet();
+        }
+    }
+
+    [ClientRpc]
+    void RpcVicotryMet()
+    {
+        m_OnWinCondition.Raise(this);
+        Debug.Log("Victory Met");
     }
 
     IEnumerator GetTeams()
@@ -56,7 +79,7 @@ public class ScoreBehaviour : NetworkBehaviour
             yield return new WaitForSeconds(0.5f);
             foreach (var teamBehaviour in FindObjectsOfType<TeamBehaviour>())
             {
-                m_Teams.Add(teamBehaviour.m_TeamScriptable);
+                m_Teams.Add(teamBehaviour);
             }
             break;
         }

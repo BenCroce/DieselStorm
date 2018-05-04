@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 961a3d76bba8361459a047895135df75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TeamScriptable: {fileID: 11400000, guid: f7c06211e6623e3439bd966b5f2bc1c0, type: 2}
+  m_TeamScriptable: {fileID: 0}
   m_SpawnLocation: {fileID: 0}
   m_PlayerRespawn: {fileID: 11400000, guid: fc63c85cc0446b24d8a6bd24ec034179, type: 2}
   m_OnTicketsRemaingChanged: {fileID: 11400000, guid: 035c5d6a30a3f9f4fa26858aa37354f3,

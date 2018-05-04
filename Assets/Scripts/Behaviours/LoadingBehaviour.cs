@@ -19,14 +19,14 @@ public class LoadingBehaviour : NetworkBehaviour
     {        
         var numConnected = FindObjectOfType<LobbyManager>().numPlayers;
         var playerLoaded = FindObjectsOfType<NetworkTankInputController>().Length;
-        while (playerLoaded < numConnected)
-        {
-            yield return new WaitForSeconds(0.2f);
-            if (FindObjectsOfType<NetworkTankInputController>().Length != 0)
-                m_PercentComplete = (playerLoaded / FindObjectsOfType<NetworkTankInputController>().Length) * 100;
-            playerLoaded = FindObjectsOfType<NetworkTankInputController>().Length;   
-            m_OnLoadPercentChange.Raise(this);         
-        }
+        //while (playerLoaded < numConnected)
+        //{
+        //    yield return new WaitForSeconds(0.1f);
+        //    //if (FindObjectsOfType<NetworkTankInputController>().Length != 0)
+        //    //    m_PercentComplete = (playerLoaded / FindObjectsOfType<NetworkTankInputController>().Length) * 100;
+        //    //playerLoaded = FindObjectsOfType<NetworkTankInputController>().Length;   
+        //    //m_OnLoadPercentChange.Raise(this);         
+        //}
         yield return new WaitForSeconds(2.0f);
         m_LoadComplete.Raise(this);        
     }
