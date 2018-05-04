@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1.Game-Play.unity
     guid: 290c697f678b04f448781828e2f6cb9f
+  - enabled: 1
+    path: Assets/Scenes/5.Map-Graybox.unity
+    guid: f0186d2a47188dc4594adf1937c287de
