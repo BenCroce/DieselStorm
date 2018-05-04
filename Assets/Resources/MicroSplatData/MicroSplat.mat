@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: MicroSplat
   m_Shader: {fileID: 4800000, guid: 997d0a0bf4d19d240a143d297c69d1fe, type: 3}
-  m_ShaderKeywords: _MICROSPLAT _PERTEXNORMSTR _PERTEXTINT _PERTEXUVSCALEOFFSET
+  m_ShaderKeywords: _MICROSPLAT _PERTEXBRIGHTNESS _PERTEXNORMSTR _PERTEXTINT _PERTEXUVSCALEOFFSET
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -47,6 +47,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Contrast: 0.3
+    - _Contrast: 0.4
     m_Colors:
     - _UVScale: {r: 500, g: 500, b: 0, a: 0}
