@@ -32,3 +32,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Scenes/5.Map-Graybox/LightingData.asset
