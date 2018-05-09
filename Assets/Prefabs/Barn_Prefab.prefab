@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4141589954312264}
   - component: {fileID: 33749687373632714}
   - component: {fileID: 23154542332747424}
+  - component: {fileID: 65685591595130184}
   m_Layer: 0
   m_Name: Barn_Prefab
   m_TagString: Untagged
@@ -82,3 +83,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1687681828895012}
   m_Mesh: {fileID: 4300000, guid: 568a3c6c0df7b9d45a28084a5b8067b1, type: 3}
+--- !u!65 &65685591595130184
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687681828895012}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.4858, y: 8.266565, z: 7.616667}
+  m_Center: {x: 0.00000035762787, y: 4.1210413, z: -0.00000011920929}
