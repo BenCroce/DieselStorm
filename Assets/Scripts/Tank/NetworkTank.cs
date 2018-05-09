@@ -34,6 +34,8 @@ public class NetworkTank : NetworkBehaviour {
 
     private void FixedUpdate()
     {
+        if (!m_player)
+            return;
         if (isLocalPlayer && m_movement && m_body && m_aim && input)
         {
             m_movement.m_steerForward = m_steerAimGuide.forward;
@@ -52,6 +54,8 @@ public class NetworkTank : NetworkBehaviour {
     [Command]
     void CmdPlayer(float h, float v, float j, Vector3 m, Vector3 p, Vector3 b, Vector3 a)
     {
+        if (!m_player)
+            return;
         RpcPlayer(h, v, j, m, p, b, a);
     }
 
@@ -59,6 +63,8 @@ public class NetworkTank : NetworkBehaviour {
     [ClientRpc]
     void RpcPlayer(float h, float v, float j, Vector3 m, Vector3 p, Vector3 b, Vector3 a)
     {
+        if (!m_player)
+            return;
         if (!isLocalPlayer && m_movement && m_body && m_aim && input)
         {
             input.Hinput = h;
