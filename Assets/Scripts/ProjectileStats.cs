@@ -11,8 +11,7 @@ public class ProjectileStats : MonoBehaviour
     {        
         //Args list
         //1. this object that invokes the event
-        //2. this objects helth mod
-        //3. this object armor mod
+        //2. this objects health mod        
         //4. object collided with
         m_ProjectileHit.Raise(this.gameObject, m_HealthModifier, other.gameObject);
         Destroy(this.gameObject);

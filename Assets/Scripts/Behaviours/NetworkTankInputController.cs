@@ -59,15 +59,16 @@ public class NetworkTankInputController : NetworkBehaviour
 
     // Use this for initialization
     void Start()
-    {
-        if (!isLocalPlayer)
-            m_vcam.SetActive(false);
+    {        
+        m_movement = GetComponent<TankMovementBehaviour>();
     }
     // Update is called once per frame
     void Update()
     {
-        if (!isLocalPlayer)
-            return;
+        if (!hasAuthority)
+            return;      
+        if(m_vcam.activeSelf == false)
+            m_vcam.gameObject.SetActive(true);
         m_hinput = m_HorizontalAxis.AxisValue();
         m_vinput = m_VerticalAxis.AxisValue();
         m_jinput = m_JumpAxis.AxisValue();
@@ -79,9 +80,6 @@ public class NetworkTankInputController : NetworkBehaviour
         {
             m_Mag.ReloadMag();
         }
-
-        m_TurretRotations.ForEach(item => item.Rotate(m_TurretPitchAxis.AxisValue(), 
-            m_TurretYawAxis.AxisValue()));            
         m_movement.Move(m_hinput, Vinput, m_jinput);
     }
 }
