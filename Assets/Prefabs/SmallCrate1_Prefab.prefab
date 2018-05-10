@@ -21,12 +21,13 @@ GameObject:
   - component: {fileID: 4200069936880876}
   - component: {fileID: 33464498383400310}
   - component: {fileID: 23877688781940180}
+  - component: {fileID: 65815654225026738}
   m_Layer: 0
   m_Name: SmallCrate1_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4200069936880876
 Transform:
@@ -82,3 +83,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1205573167022288}
   m_Mesh: {fileID: 4300000, guid: 57a0b7218b176584ea3cc7a9cd83c22b, type: 3}
+--- !u!65 &65815654225026738
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205573167022288}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.60185146, y: 0.60185146, z: 0.60185146}
+  m_Center: {x: 0, y: 0.30092573, z: 0}

@@ -1,11 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using Prototype.NetworkLobby;
-using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using System.Linq;
@@ -17,6 +14,7 @@ public class TeamSetupSingleton : ScriptableObject
     public List<TeamSriptable> m_Teams;
     public List<Color> m_TeamColors;
     public TeamSriptable m_DefaultTeamScriptable;
+    public int m_TeamStartingTickets;
     public int m_MaxTeams;
 
     void OnEnable()
@@ -24,6 +22,8 @@ public class TeamSetupSingleton : ScriptableObject
         m_Players = new List<PlayerBehaviour>();
         m_Teams = new List<TeamSriptable>();
         m_TeamColors = new List<Color>();
+        if (m_TeamStartingTickets <= 0)
+            m_TeamStartingTickets = 1;
     }
 
 
@@ -36,8 +36,9 @@ public class TeamSetupSingleton : ScriptableObject
     public bool AddTeam(TeamSriptable team)
     {
         if (m_Teams.Count < m_MaxTeams && !m_Teams.Contains(team))
-        {
+        {            
             m_Teams.Add(team);
+            team.m_TicketsRemaining = m_TeamStartingTickets;
             var teamColor = Random.ColorHSV();
             while (m_TeamColors.Contains(teamColor))
             {
