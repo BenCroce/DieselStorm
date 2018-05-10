@@ -9,6 +9,8 @@ public class ShellBehaviour : MonoBehaviour
 
     public ParticleSystem m_trail;
     public ParticleSystem m_explosion;
+    public AudioSource m_explosionSound;
+    public AudioSource m_shotSound;
 
     public int m_explosionRadius = 5;
     public int m_explosionForce = 10;
@@ -17,6 +19,8 @@ public class ShellBehaviour : MonoBehaviour
     void Start()
     {
         StartCoroutine(DestroySelf());
+        m_explosionSound.pitch += Random.Range(-0.2f, 0.2f);
+        m_shotSound.pitch += Random.Range(-0.2f, 0.2f);
     }
 
     // Update is called once per frame
@@ -68,6 +72,8 @@ public class ShellBehaviour : MonoBehaviour
             m_trail.transform.localScale = new Vector3(1, 1, 1);
             m_explosion.Play();
             m_explosion.GetComponent<ShellTrailBehaviour>().enabled = true;
+            m_explosionSound.enabled = true;
+            m_explosionSound.Play();
         }
     }
 }

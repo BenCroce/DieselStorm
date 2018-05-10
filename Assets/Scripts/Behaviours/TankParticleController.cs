@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(TankStats))]
 public class TankParticleController : MonoBehaviour {
@@ -11,6 +12,7 @@ public class TankParticleController : MonoBehaviour {
     public ParticleSystem m_HeatDistortion;
     public ParticleSystem m_Explosion;
     public TankStats m_tankStats;
+    public NetworkTankInputController m_control;
 
 	// Use this for initialization
 	void Start ()
@@ -22,7 +24,9 @@ public class TankParticleController : MonoBehaviour {
 	void Update ()
     {
         m_SmokeParticles.emissionRate = Mathf.Abs((m_tankStats.rt_Health.m_Value - m_tankStats.m_HealthStat.m_Value) / 100 * m_smokeAmount);
-	}
+        foreach(ParticleSystem i in m_HeatDistortion.GetComponentsInChildren<ParticleSystem>())
+            i.enableEmission = Convert.ToBoolean(1 - m_control.Jinput);
+    }
 
     private void OnDestroy()
     {
