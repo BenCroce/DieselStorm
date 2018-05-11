@@ -10,7 +10,7 @@ public class SimpleTeamBehaviour : NetworkBehaviour
     [SyncVar]public int m_StartingTeamLives;
     [SyncVar]public int m_CurrentTeamLives;
     public GameEventArgs m_PlayerRespawn;
-    public bool m_PlayerOnTeam;
+    [SyncVar]public bool m_PlayerOnTeam;
 
     void Awake()
     {

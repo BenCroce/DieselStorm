@@ -85,13 +85,13 @@ public class ExtendNetworkManager : NetworkManager
 
     IEnumerator SearchForController()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         m_TeamController = FindObjectOfType<TeamController>();
     }
 
     IEnumerator ClientConnect(NetworkConnection connection)
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         var netIDs = FindObjectsOfType<NetworkIdentity>();
         foreach (var id in netIDs)
         {
