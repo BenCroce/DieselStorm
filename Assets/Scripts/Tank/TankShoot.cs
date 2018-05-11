@@ -29,7 +29,7 @@ public class TankShoot : NetworkBehaviour {
         {
             GameObject shot = Instantiate(m_shell, m_turretPos.position + (GetComponent<Rigidbody>().velocity.normalized * 0.1f), m_turretPos.rotation, this.transform);
             shot.GetComponent<Rigidbody>().velocity = shot.transform.forward * m_shootForce + GetComponent<Rigidbody>().velocity;
-            NetworkServer.SpawnWithClientAuthority(shot, player.m_player.gameObject);
+            NetworkServer.Spawn(shot);
             RpcShoot(shot, gameObject);
             canshoot = false;
             StartCoroutine(Cooldown());

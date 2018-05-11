@@ -52,8 +52,8 @@ public class TankMovementBehaviour : MovementBehaviour {
             var dir = new Vector3(m_hinput, 0, m_vinput).normalized;
             //Apply stats and modifiers to movement force
             var dirStat = new Vector3(dir.x * m_forces.m_strafeForce, 0, dir.z * m_forces.m_forwardForce);
-            var relDir = Quaternion.AngleAxis(transform.rotation.eulerAngles.y, transform.up) * dir;
-            m_steerForward = relDir;
+            var relDir = Quaternion.AngleAxis(transform.rotation.eulerAngles.y, transform.up) * dir;            
+            
             //If we have input, move
             if (dir != Vector3.zero)
             {

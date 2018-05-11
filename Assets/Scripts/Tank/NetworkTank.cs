@@ -26,9 +26,8 @@ public class NetworkTank : NetworkBehaviour {
 
         StartCoroutine(GetTank());
 
-        //If this is the local player, set that steeraimguide
-        if (isLocalPlayer)
-            m_steerAimGuide = Camera.main.transform;
+        //If this is the local player, set that steeraimguide        
+        m_steerAimGuide = Camera.main.transform;
         StartCoroutine(InputSync());
 	}
 
@@ -38,11 +37,8 @@ public class NetworkTank : NetworkBehaviour {
             return;
         if (m_movement && m_body && m_aim && input)
         {
-            if (m_steerAimGuide != null)
-            {
-                m_movement.m_steerForward = m_steerAimGuide.forward;
-                m_aim.m_aimRotation = m_steerAimGuide.rotation.eulerAngles;
-            }
+            m_movement.m_steerForward = m_steerAimGuide.forward;
+            m_aim.m_aimRotation = m_steerAimGuide.rotation.eulerAngles;
         }
         else if (!getting && m_movement == null)
         {
