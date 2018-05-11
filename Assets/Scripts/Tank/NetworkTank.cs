@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 [NetworkSettings(channel = Channels.DefaultUnreliable, sendInterval = 0.05f)]
 public class NetworkTank : NetworkBehaviour {
 
-    public PlayerBehaviour m_player;
+    public SimplePlayerBehaviour m_player;
     public NetworkIdentity local;
     public NetworkTankInputController input;
     public TankMovementBehaviour m_movement;
@@ -36,10 +36,13 @@ public class NetworkTank : NetworkBehaviour {
     {
         if (!m_player)
             return;
-        if (isLocalPlayer && m_movement && m_body && m_aim && input)
+        if (m_movement && m_body && m_aim && input)
         {
-            m_movement.m_steerForward = m_steerAimGuide.forward;
-            m_aim.m_aimRotation = m_steerAimGuide.rotation.eulerAngles;
+            if (m_steerAimGuide != null)
+            {
+                m_movement.m_steerForward = m_steerAimGuide.forward;
+                m_aim.m_aimRotation = m_steerAimGuide.rotation.eulerAngles;
+            }
         }
         else if (!getting && m_movement == null)
         {
@@ -93,17 +96,17 @@ public class NetworkTank : NetworkBehaviour {
 
     IEnumerator GetTank()
     {
-        while (m_player.m_SceneObject == null && m_body == null)
+        while (m_player.m_rtTankObject == null && m_body == null)
         {
             yield return new WaitForSeconds(0.1f);
             Debug.Log("Searching for scene object...");
         }
         //Get all of this stuff from the tank
-        m_body = m_player.m_SceneObject.GetComponent<Rigidbody>();
-        m_aim = m_player.m_SceneObject.GetComponent<TurrentAimBehaviour>();
-        m_movement = m_player.m_SceneObject.GetComponent<TankMovementBehaviour>();
-        input = m_player.m_SceneObject.GetComponent<NetworkTankInputController>();
-        m_player.m_SceneObject.GetComponent<TankShoot>().player = this;
+        m_body = m_player.m_rtTankObject.GetComponent<Rigidbody>();
+        m_aim = m_player.m_rtTankObject.GetComponent<TurrentAimBehaviour>();
+        m_movement = m_player.m_rtTankObject.GetComponent<TankMovementBehaviour>();
+        input = m_player.m_rtTankObject.GetComponent<NetworkTankInputController>();
+        m_player.m_rtTankObject.GetComponent<TankShoot>().player = this;
         getting = false;
     }
 }
