@@ -18,6 +18,7 @@ public class GameController : NetworkBehaviour
 
     [SyncVar]public bool m_GameOver;
 
+
     void Awake()
     {
         if (m_GameTimerOut <= 0)
@@ -34,6 +35,18 @@ public class GameController : NetworkBehaviour
                 tank.enabled = false;
                 tank.GetComponent<TurrentAimBehaviour>().enabled = false;
             }
+
+            //if (m_GameTimer >= m_GameOverTimer)
+            //{
+            //    foreach (var team in m_Teams)
+            //    {
+            //        foreach (var player in team.m_Players)
+            //        {
+            //            player.GetComponent<NetworkIdentity>().connectionToClient.Disconnect();
+            //        }
+            //    }
+            //    NetworkManager.Shutdown();
+            //}
             return;            
         }
         int numFilledTeams = 0;

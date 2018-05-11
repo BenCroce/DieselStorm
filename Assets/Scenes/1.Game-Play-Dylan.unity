@@ -990,7 +990,7 @@ MonoBehaviour:
   - {fileID: 85455158}
   m_UIController: {fileID: 1625761451}
   m_AtLeastTwoFilledTeams: 0
-  m_GameTimerOut: 500
+  m_GameTimerOut: 10
   m_Timer: 0
   m_GameOver: 0
 --- !u!4 &1010397021
@@ -1295,10 +1295,10 @@ RectTransform:
   m_Father: {fileID: 124956392}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -732, y: -368}
+  m_SizeDelta: {x: 106, y: 104}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1593405834
 MonoBehaviour:

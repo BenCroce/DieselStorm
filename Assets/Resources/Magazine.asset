@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Magazine
   m_EditorClassIdentifier: 
   m_AmmoType: {fileID: 11400000, guid: 781b60f724cfbf3469dea6488c011b9e, type: 2}
-  m_MaxRoundsCapacity: 10
-  m_RemainingRounds: 0
+  m_MaxRoundsCapacity: 9999
+  m_RemainingRounds: 9999
   m_OnAmmoConsumed: {fileID: 11400000, guid: a2550d9085219e54eaaad777c3c539aa, type: 2}
   m_OnAmmoReloaded: {fileID: 11400000, guid: 41cba65df711e934ea691f4ac9f01312, type: 2}
   m_OnMagazineEmpty: {fileID: 11400000, guid: 631e947b1aa488543b570c97753ac47c, type: 2}

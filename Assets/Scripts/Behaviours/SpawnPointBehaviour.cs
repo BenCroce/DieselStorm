@@ -6,11 +6,6 @@ public class SpawnPointBehaviour : MonoBehaviour
 {
     public SpawnPointScriptabe m_SpawnPointScriptable;
 
-    void Start()
-    {
-        m_SpawnPointScriptable.m_TransformLocation = this.transform;
-    }
-
 #if UNITY_EDITOR
     void OnDrawGizmos()
     {

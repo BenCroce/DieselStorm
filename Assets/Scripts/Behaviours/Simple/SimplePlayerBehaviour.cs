@@ -46,11 +46,11 @@ public class SimplePlayerBehaviour : NetworkBehaviour
         var newTank = Instantiate(m_TankObjectPrefab, 
             spawnPosition[spawnIndex].transform.position,
             Quaternion.identity);
-        newTank.GetComponent<NetworkTank>().m_player = this;
+        GetComponent<NetworkTank>().m_player = this;
         NetworkServer.Spawn(newTank);
         m_rtTankObject = newTank;
         RpcSetTeamColor(m_rtTankObject, m_TeamColor);
-        RpcSpawnTank();        
+        RpcSpawnTank();
     }
 
     [ClientRpc]

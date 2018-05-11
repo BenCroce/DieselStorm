@@ -86,7 +86,7 @@ public class HoverBehaviour : MonoBehaviour
     }
 
     void Hover(RaycastHit hit, float m_jinput)
-    {
+    {        
         float dist = (m_hoverValues.m_hoverHeight - hit.distance) / m_hoverValues.m_hoverHeight;
         Vector3 force = new Vector3(0, 1 - (m_self.velocity.y / 8) + ((Mathf.Abs(m_self.velocity.x)
             + Mathf.Abs(m_self.velocity.z)) / 25), 0) * dist * m_hoverValues.m_hoverForce * (-m_jinput + 1);

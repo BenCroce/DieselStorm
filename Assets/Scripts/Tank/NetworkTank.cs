@@ -13,6 +13,7 @@ public class NetworkTank : NetworkBehaviour {
     public TankMovementBehaviour m_movement;
     public TurrentAimBehaviour m_aim;
     public Transform m_steerAimGuide;
+    public GameObject m_Barrel;
     Rigidbody m_body;
 
     bool getting = true;
@@ -27,7 +28,8 @@ public class NetworkTank : NetworkBehaviour {
         StartCoroutine(GetTank());
 
         //If this is the local player, set that steeraimguide        
-        m_steerAimGuide = Camera.main.transform;
+        if(isLocalPlayer)
+            m_steerAimGuide = Camera.main.transform;
         StartCoroutine(InputSync());
 	}
 
@@ -35,7 +37,7 @@ public class NetworkTank : NetworkBehaviour {
     {
         if (!m_player)
             return;
-        if (m_movement && m_body && m_aim && input)
+        if (isLocalPlayer && m_movement && m_body && m_aim && input)
         {
             m_movement.m_steerForward = m_steerAimGuide.forward;
             m_aim.m_aimRotation = m_steerAimGuide.rotation.eulerAngles;
@@ -53,8 +55,6 @@ public class NetworkTank : NetworkBehaviour {
     [Command]
     void CmdPlayer(float h, float v, float j, Vector3 m, Vector3 p, Vector3 b, Vector3 a)
     {
-        if (!m_player)
-            return;
         RpcPlayer(h, v, j, m, p, b, a);
     }
 
@@ -103,7 +103,7 @@ public class NetworkTank : NetworkBehaviour {
         m_movement = m_player.m_rtTankObject.GetComponent<TankMovementBehaviour>();
         input = m_player.m_rtTankObject.GetComponent<NetworkTankInputController>();
         m_player.m_rtTankObject.GetComponent<TankShoot>().player = this;
-        getting = false;
+        getting = false;        
     }
 }
  
