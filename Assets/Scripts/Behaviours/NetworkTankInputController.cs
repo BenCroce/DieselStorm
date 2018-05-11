@@ -82,6 +82,7 @@ public class NetworkTankInputController : NetworkBehaviour
         {
             m_Mag.ReloadMag();
         }
+   
         m_movement.Move(m_hinput, Vinput, m_jinput);
     }
 }

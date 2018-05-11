@@ -7,12 +7,13 @@ using UnityEngine.Networking;
 [NetworkSettings(channel = Channels.DefaultUnreliable, sendInterval = 0.05f)]
 public class NetworkTank : NetworkBehaviour {
 
-    public PlayerBehaviour m_player;
+    public SimplePlayerBehaviour m_player;
     public NetworkIdentity local;
     public NetworkTankInputController input;
     public TankMovementBehaviour m_movement;
     public TurrentAimBehaviour m_aim;
     public Transform m_steerAimGuide;
+    public GameObject m_Barrel;
     Rigidbody m_body;
 
     bool getting = true;
@@ -26,8 +27,8 @@ public class NetworkTank : NetworkBehaviour {
 
         StartCoroutine(GetTank());
 
-        //If this is the local player, set that steeraimguide
-        if (isLocalPlayer)
+        //If this is the local player, set that steeraimguide        
+        if(isLocalPlayer)
             m_steerAimGuide = Camera.main.transform;
         StartCoroutine(InputSync());
 	}
@@ -54,8 +55,6 @@ public class NetworkTank : NetworkBehaviour {
     [Command]
     void CmdPlayer(float h, float v, float j, Vector3 m, Vector3 p, Vector3 b, Vector3 a)
     {
-        if (!m_player)
-            return;
         RpcPlayer(h, v, j, m, p, b, a);
     }
 
@@ -93,18 +92,18 @@ public class NetworkTank : NetworkBehaviour {
 
     IEnumerator GetTank()
     {
-        while (m_player.m_SceneObject == null && m_body == null)
+        while (m_player.m_rtTankObject == null && m_body == null)
         {
             yield return new WaitForSeconds(0.1f);
             Debug.Log("Searching for scene object...");
         }
         //Get all of this stuff from the tank
-        m_body = m_player.m_SceneObject.GetComponent<Rigidbody>();
-        m_aim = m_player.m_SceneObject.GetComponent<TurrentAimBehaviour>();
-        m_movement = m_player.m_SceneObject.GetComponent<TankMovementBehaviour>();
-        input = m_player.m_SceneObject.GetComponent<NetworkTankInputController>();
-        m_player.m_SceneObject.GetComponent<TankShoot>().player = this;
-        getting = false;
+        m_body = m_player.m_rtTankObject.GetComponent<Rigidbody>();
+        m_aim = m_player.m_rtTankObject.GetComponent<TurrentAimBehaviour>();
+        m_movement = m_player.m_rtTankObject.GetComponent<TankMovementBehaviour>();
+        input = m_player.m_rtTankObject.GetComponent<NetworkTankInputController>();
+        m_player.m_rtTankObject.GetComponent<TankShoot>().player = this;
+        getting = false;        
     }
 }
  
