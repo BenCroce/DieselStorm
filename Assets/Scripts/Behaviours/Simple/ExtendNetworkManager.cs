@@ -18,8 +18,8 @@ public class ExtendNetworkManager : NetworkManager
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            GetComponent<NetworkManagerHUD>().showGUI = !GetComponent<NetworkManagerHUD>().showGUI;
-            Cursor.visible = GetComponent<NetworkManagerHUD>().showGUI;
+            //GetComponent<NetworkManagerHUD>().showGUI = !GetComponent<NetworkManagerHUD>().showGUI;
+            //Cursor.visible = GetComponent<NetworkManagerHUD>().showGUI;
             if (Cursor.visible)
                 Cursor.lockState = CursorLockMode.None;
             else
@@ -45,7 +45,7 @@ public class ExtendNetworkManager : NetworkManager
         m_connectionId = connection.connectionId;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        GetComponent<NetworkManagerHUD>().showGUI = false;
+        //GetComponent<NetworkManagerHUD>().showGUI = false;
     }
 
     //Detect when a client connects to the Server
@@ -56,7 +56,7 @@ public class ExtendNetworkManager : NetworkManager
             StartCoroutine(SearchForController());
         StartCoroutine(ClientConnect(connection));
         m_connectionId = connection.connectionId;
-        GetComponent<NetworkManagerHUD>().showGUI = false;
+        //GetComponent<NetworkManagerHUD>().showGUI = false;
     }
 
     public override void OnClientDisconnect(NetworkConnection connection)
@@ -79,7 +79,7 @@ public class ExtendNetworkManager : NetworkManager
                 m_Connections.Remove(con.Key);
             }
         }
-        GetComponent<NetworkManagerHUD>().showGUI = true;
+        //GetComponent<NetworkManagerHUD>().showGUI = true;
         base.OnServerDisconnect(connection);
     }
 
