@@ -8,18 +8,18 @@ using UnityEngine.UI;
 
 public class ExtendNetworkMangerUI : MonoBehaviour
 {
-    public ExtendNetworkManager m_NetworkManager;
-
     public Button m_SearchForGames;
     public Button m_CreateNewGame;    
     public InputField m_CreateGameName;
     public ScrollRect m_ServerList;
 
-    public GameObject m_ServerInfoPanel;    
+    public GameObject m_ServerInfoPanel;
+
+    public List<GameObject> m_ServerPanels;
 
     void Awake()
     {
-        m_NetworkManager.StartMatchMaker();
+        NetworkManager.singleton.StartMatchMaker();
         GetServers();
     }
     public void GetServers()
@@ -28,25 +28,27 @@ public class ExtendNetworkMangerUI : MonoBehaviour
     }
 
     public void PopulateServerList(bool success, string extendedInfo, List<MatchInfoSnapshot> matches)
-    {        
+    {
+        for (int i = 0; i < m_ServerPanels.Count; i++)
+        {
+            var panel = m_ServerPanels[i];
+            m_ServerPanels.RemoveAt(i);
+            Destroy(panel);
+        }
+             
         foreach (var match in matches)
         {
-            var contents = m_ServerList.GetComponent<ScrollRect>().content;
-            var newServer = Instantiate(m_ServerInfoPanel, contents, false);
+            var contents = m_ServerList.content;
+            var newServer = Instantiate(m_ServerInfoPanel);
+            newServer.transform.SetParent(contents, false);            
             var info = newServer.GetComponent<ServerInfoBehaviour>();
-            info.m_MatchInfo = match;
-            info.m_NumPlayers.text = match.currentSize + "/" + match.maxSize;
-            info.m_ServerName.text = match.name;
+            info.PopulateData(match);
+            m_ServerPanels.Add(newServer);
         }
     }
     public void CreateGame()
     {
         NetworkManager.singleton.matchMaker.CreateMatch(m_CreateGameName.text,3,true, 
-            "", "", "", 0, 0, OnMatchCreate);
-    }
-
-    public void OnMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo)
-    {
-        NetworkManager.singleton.OnMatchCreate(success, extendedInfo, matchInfo);
+            "", "", "", 0, 0, NetworkManager.singleton.OnMatchCreate);
     }
 }
