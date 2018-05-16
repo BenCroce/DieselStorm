@@ -1465,6 +1465,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 221.172
       objectReference: {fileID: 0}
+    - target: {fileID: 137423291061550520, guid: 36f92e16dbda5fb41ae5e5f465a9a9ec,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 328f1cc4b0ba33e4aae2f694830ef3eb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 36f92e16dbda5fb41ae5e5f465a9a9ec, type: 2}
   m_IsPrefabParent: 0
@@ -2531,6 +2536,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114101099586570722, guid: 1ded973c85b870c4b8f0868ea5019c0a,
+        type: 2}
+      propertyPath: m_SpawnPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4693196025876244, guid: 1ded973c85b870c4b8f0868ea5019c0a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2583,6 +2593,18 @@ Prefab:
       propertyPath: m_OnlineScene
       value: 5.Map-Graybox
       objectReference: {fileID: 0}
+    - target: {fileID: 114101099586570722, guid: 1ded973c85b870c4b8f0868ea5019c0a,
+        type: 2}
+      propertyPath: m_SpawnPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1448822658572678, guid: 0ff9ca6d8824e434bbf61e08b10bbb12,
+        type: 2}
+    - target: {fileID: 114101099586570722, guid: 1ded973c85b870c4b8f0868ea5019c0a,
+        type: 2}
+      propertyPath: m_SpawnPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1161076050574686, guid: 129e5fadc4b5d754a8752019164a4671,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 114764207796758426, guid: 1ded973c85b870c4b8f0868ea5019c0a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 1ded973c85b870c4b8f0868ea5019c0a, type: 2}

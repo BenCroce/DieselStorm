@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: LightTankHover
   m_EditorClassIdentifier: 
   m_hoverHeight: 1
-  m_hoverForce: 45
+  m_hoverForce: 20
   m_hoverBalanceOffset: 1
   m_balanceHeightLimit: 6
   m_balanceMultiplier: 60
