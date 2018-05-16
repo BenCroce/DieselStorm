@@ -11,15 +11,13 @@ public class ExtendNetworkManager : NetworkManager
     public Color m_ClientTeamColor;
     public int m_connectionId;
     public Dictionary<string,NetworkIdentity> m_Connections = new Dictionary<string, NetworkIdentity>();
-
+    private NetworkConnection m_Connection;
     public int m_PlayerConnected = 0;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            GetComponent<NetworkManagerHUD>().showGUI = !GetComponent<NetworkManagerHUD>().showGUI;
-            Cursor.visible = GetComponent<NetworkManagerHUD>().showGUI;
             if (Cursor.visible)
                 Cursor.lockState = CursorLockMode.None;
             else
@@ -43,9 +41,9 @@ public class ExtendNetworkManager : NetworkManager
     public override void OnClientConnect(NetworkConnection connection)
     {
         m_connectionId = connection.connectionId;
+        m_Connection = connection;
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        GetComponent<NetworkManagerHUD>().showGUI = false;
+        Cursor.visible = false;        
     }
 
     //Detect when a client connects to the Server
@@ -56,7 +54,7 @@ public class ExtendNetworkManager : NetworkManager
             StartCoroutine(SearchForController());
         StartCoroutine(ClientConnect(connection));
         m_connectionId = connection.connectionId;
-        GetComponent<NetworkManagerHUD>().showGUI = false;
+        m_Connection = connection;
     }
 
     public override void OnClientDisconnect(NetworkConnection connection)
@@ -78,8 +76,7 @@ public class ExtendNetworkManager : NetworkManager
                 m_PlayerConnected--;                
                 m_Connections.Remove(con.Key);
             }
-        }
-        GetComponent<NetworkManagerHUD>().showGUI = true;
+        }        
         base.OnServerDisconnect(connection);
     }
 
@@ -87,6 +84,11 @@ public class ExtendNetworkManager : NetworkManager
     {
         yield return new WaitForSeconds(2.0f);
         m_TeamController = FindObjectOfType<TeamController>();
+        while (m_TeamController == null)
+        {
+            yield return new WaitForSeconds(2.0f);
+            m_TeamController = FindObjectOfType<TeamController>();
+        }
     }
 
     IEnumerator ClientConnect(NetworkConnection connection)
