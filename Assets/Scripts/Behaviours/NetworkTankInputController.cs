@@ -18,7 +18,10 @@ public class NetworkTankInputController : NetworkBehaviour
     public InputAxisScriptable m_TurretYawAxis;
     public InputButtonScriptable m_FireButton;
     public InputButtonScriptable m_ReloadButton;
-    public List<MouseRotationBehaviour> m_TurretRotations;    
+    public List<MouseRotationBehaviour> m_TurretRotations;
+    public float HorizontalSpeed;
+    public float VerticalSpeed;
+    public Cinemachine.CinemachineFreeLook m_Camera;
 
     public float Hinput
     {
@@ -63,6 +66,9 @@ public class NetworkTankInputController : NetworkBehaviour
     void Start()
     {        
         m_movement = GetComponent<TankMovementBehaviour>();
+        //m_Camera = GetComponentInChildren<Cinemachine.CinemachineFreeLook>();
+        HorizontalSpeed = PlayerPrefs.GetFloat("HorizontalSensitivity");
+        VerticalSpeed = PlayerPrefs.GetFloat("VerticalSensitivity");
     }
     // Update is called once per frame
     void Update()
@@ -84,5 +90,8 @@ public class NetworkTankInputController : NetworkBehaviour
         }
    
         m_movement.Move(m_hinput, Vinput, m_jinput);
+                       
+        m_Camera.m_YAxis.m_MaxSpeed = VerticalSpeed;
+        m_Camera.m_XAxis.m_MaxSpeed = HorizontalSpeed;
     }
 }
