@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31594e0a3083aaa4b8673234c3a7fec7, type: 3}
+  m_Name: MainMenuScriptable
+  m_EditorClassIdentifier: 
+  m_OnStateEntered: {fileID: 11400000, guid: 3d9430d3bdb7ab74ea5f770e2769a05c, type: 2}
+  m_OnStateExit: {fileID: 11400000, guid: 94e2c186f2574084fa5b172649f4595c, type: 2}
