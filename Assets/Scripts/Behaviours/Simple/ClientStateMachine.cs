@@ -29,6 +29,11 @@ public class ClientStateMachine : MonoBehaviour, IContext
             m_CurrentState.OnEnter();
         }
     }
+
+    public void CloseApplication()
+    {
+        Application.Quit();
+    }
 }
 
 public interface IContext
