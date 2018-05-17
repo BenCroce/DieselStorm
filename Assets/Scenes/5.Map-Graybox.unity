@@ -8879,7 +8879,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnGameSceneLoaded: {fileID: 11400000, guid: dfee1b342b4629b4593e9b64e8f4ebd3, type: 2}
-  OnGamePaused: {fileID: 11400000, guid: 092095c5353cf404bbf549449c9de68e, type: 2}
   m_GamePlayState: {fileID: 11400000, guid: 18e3847be11c90a4c8327cde61a8d2e2, type: 2}
 --- !u!4 &1926786214
 Transform:

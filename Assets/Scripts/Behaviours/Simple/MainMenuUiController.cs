@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuUiController : MonoBehaviour
 {    
@@ -9,11 +10,21 @@ public class MainMenuUiController : MonoBehaviour
     public GameObject m_GamePlay;
     public List<CameraAnchors> m_CameraAnchors;    
     public int m_CameraIndex;
-    public bool m_IsGamePlay;    
+    public bool m_IsGamePlay;
+
+    public Slider m_Horizontal;
+    public Slider m_Vertical;
+    public InputField m_HorizontalInput;
+    public InputField m_VerticalInput;
 
     void Awake()
     {
         //DontDestroyOnLoad(gameObject);
+        float a = PlayerPrefs.GetFloat("VerticalSensitivity");
+        m_HorizontalInput.text = PlayerPrefs.GetFloat("HorizontalSensitivity").ToString();
+        m_VerticalInput.text = a.ToString();
+        m_Horizontal.value = float.Parse(m_HorizontalInput.text);
+        m_Vertical.value = a;
     }
 
     public void ChangeMenu(GameObject menu)
@@ -64,6 +75,34 @@ public class MainMenuUiController : MonoBehaviour
         m_GamePlay.SetActive(!m_GamePlay.activeSelf);
         Cursor.lockState = (m_GamePlay.activeSelf) ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = m_GamePlay.activeSelf;
+    }
+
+    public void UpdateHorizontalSlider()
+    {
+        PlayerPrefs.SetFloat("HorizontalSensitivity", (float)m_Horizontal.value);
+        PlayerPrefs.Save();
+        m_HorizontalInput.text = m_Horizontal.value.ToString();
+    }
+
+    public void UpdateVerticalSlider()
+    {
+        PlayerPrefs.SetFloat("VerticalSensitivity", (float)m_Vertical.value);
+        PlayerPrefs.Save();
+        m_VerticalInput.text = m_Vertical.value.ToString();
+    }
+
+    public void UpdateHorizontalInput()
+    {
+        PlayerPrefs.SetFloat("HorizontalSensitivity", float.Parse(m_HorizontalInput.text));
+        PlayerPrefs.Save();
+        m_Horizontal.value = PlayerPrefs.GetFloat("HorizontalSensitivity");
+    }
+
+    public void UpdateVerticalInput()
+    {
+        PlayerPrefs.SetFloat("VerticalSensitivity", float.Parse(m_VerticalInput.text));
+        PlayerPrefs.Save();
+        m_Vertical.value = PlayerPrefs.GetFloat("VerticalSensitivity");
     }
 }
 
