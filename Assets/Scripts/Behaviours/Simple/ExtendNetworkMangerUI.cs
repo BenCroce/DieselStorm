@@ -23,7 +23,8 @@ public class ExtendNetworkMangerUI : MonoBehaviour
     }
     public void GetServers()
     {
-        NetworkManager.singleton.StartMatchMaker();
+        if (NetworkManager.singleton.matchMaker == null)
+            NetworkManager.singleton.StartMatchMaker();
         NetworkManager.singleton.matchMaker.ListMatches(0,10,"",true, 0,0, PopulateServerList);
     }
 
