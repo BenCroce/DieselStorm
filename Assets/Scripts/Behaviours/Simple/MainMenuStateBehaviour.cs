@@ -7,7 +7,7 @@ public class MainMenuStateBehaviour : MonoBehaviour
     public GameEventArgs m_OnMainMenuLoaded;
     public StateScriptable m_MainMenuState;
 
-    void Awake()
+    void Start()
     {
         m_OnMainMenuLoaded.Raise(m_MainMenuState);
     }

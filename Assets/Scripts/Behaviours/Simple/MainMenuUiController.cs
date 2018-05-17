@@ -9,12 +9,11 @@ public class MainMenuUiController : MonoBehaviour
     public GameObject m_GamePlay;
     public List<CameraAnchors> m_CameraAnchors;    
     public int m_CameraIndex;
-    public bool m_IsGamePlay;
-    public MainMenuUiController instance;
+    public bool m_IsGamePlay;    
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     public void ChangeMenu(GameObject menu)
@@ -57,8 +56,7 @@ public class MainMenuUiController : MonoBehaviour
     public void DisableGamePlayUI(Object[] args)
     {        
         m_IsGamePlay = false;
-        m_GamePlay.SetActive(false);
-        Destroy(this.gameObject);
+        m_GamePlay.SetActive(false);        
     }
 
     public void ToggleGamePlayUI()

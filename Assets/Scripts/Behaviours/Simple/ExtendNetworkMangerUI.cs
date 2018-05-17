@@ -18,12 +18,12 @@ public class ExtendNetworkMangerUI : MonoBehaviour
     public List<GameObject> m_ServerPanels;
 
     void Awake()
-    {
-        NetworkManager.singleton.StartMatchMaker();
+    {        
         GetServers();
     }
     public void GetServers()
     {
+        NetworkManager.singleton.StartMatchMaker();
         NetworkManager.singleton.matchMaker.ListMatches(0,10,"",true, 0,0, PopulateServerList);
     }
 
@@ -48,6 +48,8 @@ public class ExtendNetworkMangerUI : MonoBehaviour
     }
     public void CreateGame()
     {
+        if(NetworkManager.singleton.matchMaker == null)
+            NetworkManager.singleton.StartMatchMaker();
         NetworkManager.singleton.matchMaker.CreateMatch(m_CreateGameName.text,3,true, 
             "", "", "", 0, 0, NetworkManager.singleton.OnMatchCreate);
     }

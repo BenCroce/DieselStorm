@@ -9,7 +9,7 @@ public class GamePlayScriptable : StateScriptable
     public GameEventArgs OnPauseToggle;
     public override void OnEnter()
     {
-        m_OnStateEntered.Raise(this);        
+        m_OnStateEntered.Raise(this);                
     }
 
     public override void Update()
