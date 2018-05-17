@@ -24,8 +24,9 @@ public class TankParticleController : MonoBehaviour {
 	void Update ()
     {
         m_SmokeParticles.emissionRate = Mathf.Abs((m_tankStats.rt_Health.m_Value - m_tankStats.m_HealthStat.m_Value) / 100 * m_smokeAmount);
-        foreach(ParticleSystem i in m_HeatDistortion.GetComponentsInChildren<ParticleSystem>())
-            i.enableEmission = Convert.ToBoolean(1 - m_control.Jinput);
+        if(m_HeatDistortion != null)
+            foreach(ParticleSystem i in m_HeatDistortion.GetComponentsInChildren<ParticleSystem>())
+                i.enableEmission = Convert.ToBoolean(1 - m_control.Jinput);
     }
 
     private void OnDestroy()
