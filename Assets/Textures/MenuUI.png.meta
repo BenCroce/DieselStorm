@@ -1,13 +1,15 @@
 fileFormatVersion: 2
-guid: 6d8a8e1119feeaa48b352004156f6822
-timeCreated: 1526663677
+guid: 4ed504324a1516940b1c87b5589c4511
+timeCreated: 1526678480
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: Slider2
-    21300002: Menu_Button
+    21300002: MenuButton
     21300004: Slider
     21300006: Slider_Handle
+    21300008: Controls_Key
+    21300010: Controls_Mouse
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -92,13 +94,13 @@ TextureImporter:
         width: 1906
         height: 199
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Menu_Button
+      name: MenuButton
       rect:
         serializedVersion: 2
         x: 15
@@ -106,7 +108,7 @@ TextureImporter:
         width: 1086
         height: 568
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -120,7 +122,7 @@ TextureImporter:
         width: 484
         height: 480
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,7 +136,35 @@ TextureImporter:
         width: 395
         height: 1116
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controls_Key
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 728
+        width: 483
+        height: 483
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Controls_Mouse
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 342
+        width: 524
+        height: 882
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
