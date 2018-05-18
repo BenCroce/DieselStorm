@@ -20,8 +20,8 @@ public class MainMenuUiController : MonoBehaviour
     void Awake()
     {
         //DontDestroyOnLoad(gameObject);
-        float a = PlayerPrefs.GetFloat("VerticalSensitivity");
-        m_HorizontalInput.text = PlayerPrefs.GetFloat("HorizontalSensitivity").ToString();
+        float a = PlayerPrefs.GetFloat("VerticalSensitivity", 0.5f);
+        m_HorizontalInput.text = PlayerPrefs.GetFloat("HorizontalSensitivity", 200).ToString();
         m_VerticalInput.text = a.ToString();
         m_Horizontal.value = float.Parse(m_HorizontalInput.text);
         m_Vertical.value = a;
