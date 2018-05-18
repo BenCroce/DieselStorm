@@ -34,3 +34,7 @@ sysinfo.txt
 *.unitypackage
 Assets/Scenes/5.Map-Graybox/LightingData.asset
 Assets/Scenes/5.Map-Graybox/LightingData.asset.meta
+Assets/Scenes/0.NewLobby/LightingData.asset
+Assets/Scenes/0.NewLobby/LightingData.asset.meta
+Assets/Scenes/0.NewLobby
+Assets/Scenes/5.Map-Graybox

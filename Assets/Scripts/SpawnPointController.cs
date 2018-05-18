@@ -20,8 +20,7 @@ public class SpawnPointController : NetworkBehaviour
         if (sender != null)
         {
             int spawnIndex = Random.Range(0, m_SpawnPoints.Count - 2);
-            m_SetNewSpawnPoint.Raise(this, m_SpawnPoints[spawnIndex].transform);
-            Debug.Log(m_SpawnPoints[spawnIndex].name);
+            m_SetNewSpawnPoint.Raise(this, m_SpawnPoints[spawnIndex].transform);            
             MoveListItems(m_SpawnPoints[spawnIndex]);
         }
     }
@@ -45,8 +44,7 @@ public class SpawnPointController : NetworkBehaviour
             yield return new WaitForSeconds(0.5f);
             m_SpawnPoints = FindObjectsOfType<SpawnPointBehaviour>().ToList();
             int spawnIndex = Random.Range(0, m_SpawnPoints.Count - 2);
-            m_SetNewSpawnPoint.Raise(this, m_SpawnPoints[spawnIndex].transform);
-            Debug.Log(m_SpawnPoints[spawnIndex].name);
+            m_SetNewSpawnPoint.Raise(this, m_SpawnPoints[spawnIndex].transform);            
             MoveListItems(m_SpawnPoints[spawnIndex]);
             break;
         }

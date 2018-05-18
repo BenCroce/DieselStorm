@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_forwardForce: 20
   m_strafeForce: 15
-  m_turnSpeed: 100
+  m_turnSpeed: 130
   m_heightLimit: 6

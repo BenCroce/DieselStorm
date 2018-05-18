@@ -14,8 +14,8 @@ public class TurrentAimBehaviour : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start ()
-    {
-        if(hasAuthority)
+    {   
+        if(hasAuthority)     
             m_aimGuide = Camera.main.transform;
         if (!m_aimGuide)
             Debug.Log("There is no aim guide... Did you forget to set it?");
