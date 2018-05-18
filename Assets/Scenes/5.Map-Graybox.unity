@@ -5811,11 +5811,11 @@ GameObject:
   - component: {fileID: 1139270747}
   - component: {fileID: 1139270746}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: FogCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &1139270746
 MeshRenderer:
@@ -10199,11 +10199,11 @@ GameObject:
   - component: {fileID: 1886791480}
   - component: {fileID: 1886791479}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: FogParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1886791478
 Transform:
@@ -10212,7 +10212,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1886791477}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.181, y: -74, z: -0.0168}
+  m_LocalPosition: {x: 0.168, y: -74, z: -0.0096}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1139270748}
@@ -10280,10 +10280,10 @@ ParticleSystem:
   m_GameObject: {fileID: 1886791477}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 0.05
+  simulationSpeed: 0.1
   stopAction: 0
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -10484,7 +10484,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 500
+      scalar: 200
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -10783,7 +10783,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 30.08, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 250, y: 2500, z: 200}
+    m_Scale: {x: 50, y: 2500, z: 100}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -11235,9 +11235,9 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 1}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
@@ -11252,8 +11252,8 @@ ParticleSystem:
         ctime7: 0
         atime0: 0
         atime1: 65535
-        atime2: 0
-        atime3: 0
+        atime2: 65535
+        atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
