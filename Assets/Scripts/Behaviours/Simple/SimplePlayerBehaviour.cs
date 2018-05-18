@@ -40,7 +40,7 @@ public class SimplePlayerBehaviour : NetworkBehaviour
         if(args[0] as SimplePlayerBehaviour != this)
             return;
         m_Team = args[1] as SimpleTeamBehaviour;      
-        m_PlayerUI.RpcPlayerDied();          
+        m_PlayerUI.PlayerDied();          
     }
 
     [ClientRpc]
