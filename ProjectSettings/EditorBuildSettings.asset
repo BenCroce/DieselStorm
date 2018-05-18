@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/0.NewLobby.unity
-    guid: f2c165171a3f1d440b75f7a71a4fb7d9
+    guid: 036b8069060abb640aa47359bbfd0e6a
   - enabled: 1
     path: Assets/Scenes/1.Game-Play-Dylan.unity
     guid: 319c37d68d0374d4592598bc1e2dfab6

@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114371049721070932}
   - component: {fileID: 114670758725569308}
   m_Layer: 0
-  m_Name: SimplePlayer
+  m_Name: SimplePlayer 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,22 +87,22 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 169
-    i1: 247
-    i2: 44
-    i3: 96
-    i4: 54
-    i5: 140
-    i6: 43
-    i7: 4
-    i8: 43
-    i9: 242
-    i10: 37
-    i11: 203
-    i12: 194
-    i13: 167
-    i14: 159
-    i15: 234
+    i0: 52
+    i1: 33
+    i2: 214
+    i3: 223
+    i4: 84
+    i5: 174
+    i6: 95
+    i7: 52
+    i8: 27
+    i9: 162
+    i10: 9
+    i11: 75
+    i12: 63
+    i13: 145
+    i14: 174
+    i15: 253
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
 --- !u!114 &114515129330523234
@@ -120,7 +120,7 @@ MonoBehaviour:
     type: 2}
   m_rtTankObject: {fileID: 0}
   m_TeamColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TankMaterial: {fileID: 2100000, guid: 04db8494eccaa134a80e6039d58e9116, type: 2}
+  m_TankMaterial: {fileID: 2100000, guid: 2a9a77211dbd55145b483c4179473d6d, type: 2}
   m_RespawnDelay: 3
   m_OnSceneTankDestroyed: {fileID: 11400000, guid: a1830dbe0fc903544a5a40a76161f380,
     type: 2}

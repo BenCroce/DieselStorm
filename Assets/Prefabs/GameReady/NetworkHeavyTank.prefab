@@ -3809,6 +3809,9 @@ MonoBehaviour:
   m_FireButton: {fileID: 11400000, guid: 46bbd187bd73ac04c86013e2bb181b7c, type: 2}
   m_ReloadButton: {fileID: 11400000, guid: 4267d2b1e66d52b42961736128664f4d, type: 2}
   m_TurretRotations: []
+  HorizontalSpeed: 1
+  VerticalSpeed: 1
+  m_Camera: {fileID: 114966594708296854}
 --- !u!114 &114966594708296854
 MonoBehaviour:
   m_ObjectHideFlags: 1

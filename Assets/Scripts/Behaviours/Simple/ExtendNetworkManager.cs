@@ -58,8 +58,7 @@ public class ExtendNetworkManager : NetworkManager
     }
 
     public override void OnClientDisconnect(NetworkConnection connection)
-    {
-        GetComponent<NetworkManagerHUD>().showGUI = true;
+    {       
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         base.OnClientDisconnect(connection);
