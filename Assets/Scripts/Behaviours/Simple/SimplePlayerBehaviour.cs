@@ -13,6 +13,7 @@ public class SimplePlayerBehaviour : NetworkBehaviour
     [SyncVar] public float m_RespawnDelay;
     public GameEventArgs m_OnSceneTankDestroyed;
     public SimpleTeamBehaviour m_Team;
+    public PlayerUIBehaviour m_PlayerUI;
 
     [ClientRpc]
     public void RpcSetTeamColor(GameObject tank, Color col)
@@ -38,7 +39,14 @@ public class SimplePlayerBehaviour : NetworkBehaviour
     {        
         if(args[0] as SimplePlayerBehaviour != this)
             return;
-        m_Team = args[1] as SimpleTeamBehaviour;        
+        m_Team = args[1] as SimpleTeamBehaviour;      
+        m_PlayerUI.RpcPlayerDied();          
+    }
+
+    [ClientRpc]
+    public void RpcSelectNewTank(GameObject prefab)
+    {
+        m_TankObjectPrefab = prefab;
         StartCoroutine(RespawnDelay());
     }
 

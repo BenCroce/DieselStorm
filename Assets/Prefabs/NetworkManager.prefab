@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 114274498952898572}
   - component: {fileID: 114295345187269592}
   m_Layer: 5
-  m_Name: Credits (1)
+  m_Name: Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1453,7 +1453,7 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 500
-  m_WholeNumbers: 0
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1523,10 +1523,12 @@ MonoBehaviour:
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 1
   m_OfflineScene: 0.NewLobby
-  m_OnlineScene: 5.Map-Graybox
+  m_OnlineScene: 1.Game-Play
   m_SpawnPrefabs:
   - {fileID: 1844070630989302, guid: e918266d7921b524e940527bda4a6ca1, type: 2}
   - {fileID: 1448822658572678, guid: 0ff9ca6d8824e434bbf61e08b10bbb12, type: 2}
+  - {fileID: 1161076050574686, guid: 129e5fadc4b5d754a8752019164a4671, type: 2}
+  - {fileID: 1214656596430180, guid: fc8ad5cf9f0fde24fa5038306cc3cd1e, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -2611,7 +2613,7 @@ MonoBehaviour:
   m_LineType: 0
   m_HideMobileInput: 0
   m_CharacterValidation: 2
-  m_CharacterLimit: 0
+  m_CharacterLimit: 3
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
@@ -3820,7 +3822,7 @@ MonoBehaviour:
   m_LineType: 0
   m_HideMobileInput: 0
   m_CharacterValidation: 2
-  m_CharacterLimit: 0
+  m_CharacterLimit: 3
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
@@ -5030,7 +5032,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1030, y: -46.44397}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 186, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224288815872987308
 RectTransform:
@@ -5614,8 +5616,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1026.1097, y: -54}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 1032.5, y: -54}
+  m_SizeDelta: {x: 186, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224614680290424552
 RectTransform:
