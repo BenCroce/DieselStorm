@@ -324,7 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Players: []
   m_TeamColor: {r: 0.11724126, g: 1, b: 0, a: 1}
-  m_StartingTeamLives: 1
+  m_StartingTeamLives: 2
   m_CurrentTeamLives: 3
   m_PlayerRespawn: {fileID: 11400000, guid: fc63c85cc0446b24d8a6bd24ec034179, type: 2}
   m_PlayerOnTeam: 0
@@ -3563,7 +3563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Players: []
   m_TeamColor: {r: 1, g: 0, b: 0, a: 1}
-  m_StartingTeamLives: 1
+  m_StartingTeamLives: 2
   m_CurrentTeamLives: 3
   m_PlayerRespawn: {fileID: 11400000, guid: fc63c85cc0446b24d8a6bd24ec034179, type: 2}
   m_PlayerOnTeam: 0
@@ -7868,7 +7868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Players: []
   m_TeamColor: {r: 0, g: 0.006896496, b: 1, a: 1}
-  m_StartingTeamLives: 1
+  m_StartingTeamLives: 2
   m_CurrentTeamLives: 3
   m_PlayerRespawn: {fileID: 11400000, guid: fc63c85cc0446b24d8a6bd24ec034179, type: 2}
   m_PlayerOnTeam: 0
