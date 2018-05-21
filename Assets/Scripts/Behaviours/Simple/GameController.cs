@@ -18,11 +18,13 @@ public class GameController : NetworkBehaviour
 
     [SyncVar]public bool m_GameOver;
 
-
     void Awake()
     {
         if (m_GameTimerOut <= 0)
             m_GameTimerOut = 10;
+#if UNITY_EDITOR
+        m_GameTimerOut = 999999;
+#endif
     }
 
     void Update()
