@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114011490351318314}
   - component: {fileID: 114817426756473696}
   - component: {fileID: 82635054786180790}
+  - component: {fileID: 114880774242621182}
   m_Layer: 0
   m_Name: Shell
   m_TagString: Untagged
@@ -547,6 +548,18 @@ MonoBehaviour:
   m_shotSound: {fileID: 82635054786180790}
   m_explosionRadius: 30
   m_explosionForce: 600
+--- !u!114 &114880774242621182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1448822658572678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc53339de9f4d2449c44049a079f30c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shell: {fileID: 114817426756473696}
 --- !u!135 &135068061043453152
 SphereCollider:
   m_ObjectHideFlags: 1
