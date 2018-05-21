@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 114347308602514524}
   - component: {fileID: 114850313731079382}
   - component: {fileID: 82895232469543542}
+  - component: {fileID: 114919490031730360}
   m_Layer: 0
   m_Name: LightShell
   m_TagString: Untagged
@@ -523,7 +524,7 @@ MonoBehaviour:
   m_explosion: {fileID: 198805501186308558}
   m_explosionSound: {fileID: 82874895611504290}
   m_shotSound: {fileID: 82895232469543542}
-  m_explosionRadius: 30
+  m_explosionRadius: 10
   m_explosionForce: 600
 --- !u!114 &114916321047107706
 MonoBehaviour:
@@ -536,6 +537,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6526d119267c5444954217ca8149e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114919490031730360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1214656596430180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc53339de9f4d2449c44049a079f30c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shell: {fileID: 114850313731079382}
+  rt_damage: {fileID: 0}
 --- !u!114 &114953993714594104
 MonoBehaviour:
   m_ObjectHideFlags: 1
