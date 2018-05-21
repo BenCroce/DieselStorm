@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuUiController : MonoBehaviour
+public class UiController : MonoBehaviour
 {    
     public GameObject m_ActiveMenu;
     public GameObject m_GamePlay;
@@ -52,7 +52,6 @@ public class MainMenuUiController : MonoBehaviour
                     camera.transform.position = m_CameraAnchors[nextLookAt].m_CameraPosition.position;
                     camera.transform.LookAt(m_CameraAnchors[nextLookAt].m_CameraLookAt);
                 }                
-
             }
         }
     }

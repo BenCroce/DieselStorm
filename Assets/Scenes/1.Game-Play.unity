@@ -13660,7 +13660,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114049743503716598, guid: a41c5d631fd3f1e4498bf0bf09c68b24,
+        type: 2}
+      propertyPath: m_TankSelection
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114049743503716598, guid: a41c5d631fd3f1e4498bf0bf09c68b24, type: 2}
+    - {fileID: 114330711344287962, guid: a41c5d631fd3f1e4498bf0bf09c68b24, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a41c5d631fd3f1e4498bf0bf09c68b24, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2024800552

@@ -7,7 +7,7 @@ public class GameController : NetworkBehaviour
 {
     public SimpleScoreBehaviour m_ScoreKeeper;
     public List<SimpleTeamBehaviour> m_Teams;
-    public SimpleUIController m_UIController;
+    public ServerUIController m_UIController;
     [SyncVar]public bool m_AtLeastTwoFilledTeams;
 
     [Tooltip("timer for players to join game before match termination")]

@@ -39,14 +39,27 @@ public class SimplePlayerBehaviour : NetworkBehaviour
     {        
         if(args[0] as SimplePlayerBehaviour != this)
             return;
-        m_Team = args[1] as SimpleTeamBehaviour;      
-        m_PlayerUI.PlayerDied();          
+        m_Team = args[1] as SimpleTeamBehaviour;
+        RpcEnableUI();        
     }
 
     [ClientRpc]
-    public void RpcSelectNewTank(GameObject prefab)
+    void RpcEnableUI()
     {
-        m_TankObjectPrefab = prefab;
+        if(GetComponent<NetworkIdentity>().isLocalPlayer)
+            m_PlayerUI.PlayerDied();
+    }
+    
+    [Command]        
+    public void CmdSelectNewTank()
+    {
+        //m_TankObjectPrefab = prefab;
+        StartCoroutine(RespawnDelay());
+    }
+
+    [Command]
+    void CmdRespawn()
+    {
         StartCoroutine(RespawnDelay());
     }
 
@@ -63,7 +76,7 @@ public class SimplePlayerBehaviour : NetworkBehaviour
         m_rtTankObject.GetComponent<NetworkIdentity>().AssignClientAuthority(connection);
     }
 
-    IEnumerator RespawnDelay()
+    public IEnumerator RespawnDelay()
     {        
         yield return new WaitForSeconds(m_RespawnDelay);
         var spawnPosition = FindObjectsOfType<NetworkStartPosition>();
@@ -81,9 +94,9 @@ public class SimplePlayerBehaviour : NetworkBehaviour
 
     public void SceneObjectDestroyed(Object[] args)
     {
-        var sender = args[0] as TankStats;        
+        var sender = args[0] as TankStats;
         if (sender.gameObject == m_rtTankObject)
-            m_Team.PlayerDied(new Object[] {this});
+            m_Team.PlayerDied(new Object[] { this });
     }    
 
     [Command]

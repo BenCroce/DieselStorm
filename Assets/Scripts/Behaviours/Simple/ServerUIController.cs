@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class SimpleUIController : NetworkBehaviour
+public class ServerUIController : NetworkBehaviour
 {
     public GameObject m_MathEndPanel;
     public GameObject m_TankSelection;

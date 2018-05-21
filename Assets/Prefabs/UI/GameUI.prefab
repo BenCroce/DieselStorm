@@ -140,6 +140,8 @@ GameObject:
   - component: {fileID: 114120808332772412}
   - component: {fileID: 114031329938576750}
   - component: {fileID: 114009178830946716}
+  - component: {fileID: 114049743503716598}
+  - component: {fileID: 114330711344287962}
   m_Layer: 5
   m_Name: GameUI
   m_TagString: Untagged
@@ -195,6 +197,19 @@ MonoBehaviour:
     i15: 36
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &114049743503716598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1948396453869556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094b3d1804142054fab23130ab56da05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TankSelection: {fileID: 0}
+  m_RespawningPlayer: {fileID: 0}
 --- !u!114 &114120808332772412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,6 +295,35 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114330711344287962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1948396453869556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3585c62ef44f14546b8830a61975bc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: a1830dbe0fc903544a5a40a76161f380, type: 2}
+  Sender: {fileID: 0}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114049743503716598}
+        m_MethodName: PlayerDied
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: GameEventArgsResponse, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114739457759251366
 MonoBehaviour:
   m_ObjectHideFlags: 1
