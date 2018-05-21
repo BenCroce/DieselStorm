@@ -42,7 +42,8 @@ public class ExplosionBehaviour : MonoBehaviour {
             if (colliders[i] != other)
             {
                 rt_damage = Instantiate(m_stats.m_HealthModifier) as ModifierScriptable;
-                rt_damage.m_Value = (int)(rt_damage.m_Value * ((m_shell.m_explosionRadius - Vector3.Magnitude(transform.position - colliders[i].transform.position)) / m_shell.m_explosionRadius));
+                float distmult = ((m_shell.m_explosionRadius - Vector3.Magnitude(transform.position - colliders[i].transform.position)) / m_shell.m_explosionRadius);
+                rt_damage.m_Value = (int)(rt_damage.m_Value * distmult);
                 m_stats.m_ProjectileHit.Raise(this.gameObject, rt_damage, colliders[i].gameObject);
             }
         }
