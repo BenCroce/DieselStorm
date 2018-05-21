@@ -546,7 +546,7 @@ MonoBehaviour:
   m_explosion: {fileID: 198199321238892558}
   m_explosionSound: {fileID: 82413737990203534}
   m_shotSound: {fileID: 82635054786180790}
-  m_explosionRadius: 30
+  m_explosionRadius: 18
   m_explosionForce: 600
 --- !u!114 &114880774242621182
 MonoBehaviour:
@@ -560,6 +560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_shell: {fileID: 114817426756473696}
+  rt_damage: {fileID: 0}
 --- !u!135 &135068061043453152
 SphereCollider:
   m_ObjectHideFlags: 1

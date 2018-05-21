@@ -43,7 +43,7 @@ public class ExplosionBehaviour : MonoBehaviour {
             {
                 rt_damage = Instantiate(m_stats.m_HealthModifier) as ModifierScriptable;
                 float distmult = ((m_shell.m_explosionRadius - Vector3.Magnitude(transform.position - colliders[i].transform.position)) / m_shell.m_explosionRadius);
-                rt_damage.m_Value = (int)(rt_damage.m_Value * distmult);
+                rt_damage.m_Value = (int)Mathf.Round(rt_damage.m_Value * distmult);
                 m_stats.m_ProjectileHit.Raise(this.gameObject, rt_damage, colliders[i].gameObject);
             }
         }
