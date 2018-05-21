@@ -9,8 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/0.NewLobby.unity
     guid: 036b8069060abb640aa47359bbfd0e6a
   - enabled: 1
-    path: Assets/Scenes/1.Game-Play-Dylan.unity
-    guid: 319c37d68d0374d4592598bc1e2dfab6
-  - enabled: 1
-    path: Assets/Scenes/5.Map-Graybox.unity
-    guid: f0186d2a47188dc4594adf1937c287de
+    path: Assets/Scenes/1.Game-Play.unity
+    guid: 6f53ae8de7a9080409cf185aee41fd83

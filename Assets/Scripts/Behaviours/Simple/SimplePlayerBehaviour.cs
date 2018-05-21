@@ -13,6 +13,7 @@ public class SimplePlayerBehaviour : NetworkBehaviour
     [SyncVar] public float m_RespawnDelay;
     public GameEventArgs m_OnSceneTankDestroyed;
     public SimpleTeamBehaviour m_Team;
+    public PlayerUIBehaviour m_PlayerUI;
 
     [ClientRpc]
     public void RpcSetTeamColor(GameObject tank, Color col)
@@ -38,19 +39,28 @@ public class SimplePlayerBehaviour : NetworkBehaviour
     {        
         if(args[0] as SimplePlayerBehaviour != this)
             return;
-        m_Team = args[1] as SimpleTeamBehaviour;        
+        m_Team = args[1] as SimpleTeamBehaviour;
+        RpcEnableUI();        
+    }
+
+    [ClientRpc]
+    void RpcEnableUI()
+    {
+        if(GetComponent<NetworkIdentity>().isLocalPlayer)
+            m_PlayerUI.PlayerDied();
+    }
+    
+    [Command]        
+    public void CmdSelectNewTank()
+    {
+        //m_TankObjectPrefab = prefab;
         StartCoroutine(RespawnDelay());
-        var spawnPosition = FindObjectsOfType<NetworkStartPosition>();
-        int numSpawns = spawnPosition.Length;
-        int spawnIndex = Random.Range(0, numSpawns);
-        var newTank = Instantiate(m_TankObjectPrefab, 
-            spawnPosition[spawnIndex].transform.position,
-            Quaternion.identity);
-        GetComponent<NetworkTank>().m_player = this;
-        NetworkServer.Spawn(newTank);
-        m_rtTankObject = newTank;
-        RpcSetTeamColor(m_rtTankObject, m_TeamColor);
-        RpcSpawnTank();
+    }
+
+    [Command]
+    void CmdRespawn()
+    {
+        StartCoroutine(RespawnDelay());
     }
 
     [ClientRpc]
@@ -66,15 +76,32 @@ public class SimplePlayerBehaviour : NetworkBehaviour
         m_rtTankObject.GetComponent<NetworkIdentity>().AssignClientAuthority(connection);
     }
 
-    IEnumerator RespawnDelay()
+    public IEnumerator RespawnDelay()
     {        
-        yield return new WaitForSeconds(m_RespawnDelay);        
+        yield return new WaitForSeconds(m_RespawnDelay);
+        var spawnPosition = FindObjectsOfType<NetworkStartPosition>();
+        int numSpawns = spawnPosition.Length;
+        int spawnIndex = Random.Range(0, numSpawns);
+        var newTank = Instantiate(m_TankObjectPrefab,
+            spawnPosition[spawnIndex].transform.position,
+            Quaternion.identity);
+        GetComponent<NetworkTank>().m_player = this;
+        NetworkServer.Spawn(newTank);
+        m_rtTankObject = newTank;
+        RpcSetTeamColor(m_rtTankObject, m_TeamColor);
+        RpcSpawnTank();
     }
 
     public void SceneObjectDestroyed(Object[] args)
     {
-        var sender = args[0] as TankStats;        
+        var sender = args[0] as TankStats;
         if (sender.gameObject == m_rtTankObject)
-            m_Team.PlayerDied(new Object[] {this});
+            m_Team.PlayerDied(new Object[] { this });
+    }    
+
+    [Command]
+    public void CmdSetTankPrefab(GameObject tank)
+    {
+        m_TankObjectPrefab = tank;        
     }
 }
