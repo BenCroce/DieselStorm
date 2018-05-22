@@ -51,7 +51,7 @@ public class ExtendNetworkMangerUI : MonoBehaviour
     {
         if(NetworkManager.singleton.matchMaker == null)
             NetworkManager.singleton.StartMatchMaker();
-        NetworkManager.singleton.matchMaker.CreateMatch(m_CreateGameName.text,3,true, 
+        NetworkManager.singleton.matchMaker.CreateMatch(m_CreateGameName.text,6,true, 
             "", "", "", 0, 0, NetworkManager.singleton.OnMatchCreate);
     }
 }

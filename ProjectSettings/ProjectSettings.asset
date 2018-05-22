@@ -652,12 +652,16 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Build: 0
+    Collab: 0
+    ErrorHub: 0
+    Hub: 0
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 53155a28-6ecf-42b3-bcf3-d6c8085cd35f
-  projectName: Diesel_Storm (2)
-  organizationId: dylan-3923841
+  cloudProjectId: 9acdf8df-4898-48d5-a16a-926318a1fc63
+  projectName: Diesel_Storm
+  organizationId: guidry-game-dev
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
