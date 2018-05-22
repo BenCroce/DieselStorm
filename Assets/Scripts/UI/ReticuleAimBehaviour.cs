@@ -44,7 +44,10 @@ public class ReticuleAimBehaviour : MonoBehaviour {
             if (i.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
                 if (i.m_rtTankObject != null)
                 {
-                    m_aim = i.m_rtTankObject.GetComponent<TankShoot>().m_turretPos;
+                    if(i.m_rtTankObject.GetComponent<TankShoot>())
+                        m_aim = i.m_rtTankObject.GetComponent<TankShoot>().m_turretPos;
+                    else if(i.m_rtTankObject.GetComponent<HitscanShootBehaviour>())
+                        m_aim = i.m_rtTankObject.GetComponent<HitscanShootBehaviour>().m_muzzle;
                     m_searching = false;
                 }
         }
