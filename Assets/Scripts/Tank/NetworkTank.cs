@@ -104,6 +104,8 @@ public class NetworkTank : NetworkBehaviour {
         input = m_player.m_rtTankObject.GetComponent<NetworkTankInputController>();
         if(m_player.m_rtTankObject.GetComponent<TankShoot>())
             m_player.m_rtTankObject.GetComponent<TankShoot>().player = this;
+        if (m_player.m_rtTankObject.GetComponent<HitscanShootBehaviour>())
+            m_player.m_rtTankObject.GetComponent<HitscanShootBehaviour>().player = this;
         getting = false;        
     }
 }

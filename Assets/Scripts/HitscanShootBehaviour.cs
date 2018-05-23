@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
+[NetworkSettings(channel = 0, sendInterval = 0.05f)]
 public class HitscanShootBehaviour : NetworkBehaviour {
 
     public NetworkTankInputController m_control;
     public float m_shotCooldown;
     public int m_shotRange;
+    public float m_spread;
     public Transform m_muzzle;
     public GameEventArgs m_hitEvent;
     public ModifierScriptable m_shotStats;
     public MagazineBehaviour m_magazine;
     public LineRenderer m_shootLine;
+    public AudioSource m_shotSound;
+    public Light m_MuzzleFlash;
+    public NetworkTank player;
     public float m_renderTime = 0.1f;
 
     Ray m_shootRay;
@@ -23,59 +28,83 @@ public class HitscanShootBehaviour : NetworkBehaviour {
 	void Start ()
     {
         m_shootLine.enabled = false;
+        m_MuzzleFlash.gameObject.SetActive(false);
     }
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
-        if(m_control.m_FireButton.IsButtonDown() && canshoot)
+        if(m_control.m_FireButton.IsButtonDown() && canshoot && player.isLocalPlayer)
         {
-            CmdShoot();
+            Vector3 shootVec = Vector3.Normalize(m_muzzle.forward + new Vector3(Random.Range(-m_spread, m_spread), Random.Range(-m_spread, m_spread), Random.Range(-m_spread, m_spread)));
+            CmdShoot(shootVec);
             canshoot = false;
+
+            m_shootRay = new Ray(m_muzzle.position, shootVec);
+
+            m_shootLine.enabled = true;
+            m_MuzzleFlash.gameObject.SetActive(true);
+            m_shotSound.Play();
+
+            m_shootLine.SetPosition(0, m_muzzle.position);
+
+            if (Physics.Raycast(m_shootRay, out m_shootHit, m_shotRange))
+            {
+                m_shootLine.SetPosition(1, m_shootHit.point);
+            }
+            else
+                m_shootLine.SetPosition(1, m_muzzle.position + shootVec * m_shotRange);
+
             StartCoroutine(Cooldown());
-            StartCoroutine(StopLineRender());
+        }
+
+        if(m_shootLine.enabled)
+        {
+            StartCoroutine(StopFX());
         }
 	}
 
     [Command]
-    void CmdShoot()
+    void CmdShoot(Vector3 shootVec)
     {
-        if (canshoot)
-        {
-            RpcShoot();
-        }
+        RpcShoot(shootVec);
     }
 
     [ClientRpc]
-    void RpcShoot()
+    void RpcShoot(Vector3 shootVec)
     {
-        m_shootRay = new Ray(m_muzzle.position, m_muzzle.forward);
-
-        m_shootLine.enabled = true;
-        m_shootLine.SetPosition(0, m_muzzle.position);
-
-        if (Physics.Raycast(m_shootRay, out m_shootHit, m_shotRange))
+        if (!player.isLocalPlayer)
         {
-            if (m_shootHit.collider.GetComponent<TankStats>() && m_shootHit.collider.gameObject != gameObject)
-                m_hitEvent.Raise(gameObject, m_shotStats, m_shootHit.collider.gameObject);
+            m_shootRay = new Ray(m_muzzle.position, shootVec);
 
-            m_shootLine.SetPosition(1, m_shootHit.point);
+            m_shootLine.enabled = true;
+            m_MuzzleFlash.gameObject.SetActive(true);
+            m_shotSound.Play();
+
+            m_shootLine.SetPosition(0, m_muzzle.position);
+
+            if (Physics.Raycast(m_shootRay, out m_shootHit, m_shotRange))
+            {
+                if (m_shootHit.collider.GetComponent<TankStats>() && m_shootHit.collider.gameObject != gameObject)
+                    m_hitEvent.Raise(gameObject, m_shotStats, m_shootHit.collider.gameObject);
+
+                m_shootLine.SetPosition(1, m_shootHit.point);
+            }
+            else
+                m_shootLine.SetPosition(1, m_muzzle.position + shootVec * m_shotRange);
         }
-        else
-            m_shootLine.SetPosition(1, m_muzzle.position + m_muzzle.forward * m_shotRange);
-
-        StartCoroutine(StopLineRender());
     }
 
     IEnumerator Cooldown()
     {
-        yield return new WaitForSeconds(m_shotCooldown);
+        yield return new WaitForSecondsRealtime(m_shotCooldown);
         canshoot = true;
     }
 
-    IEnumerator StopLineRender()
+    IEnumerator StopFX()
     {
-        yield return new WaitForSeconds(m_renderTime);
+        yield return new WaitForSecondsRealtime(m_renderTime);
         m_shootLine.enabled = false;
+        m_MuzzleFlash.gameObject.SetActive(false);
     }
 }

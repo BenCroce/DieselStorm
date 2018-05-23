@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Stat: {fileID: 11400000, guid: ef79dd3698c4c1b4d8ace90a9f7c4add, type: 2}
   m_Type: 0
-  m_Value: -4
+  m_Value: -6
