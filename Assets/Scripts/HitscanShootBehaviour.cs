@@ -50,6 +50,9 @@ public class HitscanShootBehaviour : NetworkBehaviour {
 
             if (Physics.Raycast(m_shootRay, out m_shootHit, m_shotRange))
             {
+                if (m_shootHit.collider.GetComponent<TankStats>() && m_shootHit.collider.gameObject != gameObject)
+                    m_hitEvent.Raise(gameObject, m_shotStats, m_shootHit.collider.gameObject);
+
                 m_shootLine.SetPosition(1, m_shootHit.point);
             }
             else
