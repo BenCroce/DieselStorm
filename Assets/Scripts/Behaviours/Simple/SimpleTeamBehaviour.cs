@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 public class SimpleTeamBehaviour : NetworkBehaviour
 {
     public List<SimplePlayerBehaviour> m_Players;
+    [SyncVar]public int m_MaxPlayers;
     [SyncVar]public Color m_TeamColor;
     [SyncVar]public int m_StartingTeamLives;
     [SyncVar]public int m_CurrentTeamLives;
@@ -21,7 +22,7 @@ public class SimpleTeamBehaviour : NetworkBehaviour
     {
         if(!isServer)
             return;
-        if(m_Players.Contains(player))
+        if(m_Players.Contains(player) || m_Players.Count >= m_MaxPlayers)
             return;
         m_Players.Add(player);
         m_PlayerOnTeam = true;   
@@ -52,6 +53,8 @@ public class SimpleTeamBehaviour : NetworkBehaviour
         if(!isServer)
             return;
         if (m_Players.Contains(player))
+        {
             m_Players.Remove(player);
+        }
     }
 }

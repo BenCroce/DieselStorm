@@ -14,6 +14,7 @@ public class SimplePlayerBehaviour : NetworkBehaviour
     public GameEventArgs m_OnSceneTankDestroyed;
     public SimpleTeamBehaviour m_Team;
     public PlayerUIBehaviour m_PlayerUI;
+    public bool m_InitialSpawn = true;
 
     [ClientRpc]
     public void RpcSetTeamColor(GameObject tank, Color col)
@@ -40,7 +41,19 @@ public class SimplePlayerBehaviour : NetworkBehaviour
         if(args[0] as SimplePlayerBehaviour != this)
             return;
         m_Team = args[1] as SimpleTeamBehaviour;
-        RpcEnableUI();        
+        StartCoroutine(SelectionDelay());
+    }
+
+    public IEnumerator SelectionDelay()
+    {
+        if (!m_InitialSpawn)
+            yield return new WaitForSeconds(m_RespawnDelay);
+        else
+        {
+            yield return new WaitForSeconds(0.1f);
+            m_InitialSpawn = false;
+        }
+        RpcEnableUI();   
     }
 
     [ClientRpc]
@@ -53,7 +66,6 @@ public class SimplePlayerBehaviour : NetworkBehaviour
     [Command]        
     public void CmdSelectNewTank()
     {
-        //m_TankObjectPrefab = prefab;
         StartCoroutine(RespawnDelay());
     }
 
@@ -78,7 +90,7 @@ public class SimplePlayerBehaviour : NetworkBehaviour
 
     public IEnumerator RespawnDelay()
     {        
-        yield return new WaitForSeconds(m_RespawnDelay);
+        yield return new WaitForSeconds(1);
         var spawnPosition = FindObjectsOfType<NetworkStartPosition>();
         int numSpawns = spawnPosition.Length;
         int spawnIndex = Random.Range(0, numSpawns);
