@@ -1860,8 +1860,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_control: {fileID: 114042427450059012}
-  m_shotCooldown: 0.1
-  m_shotRange: 150
+  m_shotCooldown: 0.2
+  m_shotRange: 100
   m_spread: 0.01
   m_muzzle: {fileID: 4529595078711628}
   m_hitEvent: {fileID: 11400000, guid: 8320fd256e5cedd40918378123b1b239, type: 2}
