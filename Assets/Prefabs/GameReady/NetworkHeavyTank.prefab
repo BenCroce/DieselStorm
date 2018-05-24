@@ -1539,7 +1539,6 @@ GameObject:
   - component: {fileID: 114095527131440652}
   - component: {fileID: 114569346855139810}
   - component: {fileID: 114925558356674562}
-  - component: {fileID: 114868867303182238}
   m_Layer: 0
   m_Name: NetworkHeavyTank
   m_TagString: Player
@@ -3759,17 +3758,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_forces: {fileID: 11400000, guid: 90e5bf241e088094abee70f2ff505262, type: 2}
   m_steerForward: {x: 0, y: 0, z: 0}
---- !u!114 &114868867303182238
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1844070630989302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ff42899a8c159479734ba05b814d38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114925558356674562
 MonoBehaviour:
   m_ObjectHideFlags: 1
